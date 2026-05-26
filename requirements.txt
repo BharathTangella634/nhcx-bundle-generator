@@ -1,0 +1,21 @@
+# NHCX Bundle Generator - Python Dependencies
+# =============================================
+
+# Core LLM interaction
+openai>=1.0.0
+
+# Token counting
+tiktoken>=0.5.0
+
+# PDF text extraction
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# JSON path expression support
+jsonpath-ng>=1.6.0
+
+# Rich terminal output (optional, for pretty logging)
+rich>=13.0.0

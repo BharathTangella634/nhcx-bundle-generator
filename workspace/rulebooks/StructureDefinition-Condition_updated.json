@@ -1,0 +1,783 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Condition",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition",
+  "name": "Condition",
+  "description": "Thinned ABDM Condition Rulebook (Optimized for Clinical Diagnosis Extraction)",
+  "elements": [
+    {
+      "id": "Condition",
+      "path": "Condition",
+      "min": 0,
+      "max": "*",
+      "short": "Detailed information about conditions, problems or diagnoses"
+    },
+    {
+      "id": "Condition.id",
+      "path": "Condition.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Condition.meta",
+      "path": "Condition.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Condition.implicitRules",
+      "path": "Condition.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Condition.language",
+      "path": "Condition.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Condition.text",
+      "path": "Condition.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "Condition.contained",
+      "path": "Condition.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "Condition.extension",
+      "path": "Condition.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Condition.modifierExtension",
+      "path": "Condition.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "Condition.identifier",
+      "path": "Condition.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "External Ids for this condition"
+    },
+    {
+      "id": "Condition.clinicalStatus",
+      "path": "Condition.clinicalStatus",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "active | recurrence | relapse | inactive | remission | resolved",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-clinical|4.0.1"
+      }
+    },
+    {
+      "id": "Condition.verificationStatus",
+      "path": "Condition.verificationStatus",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "unconfirmed | provisional | differential | confirmed | refuted | entered-in-error",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-ver-status|4.0.1"
+      }
+    },
+    {
+      "id": "Condition.category",
+      "path": "Condition.category",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "problem-list-item | encounter-diagnosis",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-category"
+      }
+    },
+    {
+      "id": "Condition.severity",
+      "path": "Condition.severity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Subjective severity of condition",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-severity"
+      }
+    },
+    {
+      "id": "Condition.code",
+      "path": "Condition.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Identification of the condition, problem or diagnosis",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-code"
+      }
+    },
+    {
+      "id": "Condition.code.id",
+      "path": "Condition.code.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Condition.code.extension",
+      "path": "Condition.code.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Condition.code.coding",
+      "path": "Condition.code.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10",
+      "path": "Condition.code.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.id",
+      "path": "Condition.code.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.extension",
+      "path": "Condition.code.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.system",
+      "path": "Condition.code.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.version",
+      "path": "Condition.code.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.code",
+      "path": "Condition.code.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.display",
+      "path": "Condition.code.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Condition.code.coding:ICD-10.userSelected",
+      "path": "Condition.code.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT",
+      "path": "Condition.code.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.id",
+      "path": "Condition.code.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.extension",
+      "path": "Condition.code.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.system",
+      "path": "Condition.code.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.version",
+      "path": "Condition.code.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.code",
+      "path": "Condition.code.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.display",
+      "path": "Condition.code.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Condition.code.coding:SNOMEDCT.userSelected",
+      "path": "Condition.code.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Condition.code.text",
+      "path": "Condition.code.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Condition.bodySite",
+      "path": "Condition.bodySite",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Anatomical location, if relevant",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/body-site"
+      }
+    },
+    {
+      "id": "Condition.subject",
+      "path": "Condition.subject",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Who has the condition?"
+    },
+    {
+      "id": "Condition.encounter",
+      "path": "Condition.encounter",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+          ]
+        }
+      ],
+      "short": "Encounter created as part of"
+    },
+    {
+      "id": "Condition.onset[x]",
+      "path": "Condition.onset[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        },
+        {
+          "code": "Age"
+        },
+        {
+          "code": "Period"
+        },
+        {
+          "code": "Range"
+        },
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Estimated or actual date,  date-time, or age"
+    },
+    {
+      "id": "Condition.abatement[x]",
+      "path": "Condition.abatement[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        },
+        {
+          "code": "Age"
+        },
+        {
+          "code": "Period"
+        },
+        {
+          "code": "Range"
+        },
+        {
+          "code": "string"
+        }
+      ],
+      "short": "When in resolution/remission"
+    },
+    {
+      "id": "Condition.recordedDate",
+      "path": "Condition.recordedDate",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Date record was first recorded"
+    },
+    {
+      "id": "Condition.recorder",
+      "path": "Condition.recorder",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Who recorded the condition"
+    },
+    {
+      "id": "Condition.asserter",
+      "path": "Condition.asserter",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Person who asserts this condition"
+    },
+    {
+      "id": "Condition.stage",
+      "path": "Condition.stage",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Stage/grade, usually assessed formally"
+    },
+    {
+      "id": "Condition.stage.id",
+      "path": "Condition.stage.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Condition.stage.extension",
+      "path": "Condition.stage.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Condition.stage.modifierExtension",
+      "path": "Condition.stage.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Condition.stage.summary",
+      "path": "Condition.stage.summary",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Simple summary (disease specific)",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-stage"
+      }
+    },
+    {
+      "id": "Condition.stage.assessment",
+      "path": "Condition.stage.assessment",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/ClinicalImpression",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DiagnosticReportLab",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DiagnosticReportImaging"
+          ]
+        }
+      ],
+      "short": "Formal record of assessment"
+    },
+    {
+      "id": "Condition.stage.type",
+      "path": "Condition.stage.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Kind of staging",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/condition-stage-type"
+      }
+    },
+    {
+      "id": "Condition.evidence",
+      "path": "Condition.evidence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Supporting evidence"
+    },
+    {
+      "id": "Condition.evidence.id",
+      "path": "Condition.evidence.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Condition.evidence.extension",
+      "path": "Condition.evidence.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Condition.evidence.modifierExtension",
+      "path": "Condition.evidence.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Condition.evidence.code",
+      "path": "Condition.evidence.code",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Manifestation/symptom",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/manifestation-or-symptom"
+      }
+    },
+    {
+      "id": "Condition.evidence.detail",
+      "path": "Condition.evidence.detail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Supporting information found elsewhere"
+    },
+    {
+      "id": "Condition.note",
+      "path": "Condition.note",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Annotation"
+        }
+      ],
+      "short": "Additional information about the Condition"
+    }
+  ]
+}

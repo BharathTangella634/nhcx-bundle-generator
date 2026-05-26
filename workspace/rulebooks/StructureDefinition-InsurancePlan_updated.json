@@ -1,0 +1,1980 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "InsurancePlan",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan",
+  "name": "InsurancePlan",
+  "description": "Thinned ABDM InsurancePlan Rulebook (Optimized for Plan benefits and cost-sharing extraction)",
+  "elements": [
+    {
+      "id": "InsurancePlan",
+      "path": "InsurancePlan",
+      "min": 0,
+      "max": "*",
+      "short": "Details of a Health Insurance product/plan provided by an organization"
+    },
+    {
+      "id": "InsurancePlan.id",
+      "path": "InsurancePlan.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "InsurancePlan.meta",
+      "path": "InsurancePlan.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "InsurancePlan.implicitRules",
+      "path": "InsurancePlan.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "InsurancePlan.language",
+      "path": "InsurancePlan.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "InsurancePlan.text",
+      "path": "InsurancePlan.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "InsurancePlan.contained",
+      "path": "InsurancePlan.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "InsurancePlan.extension",
+      "path": "InsurancePlan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extension"
+    },
+    {
+      "id": "InsurancePlan.extension:claim-exclusion",
+      "path": "InsurancePlan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          ]
+        }
+      ],
+      "short": "Excluded coverage details within a health insurance product. It outlines services, treatments or conditions not covered. e.g. pre-existing disease, specific disease/procedure waiting period etc."
+    },
+    {
+      "id": "InsurancePlan.extension:claim-supportingInfoRequirement",
+      "path": "InsurancePlan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          ]
+        }
+      ],
+      "short": "Essential documentation necessary for a health insurance product during claim processing. e.g. proof of identity, proof of address"
+    },
+    {
+      "id": "InsurancePlan.modifierExtension",
+      "path": "InsurancePlan.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "InsurancePlan.identifier",
+      "path": "InsurancePlan.identifier",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Identifier provided by payer to uniquely identify the product covering a list of combinations offered to consumers under this particular insurance plan."
+    },
+    {
+      "id": "InsurancePlan.status",
+      "path": "InsurancePlan.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "draft | active | retired | unknown",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/publication-status|4.0.1"
+      }
+    },
+    {
+      "id": "InsurancePlan.type",
+      "path": "InsurancePlan.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Type of product that indicates the predominant type.",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-insuranceplan-type"
+      }
+    },
+    {
+      "id": "InsurancePlan.type.id",
+      "path": "InsurancePlan.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.type.extension",
+      "path": "InsurancePlan.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.type.coding",
+      "path": "InsurancePlan.type.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "InsurancePlan.type.coding.id",
+      "path": "InsurancePlan.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.type.coding.extension",
+      "path": "InsurancePlan.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.type.coding.system",
+      "path": "InsurancePlan.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "InsurancePlan.type.coding.version",
+      "path": "InsurancePlan.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "InsurancePlan.type.coding.code",
+      "path": "InsurancePlan.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "InsurancePlan.type.coding.display",
+      "path": "InsurancePlan.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "InsurancePlan.type.coding.userSelected",
+      "path": "InsurancePlan.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "InsurancePlan.type.text",
+      "path": "InsurancePlan.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "InsurancePlan.name",
+      "path": "InsurancePlan.name",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Official name of the product"
+    },
+    {
+      "id": "InsurancePlan.alias",
+      "path": "InsurancePlan.alias",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Alternate names"
+    },
+    {
+      "id": "InsurancePlan.period",
+      "path": "InsurancePlan.period",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "mustSupport": true,
+      "short": "When the product is available"
+    },
+    {
+      "id": "InsurancePlan.ownedBy",
+      "path": "InsurancePlan.ownedBy",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plan issuer"
+    },
+    {
+      "id": "InsurancePlan.administeredBy",
+      "path": "InsurancePlan.administeredBy",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Product administrator"
+    },
+    {
+      "id": "InsurancePlan.coverageArea",
+      "path": "InsurancePlan.coverageArea",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Where product applies"
+    },
+    {
+      "id": "InsurancePlan.contact",
+      "path": "InsurancePlan.contact",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Contact for the product"
+    },
+    {
+      "id": "InsurancePlan.contact.id",
+      "path": "InsurancePlan.contact.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.contact.extension",
+      "path": "InsurancePlan.contact.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.contact.modifierExtension",
+      "path": "InsurancePlan.contact.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.contact.purpose",
+      "path": "InsurancePlan.contact.purpose",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "The type of contact",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contactentity-type"
+      }
+    },
+    {
+      "id": "InsurancePlan.contact.name",
+      "path": "InsurancePlan.contact.name",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "HumanName"
+        }
+      ],
+      "short": "A name associated with the contact"
+    },
+    {
+      "id": "InsurancePlan.contact.telecom",
+      "path": "InsurancePlan.contact.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "short": "Contact details (telephone, email, etc.)  for a contact"
+    },
+    {
+      "id": "InsurancePlan.contact.address",
+      "path": "InsurancePlan.contact.address",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Address"
+        }
+      ],
+      "short": "Visiting or postal addresses for the contact"
+    },
+    {
+      "id": "InsurancePlan.endpoint",
+      "path": "InsurancePlan.endpoint",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Endpoint"
+          ]
+        }
+      ],
+      "short": "Technical endpoint"
+    },
+    {
+      "id": "InsurancePlan.network",
+      "path": "InsurancePlan.network",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Network included in the health insurance product."
+    },
+    {
+      "id": "InsurancePlan.coverage",
+      "path": "InsurancePlan.coverage",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Coverage details for e.g. In-Patient Hospitalization, Day Care etc."
+    },
+    {
+      "id": "InsurancePlan.coverage.id",
+      "path": "InsurancePlan.coverage.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.extension",
+      "path": "InsurancePlan.coverage.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extension"
+    },
+    {
+      "id": "InsurancePlan.coverage.extension:claim-condition",
+      "path": "InsurancePlan.coverage.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+          ]
+        }
+      ],
+      "short": "Outlines specific conditions and criteria that may be required to successfully claim benefits under a coverage within a insurance product."
+    },
+    {
+      "id": "InsurancePlan.coverage.extension:claim-supportingInfoRequirement",
+      "path": "InsurancePlan.coverage.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          ]
+        }
+      ],
+      "short": "Essential documentation necessary for a health insurance product during claim processing. e.g. proof of identity, proof of address"
+    },
+    {
+      "id": "InsurancePlan.coverage.modifierExtension",
+      "path": "InsurancePlan.coverage.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.coverage.type",
+      "path": "InsurancePlan.coverage.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of coverage",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-coverage-type"
+      }
+    },
+    {
+      "id": "InsurancePlan.coverage.type.id",
+      "path": "InsurancePlan.coverage.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.extension",
+      "path": "InsurancePlan.coverage.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding",
+      "path": "InsurancePlan.coverage.type.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.id",
+      "path": "InsurancePlan.coverage.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.extension",
+      "path": "InsurancePlan.coverage.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.system",
+      "path": "InsurancePlan.coverage.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.version",
+      "path": "InsurancePlan.coverage.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.code",
+      "path": "InsurancePlan.coverage.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.display",
+      "path": "InsurancePlan.coverage.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.coding.userSelected",
+      "path": "InsurancePlan.coverage.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "InsurancePlan.coverage.type.text",
+      "path": "InsurancePlan.coverage.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "InsurancePlan.coverage.network",
+      "path": "InsurancePlan.coverage.network",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "What networks provide coverage"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit",
+      "path": "InsurancePlan.coverage.benefit",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "List of benefits e.g. consultation, oxygen, robotic surgery etc."
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.id",
+      "path": "InsurancePlan.coverage.benefit.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.extension",
+      "path": "InsurancePlan.coverage.benefit.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extension"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.extension:claim-condition",
+      "path": "InsurancePlan.coverage.benefit.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+          ]
+        }
+      ],
+      "short": "Outlines specific conditions and criteria that may be required to successfully claim benefits under a coverage within a insurance product."
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.extension:claimSupportingInfoRequirement",
+      "path": "InsurancePlan.coverage.benefit.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          ]
+        }
+      ],
+      "short": "Enumerates essential documentation necessary for a health insurance product during claim processing. e.g. proof of identity, proof of address"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.modifierExtension",
+      "path": "InsurancePlan.coverage.benefit.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type",
+      "path": "InsurancePlan.coverage.benefit.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of benefit",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-benefit-type"
+      }
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.id",
+      "path": "InsurancePlan.coverage.benefit.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.extension",
+      "path": "InsurancePlan.coverage.benefit.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding",
+      "path": "InsurancePlan.coverage.benefit.type.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.id",
+      "path": "InsurancePlan.coverage.benefit.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.extension",
+      "path": "InsurancePlan.coverage.benefit.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.system",
+      "path": "InsurancePlan.coverage.benefit.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.version",
+      "path": "InsurancePlan.coverage.benefit.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.code",
+      "path": "InsurancePlan.coverage.benefit.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.display",
+      "path": "InsurancePlan.coverage.benefit.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.coding.userSelected",
+      "path": "InsurancePlan.coverage.benefit.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.type.text",
+      "path": "InsurancePlan.coverage.benefit.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.requirement",
+      "path": "InsurancePlan.coverage.benefit.requirement",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Referral requirements"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.limit",
+      "path": "InsurancePlan.coverage.benefit.limit",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Benefit limits"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.limit.id",
+      "path": "InsurancePlan.coverage.benefit.limit.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.limit.extension",
+      "path": "InsurancePlan.coverage.benefit.limit.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.limit.modifierExtension",
+      "path": "InsurancePlan.coverage.benefit.limit.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.limit.value",
+      "path": "InsurancePlan.coverage.benefit.limit.value",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Maximum value allowed"
+    },
+    {
+      "id": "InsurancePlan.coverage.benefit.limit.code",
+      "path": "InsurancePlan.coverage.benefit.limit.code",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Benefit limit details"
+    },
+    {
+      "id": "InsurancePlan.plan",
+      "path": "InsurancePlan.plan",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Cost sharing details for the plan offered to a consumer."
+    },
+    {
+      "id": "InsurancePlan.plan.id",
+      "path": "InsurancePlan.plan.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.extension",
+      "path": "InsurancePlan.plan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extension"
+    },
+    {
+      "id": "InsurancePlan.plan.extension:claim-exclusion",
+      "path": "InsurancePlan.plan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          ]
+        }
+      ],
+      "short": "Excluded coverage details within a plan. It outlines services, treatments or conditions not covered. e.g. pre-existing disease, specific disease/procedure waiting period etc."
+    },
+    {
+      "id": "InsurancePlan.plan.extension:claimCondition",
+      "path": "InsurancePlan.plan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+          ]
+        }
+      ],
+      "short": "Outlines specific conditions and criteria that may be required to successfully claim benefits under a coverage within a insurance product."
+    },
+    {
+      "id": "InsurancePlan.plan.extension:claimSupportingInfoRequirement",
+      "path": "InsurancePlan.plan.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          ]
+        }
+      ],
+      "short": "Enumerates essential documentation necessary for a health insurance product during claim processing. e.g. proof of identity, proof of address"
+    },
+    {
+      "id": "InsurancePlan.plan.modifierExtension",
+      "path": "InsurancePlan.plan.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.plan.identifier",
+      "path": "InsurancePlan.plan.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business Identifier for Product"
+    },
+    {
+      "id": "InsurancePlan.plan.type",
+      "path": "InsurancePlan.plan.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Type of plan",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-plan-type"
+      }
+    },
+    {
+      "id": "InsurancePlan.plan.type.id",
+      "path": "InsurancePlan.plan.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.type.extension",
+      "path": "InsurancePlan.plan.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding",
+      "path": "InsurancePlan.plan.type.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.id",
+      "path": "InsurancePlan.plan.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.extension",
+      "path": "InsurancePlan.plan.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.system",
+      "path": "InsurancePlan.plan.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.version",
+      "path": "InsurancePlan.plan.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.code",
+      "path": "InsurancePlan.plan.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.display",
+      "path": "InsurancePlan.plan.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "InsurancePlan.plan.type.coding.userSelected",
+      "path": "InsurancePlan.plan.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "InsurancePlan.plan.type.text",
+      "path": "InsurancePlan.plan.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "InsurancePlan.plan.coverageArea",
+      "path": "InsurancePlan.plan.coverageArea",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Where product applies"
+    },
+    {
+      "id": "InsurancePlan.plan.network",
+      "path": "InsurancePlan.plan.network",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "What networks provide coverage"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost",
+      "path": "InsurancePlan.plan.generalCost",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Sum insured amount associated with the plan."
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.id",
+      "path": "InsurancePlan.plan.generalCost.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.extension",
+      "path": "InsurancePlan.plan.generalCost.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.modifierExtension",
+      "path": "InsurancePlan.plan.generalCost.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.type",
+      "path": "InsurancePlan.plan.generalCost.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of cost"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.groupSize",
+      "path": "InsurancePlan.plan.generalCost.groupSize",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Number of enrollees"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.cost",
+      "path": "InsurancePlan.plan.generalCost.cost",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Cost value"
+    },
+    {
+      "id": "InsurancePlan.plan.generalCost.comment",
+      "path": "InsurancePlan.plan.generalCost.comment",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Additional cost information"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost",
+      "path": "InsurancePlan.plan.specificCost",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Specific costs"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.id",
+      "path": "InsurancePlan.plan.specificCost.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.extension",
+      "path": "InsurancePlan.plan.specificCost.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.modifierExtension",
+      "path": "InsurancePlan.plan.specificCost.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category",
+      "path": "InsurancePlan.plan.specificCost.category",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "General category of benefit",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-benefitcategory"
+      }
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.id",
+      "path": "InsurancePlan.plan.specificCost.category.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.extension",
+      "path": "InsurancePlan.plan.specificCost.category.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding",
+      "path": "InsurancePlan.plan.specificCost.category.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.id",
+      "path": "InsurancePlan.plan.specificCost.category.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.extension",
+      "path": "InsurancePlan.plan.specificCost.category.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.system",
+      "path": "InsurancePlan.plan.specificCost.category.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.version",
+      "path": "InsurancePlan.plan.specificCost.category.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.code",
+      "path": "InsurancePlan.plan.specificCost.category.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.display",
+      "path": "InsurancePlan.plan.specificCost.category.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.coding.userSelected",
+      "path": "InsurancePlan.plan.specificCost.category.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.category.text",
+      "path": "InsurancePlan.plan.specificCost.category.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit",
+      "path": "InsurancePlan.plan.specificCost.benefit",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Benefits list"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.id",
+      "path": "InsurancePlan.plan.specificCost.benefit.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.extension",
+      "path": "InsurancePlan.plan.specificCost.benefit.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.modifierExtension",
+      "path": "InsurancePlan.plan.specificCost.benefit.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type",
+      "path": "InsurancePlan.plan.specificCost.benefit.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of specific benefit",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.id",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.extension",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.id",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.extension",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.system",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.version",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.code",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.display",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.coding.userSelected",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.type.text",
+      "path": "InsurancePlan.plan.specificCost.benefit.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "List of the costs"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.id",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.extension",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.modifierExtension",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.type",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of cost"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.applicability",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.applicability",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "in-network | out-of-network | other",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability|4.0.1"
+      }
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.qualifiers",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.qualifiers",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Additional information about the cost"
+    },
+    {
+      "id": "InsurancePlan.plan.specificCost.benefit.cost.value",
+      "path": "InsurancePlan.plan.specificCost.benefit.cost.value",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "The actual cost value"
+    }
+  ]
+}

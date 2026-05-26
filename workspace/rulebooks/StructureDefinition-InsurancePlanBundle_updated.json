@@ -1,0 +1,967 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "InsurancePlanBundle",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle",
+  "name": "InsurancePlanBundle",
+  "description": "Thinned ABDM InsurancePlanBundle Rulebook (Optimized for Insurance Plan Collections)",
+  "elements": [
+    {
+      "id": "Bundle",
+      "path": "Bundle",
+      "min": 0,
+      "max": "*",
+      "short": "Contains a collection of resources"
+    },
+    {
+      "id": "Bundle.id",
+      "path": "Bundle.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Bundle.meta",
+      "path": "Bundle.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Bundle.implicitRules",
+      "path": "Bundle.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Bundle.language",
+      "path": "Bundle.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content"
+    },
+    {
+      "id": "Bundle.identifier",
+      "path": "Bundle.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Persistent identifier for the bundle"
+    },
+    {
+      "id": "Bundle.type",
+      "path": "Bundle.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "fixedCode": "collection",
+      "short": "collection"
+    },
+    {
+      "id": "Bundle.timestamp",
+      "path": "Bundle.timestamp",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "instant"
+        }
+      ],
+      "short": "When the bundle was assembled"
+    },
+    {
+      "id": "Bundle.total",
+      "path": "Bundle.total",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "unsignedInt"
+        }
+      ],
+      "short": "If search, the total number of matches"
+    },
+    {
+      "id": "Bundle.link",
+      "path": "Bundle.link",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Links related to this Bundle"
+    },
+    {
+      "id": "Bundle.link.id",
+      "path": "Bundle.link.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.link.extension",
+      "path": "Bundle.link.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.link.modifierExtension",
+      "path": "Bundle.link.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.link.relation",
+      "path": "Bundle.link.relation",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1"
+    },
+    {
+      "id": "Bundle.link.url",
+      "path": "Bundle.link.url",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Reference details for the link"
+    },
+    {
+      "id": "Bundle.entry",
+      "path": "Bundle.entry",
+      "min": 1,
+      "max": "*",
+      "slicing": {
+        "discriminator": [
+          {
+            "type": "type",
+            "path": "resource"
+          }
+        ],
+        "rules": "open"
+      },
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Entry in the bundle - will have a resource or information"
+    },
+    {
+      "id": "Bundle.entry.id",
+      "path": "Bundle.entry.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry.extension",
+      "path": "Bundle.entry.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry.modifierExtension",
+      "path": "Bundle.entry.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry.link",
+      "path": "Bundle.entry.link",
+      "min": 0,
+      "max": "*",
+      "short": "Links related to this entry"
+    },
+    {
+      "id": "Bundle.entry.fullUrl",
+      "path": "Bundle.entry.fullUrl",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "URI for resource (Absolute URL server address or URI for UUID/OID)"
+    },
+    {
+      "id": "Bundle.entry.resource",
+      "path": "Bundle.entry.resource",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "A resource in the bundle"
+    },
+    {
+      "id": "Bundle.entry.search",
+      "path": "Bundle.entry.search",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Search related information"
+    },
+    {
+      "id": "Bundle.entry.search.id",
+      "path": "Bundle.entry.search.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry.search.extension",
+      "path": "Bundle.entry.search.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry.search.modifierExtension",
+      "path": "Bundle.entry.search.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry.search.mode",
+      "path": "Bundle.entry.search.mode",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "match | include | outcome - why this is in the result set"
+    },
+    {
+      "id": "Bundle.entry.search.score",
+      "path": "Bundle.entry.search.score",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Search ranking (between 0 and 1)"
+    },
+    {
+      "id": "Bundle.entry.request",
+      "path": "Bundle.entry.request",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Additional execution information (transaction/batch/history)"
+    },
+    {
+      "id": "Bundle.entry.request.id",
+      "path": "Bundle.entry.request.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry.request.extension",
+      "path": "Bundle.entry.request.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry.request.modifierExtension",
+      "path": "Bundle.entry.request.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry.request.method",
+      "path": "Bundle.entry.request.method",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "GET | HEAD | POST | PUT | DELETE | PATCH"
+    },
+    {
+      "id": "Bundle.entry.request.url",
+      "path": "Bundle.entry.request.url",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "URL for HTTP equivalent of this entry"
+    },
+    {
+      "id": "Bundle.entry.request.ifNoneMatch",
+      "path": "Bundle.entry.request.ifNoneMatch",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "For managing cache currency"
+    },
+    {
+      "id": "Bundle.entry.request.ifModifiedSince",
+      "path": "Bundle.entry.request.ifModifiedSince",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "instant"
+        }
+      ],
+      "short": "For managing cache currency"
+    },
+    {
+      "id": "Bundle.entry.request.ifMatch",
+      "path": "Bundle.entry.request.ifMatch",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "For managing update contention"
+    },
+    {
+      "id": "Bundle.entry.request.ifNoneExist",
+      "path": "Bundle.entry.request.ifNoneExist",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "For conditional creates"
+    },
+    {
+      "id": "Bundle.entry.response",
+      "path": "Bundle.entry.response",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Results of execution (transaction/batch/history)"
+    },
+    {
+      "id": "Bundle.entry.response.id",
+      "path": "Bundle.entry.response.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry.response.extension",
+      "path": "Bundle.entry.response.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry.response.modifierExtension",
+      "path": "Bundle.entry.response.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry.response.status",
+      "path": "Bundle.entry.response.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Status response code (text optional)"
+    },
+    {
+      "id": "Bundle.entry.response.location",
+      "path": "Bundle.entry.response.location",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "The location (if the operation returns a location)"
+    },
+    {
+      "id": "Bundle.entry.response.etag",
+      "path": "Bundle.entry.response.etag",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The Etag for the resource (if relevant)"
+    },
+    {
+      "id": "Bundle.entry.response.lastModified",
+      "path": "Bundle.entry.response.lastModified",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "instant"
+        }
+      ],
+      "short": "Server's date time modified"
+    },
+    {
+      "id": "Bundle.entry.response.outcome",
+      "path": "Bundle.entry.response.outcome",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "OperationOutcome with hints and warnings (for batch/transaction)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan",
+      "path": "Bundle.entry",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Entry in the bundle - will have a resource or information"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.id",
+      "path": "Bundle.entry.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.extension",
+      "path": "Bundle.entry.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.modifierExtension",
+      "path": "Bundle.entry.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.link",
+      "path": "Bundle.entry.link",
+      "min": 0,
+      "max": "*",
+      "short": "Links related to this entry"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.fullUrl",
+      "path": "Bundle.entry.fullUrl",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "URI for resource (Absolute URL server address or URI for UUID/OID)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.resource",
+      "path": "Bundle.entry.resource",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "InsurancePlan",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
+          ]
+        }
+      ],
+      "short": "Details of a Health Insurance product/plan provided by an organization"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.search",
+      "path": "Bundle.entry.search",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Search related information"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.search.id",
+      "path": "Bundle.entry.search.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.search.extension",
+      "path": "Bundle.entry.search.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.search.modifierExtension",
+      "path": "Bundle.entry.search.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.search.mode",
+      "path": "Bundle.entry.search.mode",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "match | include | outcome - why this is in the result set"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.search.score",
+      "path": "Bundle.entry.search.score",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Search ranking (between 0 and 1)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request",
+      "path": "Bundle.entry.request",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Additional execution information (transaction/batch/history)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.id",
+      "path": "Bundle.entry.request.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.extension",
+      "path": "Bundle.entry.request.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.modifierExtension",
+      "path": "Bundle.entry.request.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.method",
+      "path": "Bundle.entry.request.method",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "GET | HEAD | POST | PUT | DELETE | PATCH"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.url",
+      "path": "Bundle.entry.request.url",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "URL for HTTP equivalent of this entry"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.ifNoneMatch",
+      "path": "Bundle.entry.request.ifNoneMatch",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "For managing cache currency"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.ifModifiedSince",
+      "path": "Bundle.entry.request.ifModifiedSince",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "instant"
+        }
+      ],
+      "short": "For managing cache currency"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.ifMatch",
+      "path": "Bundle.entry.request.ifMatch",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "For managing update contention"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.request.ifNoneExist",
+      "path": "Bundle.entry.request.ifNoneExist",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "For conditional creates"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response",
+      "path": "Bundle.entry.response",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Results of execution (transaction/batch/history)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.id",
+      "path": "Bundle.entry.response.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.extension",
+      "path": "Bundle.entry.response.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.modifierExtension",
+      "path": "Bundle.entry.response.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.status",
+      "path": "Bundle.entry.response.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Status response code (text optional)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.location",
+      "path": "Bundle.entry.response.location",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "The location (if the operation returns a location)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.etag",
+      "path": "Bundle.entry.response.etag",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The Etag for the resource (if relevant)"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.lastModified",
+      "path": "Bundle.entry.response.lastModified",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "instant"
+        }
+      ],
+      "short": "Server's date time modified"
+    },
+    {
+      "id": "Bundle.entry:InsurancePlan.response.outcome",
+      "path": "Bundle.entry.response.outcome",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "OperationOutcome with hints and warnings (for batch/transaction)"
+    },
+    {
+      "id": "Bundle.signature",
+      "path": "Bundle.signature",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Signature"
+        }
+      ],
+      "short": "Digital Signature"
+    }
+  ]
+}

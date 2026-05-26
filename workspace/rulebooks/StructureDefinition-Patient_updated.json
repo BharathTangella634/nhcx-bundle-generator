@@ -1,0 +1,1039 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Patient",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient",
+  "name": "Patient",
+  "description": "Thinned ABDM Rulebook for LLM Context Optimization",
+  "elements": [
+    {
+      "path": "Patient",
+      "min": 0,
+      "max": "*",
+      "short": "Information about an individual or animal receiving health care services"
+    },
+    {
+      "path": "Patient.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "path": "Patient.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "path": "Patient.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "path": "Patient.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "path": "Patient.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "path": "Patient.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "path": "Patient.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "path": "Patient.identifier",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "mustSupport": true,
+      "short": "An identifier for this patient"
+    },
+    {
+      "path": "Patient.identifier.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.identifier.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.identifier.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "usual | official | temp | secondary | old (If known)",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      }
+    },
+    {
+      "path": "Patient.identifier.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Description of identifier",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-identifier-type-code"
+      }
+    },
+    {
+      "path": "Patient.identifier.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.identifier.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.identifier.type.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "path": "Patient.identifier.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.identifier.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.identifier.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "path": "Patient.identifier.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "path": "Patient.identifier.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "path": "Patient.identifier.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "path": "Patient.identifier.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "path": "Patient.identifier.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "path": "Patient.identifier.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The namespace for the identifier value"
+    },
+    {
+      "path": "Patient.identifier.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The value that is unique"
+    },
+    {
+      "path": "Patient.identifier.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when id is/was valid for use"
+    },
+    {
+      "path": "Patient.identifier.assigner",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that issued id (may be just text)"
+    },
+    {
+      "path": "Patient.identifier.assigner.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.identifier.assigner.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.identifier.assigner.reference",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Literal reference, Relative, internal or absolute URL"
+    },
+    {
+      "path": "Patient.identifier.assigner.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Type the reference refers to (e.g. \"Patient\")",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/resource-types"
+      }
+    },
+    {
+      "path": "Patient.identifier.assigner.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Logical reference, when literal reference is not known"
+    },
+    {
+      "path": "Patient.identifier.assigner.display",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Text alternative for the resource"
+    },
+    {
+      "path": "Patient.active",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Whether this patient's record is in active use"
+    },
+    {
+      "path": "Patient.name",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "HumanName"
+        }
+      ],
+      "mustSupport": true,
+      "short": "A name associated with the patient"
+    },
+    {
+      "path": "Patient.name.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.name.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.name.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "usual | official | temp | nickname | anonymous | old | maiden",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/name-use|4.0.1"
+      }
+    },
+    {
+      "path": "Patient.name.text",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Text representation of the full name"
+    },
+    {
+      "path": "Patient.name.family",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Family name (often called 'Surname')"
+    },
+    {
+      "path": "Patient.name.given",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Given names (not always 'first'). Includes middle names"
+    },
+    {
+      "path": "Patient.name.prefix",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Parts that come before the name"
+    },
+    {
+      "path": "Patient.name.suffix",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Parts that come after the name"
+    },
+    {
+      "path": "Patient.name.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when name was/is in use"
+    },
+    {
+      "path": "Patient.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "mustSupport": true,
+      "short": "A contact detail for the individual"
+    },
+    {
+      "path": "Patient.telecom.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.telecom.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.telecom.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "phone | fax | email | pager | url | sms | other",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"
+      }
+    },
+    {
+      "path": "Patient.telecom.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The actual contact point details"
+    },
+    {
+      "path": "Patient.telecom.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "home | work | temp | old | mobile - purpose of this contact point",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"
+      }
+    },
+    {
+      "path": "Patient.telecom.rank",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Specify preferred order of use (1 = highest)"
+    },
+    {
+      "path": "Patient.telecom.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when the contact point was/is in use"
+    },
+    {
+      "path": "Patient.gender",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "male | female | other | unknown",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1"
+      }
+    },
+    {
+      "path": "Patient.birthDate",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The date of birth for the individual"
+    },
+    {
+      "path": "Patient.deceased[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        },
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Indicates if the individual is deceased or not"
+    },
+    {
+      "path": "Patient.address",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Address"
+        }
+      ],
+      "mustSupport": true,
+      "short": "An address for the individual"
+    },
+    {
+      "path": "Patient.maritalStatus",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Marital (civil) status of a patient",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/marital-status"
+      }
+    },
+    {
+      "path": "Patient.multipleBirth[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        },
+        {
+          "code": "integer"
+        }
+      ],
+      "short": "Whether patient is part of a multiple birth"
+    },
+    {
+      "path": "Patient.photo",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Attachment"
+        }
+      ],
+      "short": "Image of the patient"
+    },
+    {
+      "path": "Patient.contact",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "A contact party (e.g. guardian, partner, friend) for the patient"
+    },
+    {
+      "path": "Patient.contact.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.contact.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.contact.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "path": "Patient.contact.relationship",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "The kind of relationship",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship"
+      }
+    },
+    {
+      "path": "Patient.contact.name",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "HumanName"
+        }
+      ],
+      "short": "A name associated with the contact person"
+    },
+    {
+      "path": "Patient.contact.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "short": "A contact detail for the person"
+    },
+    {
+      "path": "Patient.contact.address",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Address"
+        }
+      ],
+      "short": "Address for the contact person"
+    },
+    {
+      "path": "Patient.contact.gender",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "male | female | other | unknown",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1"
+      }
+    },
+    {
+      "path": "Patient.contact.organization",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that is associated with the contact"
+    },
+    {
+      "path": "Patient.contact.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "The period during which this contact person or organization is valid to be contacted relating to this patient"
+    },
+    {
+      "path": "Patient.communication",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "A language which may be used to communicate with the patient about his or her health"
+    },
+    {
+      "path": "Patient.communication.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.communication.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.communication.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "path": "Patient.communication.language",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "The language which can be used to communicate with the patient about his or her health",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "path": "Patient.communication.preferred",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Language preference indicator"
+    },
+    {
+      "path": "Patient.generalPractitioner",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole"
+          ]
+        }
+      ],
+      "short": "Patient's nominated primary care provider"
+    },
+    {
+      "path": "Patient.managingOrganization",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that is the custodian of the patient record"
+    },
+    {
+      "path": "Patient.link",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Link to another patient resource that concerns the same actual person"
+    },
+    {
+      "path": "Patient.link.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "path": "Patient.link.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "path": "Patient.link.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "path": "Patient.link.other",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "The other patient or related person resource that the link refers to"
+    },
+    {
+      "path": "Patient.link.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "replaced-by | replaces | refer | seealso",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/link-type|4.0.1"
+      }
+    }
+  ]
+}

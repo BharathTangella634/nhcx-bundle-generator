@@ -1,0 +1,1067 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoverageEligibilityResponse",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/CoverageEligibilityResponse",
+  "name": "CoverageEligibilityResponse",
+  "description": "Thinned ABDM CoverageEligibilityResponse Rulebook (Optimized for benefit verification outcomes)",
+  "elements": [
+    {
+      "id": "CoverageEligibilityResponse",
+      "path": "CoverageEligibilityResponse",
+      "min": 0,
+      "max": "*",
+      "short": "CoverageEligibilityResponse resource"
+    },
+    {
+      "id": "CoverageEligibilityResponse.id",
+      "path": "CoverageEligibilityResponse.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "CoverageEligibilityResponse.meta",
+      "path": "CoverageEligibilityResponse.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "CoverageEligibilityResponse.implicitRules",
+      "path": "CoverageEligibilityResponse.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "CoverageEligibilityResponse.language",
+      "path": "CoverageEligibilityResponse.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.text",
+      "path": "CoverageEligibilityResponse.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "CoverageEligibilityResponse.contained",
+      "path": "CoverageEligibilityResponse.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "CoverageEligibilityResponse.extension",
+      "path": "CoverageEligibilityResponse.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.modifierExtension",
+      "path": "CoverageEligibilityResponse.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "CoverageEligibilityResponse.identifier",
+      "path": "CoverageEligibilityResponse.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business Identifier for coverage eligiblity request"
+    },
+    {
+      "id": "CoverageEligibilityResponse.status",
+      "path": "CoverageEligibilityResponse.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "active | cancelled | draft | entered-in-error",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fm-status|4.0.1"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.purpose",
+      "path": "CoverageEligibilityResponse.purpose",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "auth-requirements | benefits | discovery | validation",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/eligibilityresponse-purpose|4.0.1"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.patient",
+      "path": "CoverageEligibilityResponse.patient",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Intended recipient of products and services"
+    },
+    {
+      "id": "CoverageEligibilityResponse.serviced[x]",
+      "path": "CoverageEligibilityResponse.serviced[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        },
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Estimated date or dates of service"
+    },
+    {
+      "id": "CoverageEligibilityResponse.created",
+      "path": "CoverageEligibilityResponse.created",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Response creation date"
+    },
+    {
+      "id": "CoverageEligibilityResponse.requestor",
+      "path": "CoverageEligibilityResponse.requestor",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Party responsible for the request"
+    },
+    {
+      "id": "CoverageEligibilityResponse.request",
+      "path": "CoverageEligibilityResponse.request",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/CoverageEligibilityRequest"
+          ]
+        }
+      ],
+      "short": "Eligibility request reference"
+    },
+    {
+      "id": "CoverageEligibilityResponse.outcome",
+      "path": "CoverageEligibilityResponse.outcome",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "queued | complete | error | partial",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/remittance-outcome|4.0.1"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.disposition",
+      "path": "CoverageEligibilityResponse.disposition",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Disposition Message"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurer",
+      "path": "CoverageEligibilityResponse.insurer",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Coverage issuer"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance",
+      "path": "CoverageEligibilityResponse.insurance",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Patient insurance information"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.id",
+      "path": "CoverageEligibilityResponse.insurance.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.extension",
+      "path": "CoverageEligibilityResponse.insurance.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.modifierExtension",
+      "path": "CoverageEligibilityResponse.insurance.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.coverage",
+      "path": "CoverageEligibilityResponse.insurance.coverage",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Coverage"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Insurance information"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.inforce",
+      "path": "CoverageEligibilityResponse.insurance.inforce",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Coverage inforce indicator"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.benefitPeriod",
+      "path": "CoverageEligibilityResponse.insurance.benefitPeriod",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "When the benefits are applicable"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item",
+      "path": "CoverageEligibilityResponse.insurance.item",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Benefits and authorization details"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.id",
+      "path": "CoverageEligibilityResponse.insurance.item.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.extension",
+      "path": "CoverageEligibilityResponse.insurance.item.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.modifierExtension",
+      "path": "CoverageEligibilityResponse.insurance.item.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category",
+      "path": "CoverageEligibilityResponse.insurance.item.category",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Benefit classification",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-benefitcategory"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.id",
+      "path": "CoverageEligibilityResponse.insurance.item.category.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.extension",
+      "path": "CoverageEligibilityResponse.insurance.item.category.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.id",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.extension",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.system",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.version",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.code",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.display",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.coding.userSelected",
+      "path": "CoverageEligibilityResponse.insurance.item.category.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.category.text",
+      "path": "CoverageEligibilityResponse.insurance.item.category.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.id",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.extension",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.id",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.extension",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.system",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.version",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.code",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.display",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.coding.userSelected",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.productOrService.text",
+      "path": "CoverageEligibilityResponse.insurance.item.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.modifier",
+      "path": "CoverageEligibilityResponse.insurance.item.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Product or service billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.provider",
+      "path": "CoverageEligibilityResponse.insurance.item.provider",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole"
+          ]
+        }
+      ],
+      "short": "Performing practitioner"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.excluded",
+      "path": "CoverageEligibilityResponse.insurance.item.excluded",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Excluded from the plan"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.name",
+      "path": "CoverageEligibilityResponse.insurance.item.name",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Short name for the benefit"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.description",
+      "path": "CoverageEligibilityResponse.insurance.item.description",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Description of the benefit or services covered"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.network",
+      "path": "CoverageEligibilityResponse.insurance.item.network",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "In or out of network",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/benefit-network"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.unit",
+      "path": "CoverageEligibilityResponse.insurance.item.unit",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Individual or family",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/benefit-unit"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.term",
+      "path": "CoverageEligibilityResponse.insurance.item.term",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Annual or lifetime",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/benefit-term"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Benefit Summary"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit.id",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit.extension",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit.modifierExtension",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit.type",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Benefit classification",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/benefit-type"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit.allowed[x]",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit.allowed[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "unsignedInt"
+        },
+        {
+          "code": "string"
+        },
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Benefits allowed"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.benefit.used[x]",
+      "path": "CoverageEligibilityResponse.insurance.item.benefit.used[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "unsignedInt"
+        },
+        {
+          "code": "string"
+        },
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Benefits used"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.authorizationRequired",
+      "path": "CoverageEligibilityResponse.insurance.item.authorizationRequired",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Authorization required flag"
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.authorizationSupporting",
+      "path": "CoverageEligibilityResponse.insurance.item.authorizationSupporting",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of required supporting materials",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverageeligibilityresponse-ex-auth-support"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.insurance.item.authorizationUrl",
+      "path": "CoverageEligibilityResponse.insurance.item.authorizationUrl",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Preauthorization requirements endpoint"
+    },
+    {
+      "id": "CoverageEligibilityResponse.preAuthRef",
+      "path": "CoverageEligibilityResponse.preAuthRef",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Preauthorization reference"
+    },
+    {
+      "id": "CoverageEligibilityResponse.form",
+      "path": "CoverageEligibilityResponse.form",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Printed form identifier",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/forms"
+      }
+    },
+    {
+      "id": "CoverageEligibilityResponse.error",
+      "path": "CoverageEligibilityResponse.error",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Processing errors"
+    },
+    {
+      "id": "CoverageEligibilityResponse.error.id",
+      "path": "CoverageEligibilityResponse.error.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "CoverageEligibilityResponse.error.extension",
+      "path": "CoverageEligibilityResponse.error.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "CoverageEligibilityResponse.error.modifierExtension",
+      "path": "CoverageEligibilityResponse.error.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "CoverageEligibilityResponse.error.code",
+      "path": "CoverageEligibilityResponse.error.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Error code detailing processing issues",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/adjudication-error"
+      }
+    }
+  ]
+}

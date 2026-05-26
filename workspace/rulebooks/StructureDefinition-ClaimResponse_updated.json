@@ -1,0 +1,2375 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ClaimResponse",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ClaimResponse",
+  "name": "ClaimResponse",
+  "description": "Thinned ABDM ClaimResponse Rulebook (Optimized for Insurance Adjudication tracking)",
+  "elements": [
+    {
+      "id": "ClaimResponse",
+      "path": "ClaimResponse",
+      "min": 0,
+      "max": "*",
+      "short": "Response to a claim predetermination or preauthorization"
+    },
+    {
+      "id": "ClaimResponse.id",
+      "path": "ClaimResponse.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "ClaimResponse.meta",
+      "path": "ClaimResponse.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "ClaimResponse.implicitRules",
+      "path": "ClaimResponse.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "ClaimResponse.language",
+      "path": "ClaimResponse.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "ClaimResponse.text",
+      "path": "ClaimResponse.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "ClaimResponse.contained",
+      "path": "ClaimResponse.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "ClaimResponse.extension",
+      "path": "ClaimResponse.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.modifierExtension",
+      "path": "ClaimResponse.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "ClaimResponse.identifier",
+      "path": "ClaimResponse.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business Identifier for a claim response"
+    },
+    {
+      "id": "ClaimResponse.status",
+      "path": "ClaimResponse.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "active | cancelled | draft | entered-in-error",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fm-status|4.0.1"
+      }
+    },
+    {
+      "id": "ClaimResponse.type",
+      "path": "ClaimResponse.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "More granular claim type",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-claim-type"
+      }
+    },
+    {
+      "id": "ClaimResponse.subType",
+      "path": "ClaimResponse.subType",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "More granular claim type",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-subtype"
+      }
+    },
+    {
+      "id": "ClaimResponse.use",
+      "path": "ClaimResponse.use",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "claim | preauthorization | predetermination",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-use|4.0.1"
+      }
+    },
+    {
+      "id": "ClaimResponse.patient",
+      "path": "ClaimResponse.patient",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "The recipient of the products and services"
+    },
+    {
+      "id": "ClaimResponse.created",
+      "path": "ClaimResponse.created",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Response creation date"
+    },
+    {
+      "id": "ClaimResponse.insurer",
+      "path": "ClaimResponse.insurer",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Party responsible for reimbursement"
+    },
+    {
+      "id": "ClaimResponse.requestor",
+      "path": "ClaimResponse.requestor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Party responsible for the claim"
+    },
+    {
+      "id": "ClaimResponse.request",
+      "path": "ClaimResponse.request",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Id of resource triggering adjudication"
+    },
+    {
+      "id": "ClaimResponse.outcome",
+      "path": "ClaimResponse.outcome",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "queued | complete | error | partial",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/remittance-outcome|4.0.1"
+      }
+    },
+    {
+      "id": "ClaimResponse.disposition",
+      "path": "ClaimResponse.disposition",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Disposition Message"
+    },
+    {
+      "id": "ClaimResponse.preAuthRef",
+      "path": "ClaimResponse.preAuthRef",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Preauthorization reference"
+    },
+    {
+      "id": "ClaimResponse.preAuthPeriod",
+      "path": "ClaimResponse.preAuthPeriod",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Preauthorization reference effective period"
+    },
+    {
+      "id": "ClaimResponse.payeeType",
+      "path": "ClaimResponse.payeeType",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Party to be paid any benefits payable",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/payeetype"
+      }
+    },
+    {
+      "id": "ClaimResponse.item",
+      "path": "ClaimResponse.item",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Adjudication for claim line items"
+    },
+    {
+      "id": "ClaimResponse.item.id",
+      "path": "ClaimResponse.item.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.item.extension",
+      "path": "ClaimResponse.item.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.item.modifierExtension",
+      "path": "ClaimResponse.item.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.item.itemSequence",
+      "path": "ClaimResponse.item.itemSequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Claim item instance identifier"
+    },
+    {
+      "id": "ClaimResponse.item.noteNumber",
+      "path": "ClaimResponse.item.noteNumber",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable note numbers"
+    },
+    {
+      "id": "ClaimResponse.item.adjudication",
+      "path": "ClaimResponse.item.adjudication",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Adjudication details"
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.id",
+      "path": "ClaimResponse.item.adjudication.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.extension",
+      "path": "ClaimResponse.item.adjudication.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.modifierExtension",
+      "path": "ClaimResponse.item.adjudication.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.category",
+      "path": "ClaimResponse.item.adjudication.category",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of adjudication information",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/adjudication"
+      }
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.reason",
+      "path": "ClaimResponse.item.adjudication.reason",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Explanation of adjudication outcome",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-adjudication-reason"
+      }
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.amount",
+      "path": "ClaimResponse.item.adjudication.amount",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Monetary amount"
+    },
+    {
+      "id": "ClaimResponse.item.adjudication.value",
+      "path": "ClaimResponse.item.adjudication.value",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Non-monetary value"
+    },
+    {
+      "id": "ClaimResponse.item.detail",
+      "path": "ClaimResponse.item.detail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Adjudication for claim details"
+    },
+    {
+      "id": "ClaimResponse.item.detail.id",
+      "path": "ClaimResponse.item.detail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.item.detail.extension",
+      "path": "ClaimResponse.item.detail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.item.detail.modifierExtension",
+      "path": "ClaimResponse.item.detail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.item.detail.detailSequence",
+      "path": "ClaimResponse.item.detail.detailSequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Claim detail instance identifier"
+    },
+    {
+      "id": "ClaimResponse.item.detail.noteNumber",
+      "path": "ClaimResponse.item.detail.noteNumber",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable note numbers"
+    },
+    {
+      "id": "ClaimResponse.item.detail.adjudication",
+      "path": "ClaimResponse.item.detail.adjudication",
+      "min": 1,
+      "max": "*",
+      "short": "Detail level adjudication details"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail",
+      "path": "ClaimResponse.item.detail.subDetail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Adjudication for claim sub-details"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail.id",
+      "path": "ClaimResponse.item.detail.subDetail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail.extension",
+      "path": "ClaimResponse.item.detail.subDetail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail.modifierExtension",
+      "path": "ClaimResponse.item.detail.subDetail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail.subDetailSequence",
+      "path": "ClaimResponse.item.detail.subDetail.subDetailSequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Claim sub-detail instance identifier"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail.noteNumber",
+      "path": "ClaimResponse.item.detail.subDetail.noteNumber",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable note numbers"
+    },
+    {
+      "id": "ClaimResponse.item.detail.subDetail.adjudication",
+      "path": "ClaimResponse.item.detail.subDetail.adjudication",
+      "min": 0,
+      "max": "*",
+      "short": "Subdetail level adjudication details"
+    },
+    {
+      "id": "ClaimResponse.addItem",
+      "path": "ClaimResponse.addItem",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Insurer added line items"
+    },
+    {
+      "id": "ClaimResponse.addItem.id",
+      "path": "ClaimResponse.addItem.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.extension",
+      "path": "ClaimResponse.addItem.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.modifierExtension",
+      "path": "ClaimResponse.addItem.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.addItem.itemSequence",
+      "path": "ClaimResponse.addItem.itemSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Item sequence number"
+    },
+    {
+      "id": "ClaimResponse.addItem.detailSequence",
+      "path": "ClaimResponse.addItem.detailSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Detail sequence number"
+    },
+    {
+      "id": "ClaimResponse.addItem.subdetailSequence",
+      "path": "ClaimResponse.addItem.subdetailSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Subdetail sequence number"
+    },
+    {
+      "id": "ClaimResponse.addItem.provider",
+      "path": "ClaimResponse.addItem.provider",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Authorized providers"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService",
+      "path": "ClaimResponse.addItem.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.id",
+      "path": "ClaimResponse.addItem.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.extension",
+      "path": "ClaimResponse.addItem.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding",
+      "path": "ClaimResponse.addItem.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.id",
+      "path": "ClaimResponse.addItem.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.extension",
+      "path": "ClaimResponse.addItem.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.system",
+      "path": "ClaimResponse.addItem.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.version",
+      "path": "ClaimResponse.addItem.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.code",
+      "path": "ClaimResponse.addItem.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.display",
+      "path": "ClaimResponse.addItem.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.coding.userSelected",
+      "path": "ClaimResponse.addItem.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "ClaimResponse.addItem.productOrService.text",
+      "path": "ClaimResponse.addItem.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "ClaimResponse.addItem.modifier",
+      "path": "ClaimResponse.addItem.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Service/Product billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode",
+      "path": "ClaimResponse.addItem.programCode",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Program the product or service is provided under",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-program-code"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.id",
+      "path": "ClaimResponse.addItem.programCode.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.extension",
+      "path": "ClaimResponse.addItem.programCode.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding",
+      "path": "ClaimResponse.addItem.programCode.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.id",
+      "path": "ClaimResponse.addItem.programCode.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.extension",
+      "path": "ClaimResponse.addItem.programCode.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.system",
+      "path": "ClaimResponse.addItem.programCode.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.version",
+      "path": "ClaimResponse.addItem.programCode.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.code",
+      "path": "ClaimResponse.addItem.programCode.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.display",
+      "path": "ClaimResponse.addItem.programCode.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.coding.userSelected",
+      "path": "ClaimResponse.addItem.programCode.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "ClaimResponse.addItem.programCode.text",
+      "path": "ClaimResponse.addItem.programCode.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "ClaimResponse.addItem.serviced[x]",
+      "path": "ClaimResponse.addItem.serviced[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        },
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Date or dates of service or product delivery"
+    },
+    {
+      "id": "ClaimResponse.addItem.location[x]",
+      "path": "ClaimResponse.addItem.location[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        },
+        {
+          "code": "Address"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "short": "Place of service or where product was supplied",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/service-place"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.quantity",
+      "path": "ClaimResponse.addItem.quantity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Count of products or services"
+    },
+    {
+      "id": "ClaimResponse.addItem.unitPrice",
+      "path": "ClaimResponse.addItem.unitPrice",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Fee, charge or cost per item"
+    },
+    {
+      "id": "ClaimResponse.addItem.factor",
+      "path": "ClaimResponse.addItem.factor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Price scaling factor"
+    },
+    {
+      "id": "ClaimResponse.addItem.net",
+      "path": "ClaimResponse.addItem.net",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total item cost"
+    },
+    {
+      "id": "ClaimResponse.addItem.bodySite",
+      "path": "ClaimResponse.addItem.bodySite",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Anatomical location",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/tooth"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.subSite",
+      "path": "ClaimResponse.addItem.subSite",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Anatomical sub-location",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/surface"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.noteNumber",
+      "path": "ClaimResponse.addItem.noteNumber",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable note numbers"
+    },
+    {
+      "id": "ClaimResponse.addItem.adjudication",
+      "path": "ClaimResponse.addItem.adjudication",
+      "min": 1,
+      "max": "*",
+      "short": "Added items adjudication"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail",
+      "path": "ClaimResponse.addItem.detail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Insurer added line details"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.id",
+      "path": "ClaimResponse.addItem.detail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.extension",
+      "path": "ClaimResponse.addItem.detail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.modifierExtension",
+      "path": "ClaimResponse.addItem.detail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService",
+      "path": "ClaimResponse.addItem.detail.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.id",
+      "path": "ClaimResponse.addItem.detail.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.extension",
+      "path": "ClaimResponse.addItem.detail.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.id",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.extension",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.system",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.version",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.code",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.display",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.coding.userSelected",
+      "path": "ClaimResponse.addItem.detail.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.productOrService.text",
+      "path": "ClaimResponse.addItem.detail.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.modifier",
+      "path": "ClaimResponse.addItem.detail.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Service/Product billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.quantity",
+      "path": "ClaimResponse.addItem.detail.quantity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Count of products or services"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.unitPrice",
+      "path": "ClaimResponse.addItem.detail.unitPrice",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Fee, charge or cost per item"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.factor",
+      "path": "ClaimResponse.addItem.detail.factor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Price scaling factor"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.net",
+      "path": "ClaimResponse.addItem.detail.net",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total item cost"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.noteNumber",
+      "path": "ClaimResponse.addItem.detail.noteNumber",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable note numbers"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.adjudication",
+      "path": "ClaimResponse.addItem.detail.adjudication",
+      "min": 1,
+      "max": "*",
+      "short": "Added items detail adjudication"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail",
+      "path": "ClaimResponse.addItem.detail.subDetail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Insurer added line items"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.id",
+      "path": "ClaimResponse.addItem.detail.subDetail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.extension",
+      "path": "ClaimResponse.addItem.detail.subDetail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.modifierExtension",
+      "path": "ClaimResponse.addItem.detail.subDetail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.id",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.extension",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.id",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.extension",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.system",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.version",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.code",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.display",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.userSelected",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.productOrService.text",
+      "path": "ClaimResponse.addItem.detail.subDetail.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.modifier",
+      "path": "ClaimResponse.addItem.detail.subDetail.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Service/Product billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.quantity",
+      "path": "ClaimResponse.addItem.detail.subDetail.quantity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Count of products or services"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.unitPrice",
+      "path": "ClaimResponse.addItem.detail.subDetail.unitPrice",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Fee, charge or cost per item"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.factor",
+      "path": "ClaimResponse.addItem.detail.subDetail.factor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Price scaling factor"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.net",
+      "path": "ClaimResponse.addItem.detail.subDetail.net",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total item cost"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.noteNumber",
+      "path": "ClaimResponse.addItem.detail.subDetail.noteNumber",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable note numbers"
+    },
+    {
+      "id": "ClaimResponse.addItem.detail.subDetail.adjudication",
+      "path": "ClaimResponse.addItem.detail.subDetail.adjudication",
+      "min": 1,
+      "max": "*",
+      "short": "Added items detail adjudication"
+    },
+    {
+      "id": "ClaimResponse.adjudication",
+      "path": "ClaimResponse.adjudication",
+      "min": 0,
+      "max": "*",
+      "short": "Header-level adjudication"
+    },
+    {
+      "id": "ClaimResponse.total",
+      "path": "ClaimResponse.total",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Adjudication totals"
+    },
+    {
+      "id": "ClaimResponse.total.id",
+      "path": "ClaimResponse.total.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.total.extension",
+      "path": "ClaimResponse.total.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.total.modifierExtension",
+      "path": "ClaimResponse.total.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.total.category",
+      "path": "ClaimResponse.total.category",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of adjudication information",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/adjudication"
+      }
+    },
+    {
+      "id": "ClaimResponse.total.amount",
+      "path": "ClaimResponse.total.amount",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Financial total for the category"
+    },
+    {
+      "id": "ClaimResponse.payment",
+      "path": "ClaimResponse.payment",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Payment Details"
+    },
+    {
+      "id": "ClaimResponse.payment.id",
+      "path": "ClaimResponse.payment.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.payment.extension",
+      "path": "ClaimResponse.payment.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.payment.modifierExtension",
+      "path": "ClaimResponse.payment.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.payment.type",
+      "path": "ClaimResponse.payment.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Partial or complete payment",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-paymenttype"
+      }
+    },
+    {
+      "id": "ClaimResponse.payment.adjustment",
+      "path": "ClaimResponse.payment.adjustment",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Payment adjustment for non-claim issues"
+    },
+    {
+      "id": "ClaimResponse.payment.adjustmentReason",
+      "path": "ClaimResponse.payment.adjustmentReason",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Explanation for the adjustment",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/payment-adjustment-reason"
+      }
+    },
+    {
+      "id": "ClaimResponse.payment.date",
+      "path": "ClaimResponse.payment.date",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        }
+      ],
+      "short": "Expected date of payment"
+    },
+    {
+      "id": "ClaimResponse.payment.amount",
+      "path": "ClaimResponse.payment.amount",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Payable amount after adjustment"
+    },
+    {
+      "id": "ClaimResponse.payment.identifier",
+      "path": "ClaimResponse.payment.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business identifier for the payment"
+    },
+    {
+      "id": "ClaimResponse.fundsReserve",
+      "path": "ClaimResponse.fundsReserve",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Funds reserved status",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fundsreserve"
+      }
+    },
+    {
+      "id": "ClaimResponse.formCode",
+      "path": "ClaimResponse.formCode",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Printed form identifier",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-form-code"
+      }
+    },
+    {
+      "id": "ClaimResponse.form",
+      "path": "ClaimResponse.form",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Attachment"
+        }
+      ],
+      "short": "Printed reference or actual form"
+    },
+    {
+      "id": "ClaimResponse.processNote",
+      "path": "ClaimResponse.processNote",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Note concerning adjudication"
+    },
+    {
+      "id": "ClaimResponse.processNote.id",
+      "path": "ClaimResponse.processNote.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.processNote.extension",
+      "path": "ClaimResponse.processNote.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.processNote.modifierExtension",
+      "path": "ClaimResponse.processNote.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.processNote.number",
+      "path": "ClaimResponse.processNote.number",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Note instance identifier"
+    },
+    {
+      "id": "ClaimResponse.processNote.type",
+      "path": "ClaimResponse.processNote.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "display | print | printoper",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/note-type|4.0.1"
+      }
+    },
+    {
+      "id": "ClaimResponse.processNote.text",
+      "path": "ClaimResponse.processNote.text",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Note explanatory text"
+    },
+    {
+      "id": "ClaimResponse.processNote.language",
+      "path": "ClaimResponse.processNote.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Language of the text",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "ClaimResponse.communicationRequest",
+      "path": "ClaimResponse.communicationRequest",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/CommunicationRequest"
+          ]
+        }
+      ],
+      "short": "Request for additional information"
+    },
+    {
+      "id": "ClaimResponse.insurance",
+      "path": "ClaimResponse.insurance",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Patient insurance information"
+    },
+    {
+      "id": "ClaimResponse.insurance.id",
+      "path": "ClaimResponse.insurance.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.insurance.extension",
+      "path": "ClaimResponse.insurance.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.insurance.modifierExtension",
+      "path": "ClaimResponse.insurance.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.insurance.sequence",
+      "path": "ClaimResponse.insurance.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Insurance instance identifier"
+    },
+    {
+      "id": "ClaimResponse.insurance.focal",
+      "path": "ClaimResponse.insurance.focal",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Coverage to be used for adjudication"
+    },
+    {
+      "id": "ClaimResponse.insurance.coverage",
+      "path": "ClaimResponse.insurance.coverage",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Coverage"
+          ]
+        }
+      ],
+      "mustSupport": true,
+      "short": "Insurance information"
+    },
+    {
+      "id": "ClaimResponse.insurance.businessArrangement",
+      "path": "ClaimResponse.insurance.businessArrangement",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Additional provider contract number"
+    },
+    {
+      "id": "ClaimResponse.insurance.claimResponse",
+      "path": "ClaimResponse.insurance.claimResponse",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ClaimResponse"
+          ]
+        }
+      ],
+      "short": "Adjudication results"
+    },
+    {
+      "id": "ClaimResponse.error",
+      "path": "ClaimResponse.error",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Processing errors"
+    },
+    {
+      "id": "ClaimResponse.error.id",
+      "path": "ClaimResponse.error.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "ClaimResponse.error.extension",
+      "path": "ClaimResponse.error.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "ClaimResponse.error.modifierExtension",
+      "path": "ClaimResponse.error.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "ClaimResponse.error.itemSequence",
+      "path": "ClaimResponse.error.itemSequence",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Item sequence number"
+    },
+    {
+      "id": "ClaimResponse.error.detailSequence",
+      "path": "ClaimResponse.error.detailSequence",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Detail sequence number"
+    },
+    {
+      "id": "ClaimResponse.error.subDetailSequence",
+      "path": "ClaimResponse.error.subDetailSequence",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Subdetail sequence number"
+    },
+    {
+      "id": "ClaimResponse.error.code",
+      "path": "ClaimResponse.error.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Error code detailing processing issues",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/adjudication-error"
+      }
+    }
+  ]
+}

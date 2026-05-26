@@ -1,0 +1,4047 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Claim",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim",
+  "name": "Claim",
+  "description": "Thinned ABDM Claim Rulebook (Optimized for Billing and Pre-authorization extraction)",
+  "elements": [
+    {
+      "id": "Claim",
+      "path": "Claim",
+      "min": 0,
+      "max": "*",
+      "short": "Claim, Pre-determination or Pre-authorization"
+    },
+    {
+      "id": "Claim.id",
+      "path": "Claim.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Claim.meta",
+      "path": "Claim.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Claim.implicitRules",
+      "path": "Claim.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Claim.language",
+      "path": "Claim.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Claim.text",
+      "path": "Claim.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "Claim.contained",
+      "path": "Claim.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "Claim.extension",
+      "path": "Claim.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.modifierExtension",
+      "path": "Claim.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "Claim.identifier",
+      "path": "Claim.identifier",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Business Identifier for claim"
+    },
+    {
+      "id": "Claim.status",
+      "path": "Claim.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "active | cancelled | draft | entered-in-error",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fm-status|4.0.1"
+      }
+    },
+    {
+      "id": "Claim.type",
+      "path": "Claim.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Category or discipline",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-claim-type"
+      }
+    },
+    {
+      "id": "Claim.subType",
+      "path": "Claim.subType",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "More granular claim type",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-subtype"
+      }
+    },
+    {
+      "id": "Claim.use",
+      "path": "Claim.use",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "claim | preauthorization | predetermination",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-use|4.0.1"
+      }
+    },
+    {
+      "id": "Claim.patient",
+      "path": "Claim.patient",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "The recipient of the products and services"
+    },
+    {
+      "id": "Claim.billablePeriod",
+      "path": "Claim.billablePeriod",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Relevant time frame for the claim"
+    },
+    {
+      "id": "Claim.created",
+      "path": "Claim.created",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Resource creation date"
+    },
+    {
+      "id": "Claim.enterer",
+      "path": "Claim.enterer",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole"
+          ]
+        }
+      ],
+      "short": "Author of the claim"
+    },
+    {
+      "id": "Claim.insurer",
+      "path": "Claim.insurer",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Target"
+    },
+    {
+      "id": "Claim.provider",
+      "path": "Claim.provider",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Party responsible for the claim"
+    },
+    {
+      "id": "Claim.priority",
+      "path": "Claim.priority",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Desired processing ugency",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/process-priority"
+      }
+    },
+    {
+      "id": "Claim.fundsReserve",
+      "path": "Claim.fundsReserve",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "For whom to reserve funds",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fundsreserve"
+      }
+    },
+    {
+      "id": "Claim.related",
+      "path": "Claim.related",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Prior or corollary claims"
+    },
+    {
+      "id": "Claim.related.id",
+      "path": "Claim.related.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.related.extension",
+      "path": "Claim.related.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.related.modifierExtension",
+      "path": "Claim.related.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.related.claim",
+      "path": "Claim.related.claim",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim"
+          ]
+        }
+      ],
+      "short": "Reference to the related claim"
+    },
+    {
+      "id": "Claim.related.relationship",
+      "path": "Claim.related.relationship",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "How the reference claim is related",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-related-claim-relationship-code"
+      }
+    },
+    {
+      "id": "Claim.related.relationship.id",
+      "path": "Claim.related.relationship.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.related.relationship.extension",
+      "path": "Claim.related.relationship.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.related.relationship.coding",
+      "path": "Claim.related.relationship.coding",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.related.relationship.coding.id",
+      "path": "Claim.related.relationship.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.related.relationship.coding.extension",
+      "path": "Claim.related.relationship.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.related.relationship.coding.system",
+      "path": "Claim.related.relationship.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.related.relationship.coding.version",
+      "path": "Claim.related.relationship.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.related.relationship.coding.code",
+      "path": "Claim.related.relationship.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.related.relationship.coding.display",
+      "path": "Claim.related.relationship.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.related.relationship.coding.userSelected",
+      "path": "Claim.related.relationship.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.related.relationship.text",
+      "path": "Claim.related.relationship.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.related.reference",
+      "path": "Claim.related.reference",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "File or case reference"
+    },
+    {
+      "id": "Claim.prescription",
+      "path": "Claim.prescription",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+            "http://hl7.org/fhir/StructureDefinition/VisionPrescription",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+          ]
+        }
+      ],
+      "short": "Prescription authorizing services and products"
+    },
+    {
+      "id": "Claim.originalPrescription",
+      "path": "Claim.originalPrescription",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+            "http://hl7.org/fhir/StructureDefinition/VisionPrescription",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+          ]
+        }
+      ],
+      "short": "Original prescription if superseded by fulfiller"
+    },
+    {
+      "id": "Claim.payee",
+      "path": "Claim.payee",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Recipient of benefits payable"
+    },
+    {
+      "id": "Claim.payee.id",
+      "path": "Claim.payee.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.payee.extension",
+      "path": "Claim.payee.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.payee.modifierExtension",
+      "path": "Claim.payee.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.payee.type",
+      "path": "Claim.payee.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Category of recipient",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/payeetype"
+      }
+    },
+    {
+      "id": "Claim.payee.party",
+      "path": "Claim.payee.party",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Recipient reference"
+    },
+    {
+      "id": "Claim.referral",
+      "path": "Claim.referral",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
+          ]
+        }
+      ],
+      "short": "Treatment referral"
+    },
+    {
+      "id": "Claim.facility",
+      "path": "Claim.facility",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "short": "Servicing facility"
+    },
+    {
+      "id": "Claim.careTeam",
+      "path": "Claim.careTeam",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Members of the care team"
+    },
+    {
+      "id": "Claim.careTeam.id",
+      "path": "Claim.careTeam.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.careTeam.extension",
+      "path": "Claim.careTeam.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.careTeam.modifierExtension",
+      "path": "Claim.careTeam.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.careTeam.sequence",
+      "path": "Claim.careTeam.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Order of care team"
+    },
+    {
+      "id": "Claim.careTeam.provider",
+      "path": "Claim.careTeam.provider",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Practitioner or organization"
+    },
+    {
+      "id": "Claim.careTeam.responsible",
+      "path": "Claim.careTeam.responsible",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Indicator of the lead practitioner"
+    },
+    {
+      "id": "Claim.careTeam.role",
+      "path": "Claim.careTeam.role",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Function within the team",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-care-team-role"
+      }
+    },
+    {
+      "id": "Claim.careTeam.role.id",
+      "path": "Claim.careTeam.role.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.careTeam.role.extension",
+      "path": "Claim.careTeam.role.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.careTeam.role.coding",
+      "path": "Claim.careTeam.role.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.id",
+      "path": "Claim.careTeam.role.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.extension",
+      "path": "Claim.careTeam.role.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.system",
+      "path": "Claim.careTeam.role.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.version",
+      "path": "Claim.careTeam.role.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.code",
+      "path": "Claim.careTeam.role.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.display",
+      "path": "Claim.careTeam.role.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.careTeam.role.coding.userSelected",
+      "path": "Claim.careTeam.role.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.careTeam.role.text",
+      "path": "Claim.careTeam.role.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.careTeam.qualification",
+      "path": "Claim.careTeam.qualification",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Practitioner credential or specialization",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-care-team-qualification"
+      }
+    },
+    {
+      "id": "Claim.careTeam.qualification.id",
+      "path": "Claim.careTeam.qualification.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.careTeam.qualification.extension",
+      "path": "Claim.careTeam.qualification.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding",
+      "path": "Claim.careTeam.qualification.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.id",
+      "path": "Claim.careTeam.qualification.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.extension",
+      "path": "Claim.careTeam.qualification.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.system",
+      "path": "Claim.careTeam.qualification.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.version",
+      "path": "Claim.careTeam.qualification.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.code",
+      "path": "Claim.careTeam.qualification.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.display",
+      "path": "Claim.careTeam.qualification.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.careTeam.qualification.coding.userSelected",
+      "path": "Claim.careTeam.qualification.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.careTeam.qualification.text",
+      "path": "Claim.careTeam.qualification.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.supportingInfo",
+      "path": "Claim.supportingInfo",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Supporting information"
+    },
+    {
+      "id": "Claim.supportingInfo.id",
+      "path": "Claim.supportingInfo.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.supportingInfo.extension",
+      "path": "Claim.supportingInfo.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.supportingInfo.modifierExtension",
+      "path": "Claim.supportingInfo.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.supportingInfo.sequence",
+      "path": "Claim.supportingInfo.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Information instance identifier"
+    },
+    {
+      "id": "Claim.supportingInfo.category",
+      "path": "Claim.supportingInfo.category",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Classification of the supplied information",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-supportinginfo-category"
+      }
+    },
+    {
+      "id": "Claim.supportingInfo.category.id",
+      "path": "Claim.supportingInfo.category.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.supportingInfo.category.extension",
+      "path": "Claim.supportingInfo.category.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding",
+      "path": "Claim.supportingInfo.category.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.id",
+      "path": "Claim.supportingInfo.category.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.extension",
+      "path": "Claim.supportingInfo.category.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.system",
+      "path": "Claim.supportingInfo.category.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.version",
+      "path": "Claim.supportingInfo.category.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.code",
+      "path": "Claim.supportingInfo.category.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.display",
+      "path": "Claim.supportingInfo.category.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.supportingInfo.category.coding.userSelected",
+      "path": "Claim.supportingInfo.category.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.supportingInfo.category.text",
+      "path": "Claim.supportingInfo.category.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.supportingInfo.code",
+      "path": "Claim.supportingInfo.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of information",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-supportinginfo-code"
+      }
+    },
+    {
+      "id": "Claim.supportingInfo.code.id",
+      "path": "Claim.supportingInfo.code.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.supportingInfo.code.extension",
+      "path": "Claim.supportingInfo.code.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding",
+      "path": "Claim.supportingInfo.code.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.id",
+      "path": "Claim.supportingInfo.code.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.extension",
+      "path": "Claim.supportingInfo.code.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.system",
+      "path": "Claim.supportingInfo.code.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.version",
+      "path": "Claim.supportingInfo.code.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.code",
+      "path": "Claim.supportingInfo.code.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.display",
+      "path": "Claim.supportingInfo.code.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.supportingInfo.code.coding.userSelected",
+      "path": "Claim.supportingInfo.code.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.supportingInfo.code.text",
+      "path": "Claim.supportingInfo.code.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.supportingInfo.timing[x]",
+      "path": "Claim.supportingInfo.timing[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        },
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "When it occurred"
+    },
+    {
+      "id": "Claim.supportingInfo.value[x]",
+      "path": "Claim.supportingInfo.value[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        },
+        {
+          "code": "string"
+        },
+        {
+          "code": "Quantity"
+        },
+        {
+          "code": "Attachment"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Data to be provided"
+    },
+    {
+      "id": "Claim.supportingInfo.reason",
+      "path": "Claim.supportingInfo.reason",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Explanation for the information",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/missing-tooth-reason"
+      }
+    },
+    {
+      "id": "Claim.diagnosis",
+      "path": "Claim.diagnosis",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Pertinent diagnosis information"
+    },
+    {
+      "id": "Claim.diagnosis.id",
+      "path": "Claim.diagnosis.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.diagnosis.extension",
+      "path": "Claim.diagnosis.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.diagnosis.modifierExtension",
+      "path": "Claim.diagnosis.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.diagnosis.sequence",
+      "path": "Claim.diagnosis.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Diagnosis instance identifier"
+    },
+    {
+      "id": "Claim.diagnosis.diagnosis[x]",
+      "path": "Claim.diagnosis.diagnosis[x]",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+          ]
+        }
+      ],
+      "short": "Nature of illness or problem",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-diagnostic-code"
+      }
+    },
+    {
+      "id": "Claim.diagnosis.type",
+      "path": "Claim.diagnosis.type",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Timing or nature of the diagnosis",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-diagnostic-type"
+      }
+    },
+    {
+      "id": "Claim.diagnosis.type.id",
+      "path": "Claim.diagnosis.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.diagnosis.type.extension",
+      "path": "Claim.diagnosis.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding",
+      "path": "Claim.diagnosis.type.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.id",
+      "path": "Claim.diagnosis.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.extension",
+      "path": "Claim.diagnosis.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.system",
+      "path": "Claim.diagnosis.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.version",
+      "path": "Claim.diagnosis.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.code",
+      "path": "Claim.diagnosis.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.display",
+      "path": "Claim.diagnosis.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.diagnosis.type.coding.userSelected",
+      "path": "Claim.diagnosis.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.diagnosis.type.text",
+      "path": "Claim.diagnosis.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.diagnosis.onAdmission",
+      "path": "Claim.diagnosis.onAdmission",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Present on admission",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-diagnosis-on-admission"
+      }
+    },
+    {
+      "id": "Claim.diagnosis.packageCode",
+      "path": "Claim.diagnosis.packageCode",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Package billing code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-diagnosisrelatedgroup"
+      }
+    },
+    {
+      "id": "Claim.procedure",
+      "path": "Claim.procedure",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Clinical procedures performed"
+    },
+    {
+      "id": "Claim.procedure.id",
+      "path": "Claim.procedure.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.procedure.extension",
+      "path": "Claim.procedure.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.procedure.modifierExtension",
+      "path": "Claim.procedure.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.procedure.sequence",
+      "path": "Claim.procedure.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Procedure instance identifier"
+    },
+    {
+      "id": "Claim.procedure.type",
+      "path": "Claim.procedure.type",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Category of Procedure",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-procedure-type"
+      }
+    },
+    {
+      "id": "Claim.procedure.date",
+      "path": "Claim.procedure.date",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "When the procedure was performed"
+    },
+    {
+      "id": "Claim.procedure.procedure[x]",
+      "path": "Claim.procedure.procedure[x]",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+          ]
+        }
+      ],
+      "short": "Specific clinical procedure",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/procedure-code"
+      }
+    },
+    {
+      "id": "Claim.procedure.udi",
+      "path": "Claim.procedure.udi",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Device"
+          ]
+        }
+      ],
+      "short": "Unique device identifier"
+    },
+    {
+      "id": "Claim.insurance",
+      "path": "Claim.insurance",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Patient insurance information"
+    },
+    {
+      "id": "Claim.insurance.id",
+      "path": "Claim.insurance.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.insurance.extension",
+      "path": "Claim.insurance.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.insurance.modifierExtension",
+      "path": "Claim.insurance.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.insurance.sequence",
+      "path": "Claim.insurance.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Insurance instance identifier"
+    },
+    {
+      "id": "Claim.insurance.focal",
+      "path": "Claim.insurance.focal",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Coverage to be used for adjudication"
+    },
+    {
+      "id": "Claim.insurance.identifier",
+      "path": "Claim.insurance.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Pre-assigned Claim number"
+    },
+    {
+      "id": "Claim.insurance.coverage",
+      "path": "Claim.insurance.coverage",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Coverage"
+          ]
+        }
+      ],
+      "short": "Insurance information"
+    },
+    {
+      "id": "Claim.insurance.businessArrangement",
+      "path": "Claim.insurance.businessArrangement",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Additional provider contract number"
+    },
+    {
+      "id": "Claim.insurance.preAuthRef",
+      "path": "Claim.insurance.preAuthRef",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Prior authorization reference number"
+    },
+    {
+      "id": "Claim.insurance.claimResponse",
+      "path": "Claim.insurance.claimResponse",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ClaimResponse"
+          ]
+        }
+      ],
+      "short": "Adjudication results"
+    },
+    {
+      "id": "Claim.accident",
+      "path": "Claim.accident",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Details of the event"
+    },
+    {
+      "id": "Claim.accident.id",
+      "path": "Claim.accident.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.accident.extension",
+      "path": "Claim.accident.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.accident.modifierExtension",
+      "path": "Claim.accident.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.accident.date",
+      "path": "Claim.accident.date",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        }
+      ],
+      "short": "When the incident occurred"
+    },
+    {
+      "id": "Claim.accident.type",
+      "path": "Claim.accident.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "The nature of the accident",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://terminology.hl7.org/ValueSet/v3-ActIncidentCode"
+      }
+    },
+    {
+      "id": "Claim.accident.location[x]",
+      "path": "Claim.accident.location[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Address"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "short": "Where the event occurred"
+    },
+    {
+      "id": "Claim.item",
+      "path": "Claim.item",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Product or service provided"
+    },
+    {
+      "id": "Claim.item.id",
+      "path": "Claim.item.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.extension",
+      "path": "Claim.item.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.modifierExtension",
+      "path": "Claim.item.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.item.sequence",
+      "path": "Claim.item.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Item instance identifier"
+    },
+    {
+      "id": "Claim.item.careTeamSequence",
+      "path": "Claim.item.careTeamSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable careTeam members"
+    },
+    {
+      "id": "Claim.item.diagnosisSequence",
+      "path": "Claim.item.diagnosisSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable diagnoses"
+    },
+    {
+      "id": "Claim.item.procedureSequence",
+      "path": "Claim.item.procedureSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable procedures"
+    },
+    {
+      "id": "Claim.item.informationSequence",
+      "path": "Claim.item.informationSequence",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Applicable exception and supporting information"
+    },
+    {
+      "id": "Claim.item.revenue",
+      "path": "Claim.item.revenue",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Revenue or cost center code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-revenue-center"
+      }
+    },
+    {
+      "id": "Claim.item.category",
+      "path": "Claim.item.category",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Benefit classification",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-benefitcategory"
+      }
+    },
+    {
+      "id": "Claim.item.category.id",
+      "path": "Claim.item.category.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.category.extension",
+      "path": "Claim.item.category.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.category.coding",
+      "path": "Claim.item.category.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.category.coding.id",
+      "path": "Claim.item.category.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.category.coding.extension",
+      "path": "Claim.item.category.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.category.coding.system",
+      "path": "Claim.item.category.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.category.coding.version",
+      "path": "Claim.item.category.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.category.coding.code",
+      "path": "Claim.item.category.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.category.coding.display",
+      "path": "Claim.item.category.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.category.coding.userSelected",
+      "path": "Claim.item.category.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.category.text",
+      "path": "Claim.item.category.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.productOrService",
+      "path": "Claim.item.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "Claim.item.productOrService.id",
+      "path": "Claim.item.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.productOrService.extension",
+      "path": "Claim.item.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.productOrService.coding",
+      "path": "Claim.item.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.id",
+      "path": "Claim.item.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.extension",
+      "path": "Claim.item.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.system",
+      "path": "Claim.item.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.version",
+      "path": "Claim.item.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.code",
+      "path": "Claim.item.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.display",
+      "path": "Claim.item.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.productOrService.coding.userSelected",
+      "path": "Claim.item.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.productOrService.text",
+      "path": "Claim.item.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.modifier",
+      "path": "Claim.item.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Product or service billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "Claim.item.programCode",
+      "path": "Claim.item.programCode",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Program the product or service is provided under",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-program-code"
+      }
+    },
+    {
+      "id": "Claim.item.programCode.id",
+      "path": "Claim.item.programCode.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.programCode.extension",
+      "path": "Claim.item.programCode.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.programCode.coding",
+      "path": "Claim.item.programCode.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.programCode.coding.id",
+      "path": "Claim.item.programCode.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.programCode.coding.extension",
+      "path": "Claim.item.programCode.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.programCode.coding.system",
+      "path": "Claim.item.programCode.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.programCode.coding.version",
+      "path": "Claim.item.programCode.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.programCode.coding.code",
+      "path": "Claim.item.programCode.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.programCode.coding.display",
+      "path": "Claim.item.programCode.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.programCode.coding.userSelected",
+      "path": "Claim.item.programCode.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.programCode.text",
+      "path": "Claim.item.programCode.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.serviced[x]",
+      "path": "Claim.item.serviced[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        },
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Date or dates of service or product delivery"
+    },
+    {
+      "id": "Claim.item.location[x]",
+      "path": "Claim.item.location[x]",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        },
+        {
+          "code": "Address"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "short": "Place of service or where product was supplied",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/service-place"
+      }
+    },
+    {
+      "id": "Claim.item.quantity",
+      "path": "Claim.item.quantity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Count of products or services"
+    },
+    {
+      "id": "Claim.item.unitPrice",
+      "path": "Claim.item.unitPrice",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Fee, charge or cost per item"
+    },
+    {
+      "id": "Claim.item.factor",
+      "path": "Claim.item.factor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Price scaling factor"
+    },
+    {
+      "id": "Claim.item.net",
+      "path": "Claim.item.net",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total item cost"
+    },
+    {
+      "id": "Claim.item.udi",
+      "path": "Claim.item.udi",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Device"
+          ]
+        }
+      ],
+      "short": "Unique device identifier"
+    },
+    {
+      "id": "Claim.item.bodySite",
+      "path": "Claim.item.bodySite",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Anatomical location",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/tooth"
+      }
+    },
+    {
+      "id": "Claim.item.subSite",
+      "path": "Claim.item.subSite",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Anatomical sub-location",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/surface"
+      }
+    },
+    {
+      "id": "Claim.item.encounter",
+      "path": "Claim.item.encounter",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+          ]
+        }
+      ],
+      "short": "Encounters related to this billed item"
+    },
+    {
+      "id": "Claim.item.detail",
+      "path": "Claim.item.detail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Product or service provided"
+    },
+    {
+      "id": "Claim.item.detail.id",
+      "path": "Claim.item.detail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.extension",
+      "path": "Claim.item.detail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.modifierExtension",
+      "path": "Claim.item.detail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.item.detail.sequence",
+      "path": "Claim.item.detail.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Item instance identifier"
+    },
+    {
+      "id": "Claim.item.detail.revenue",
+      "path": "Claim.item.detail.revenue",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Revenue or cost center code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-revenue-center"
+      }
+    },
+    {
+      "id": "Claim.item.detail.category",
+      "path": "Claim.item.detail.category",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Benefit classification",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-benefitcategory"
+      }
+    },
+    {
+      "id": "Claim.item.detail.category.id",
+      "path": "Claim.item.detail.category.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.category.extension",
+      "path": "Claim.item.detail.category.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.category.coding",
+      "path": "Claim.item.detail.category.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.id",
+      "path": "Claim.item.detail.category.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.extension",
+      "path": "Claim.item.detail.category.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.system",
+      "path": "Claim.item.detail.category.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.version",
+      "path": "Claim.item.detail.category.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.code",
+      "path": "Claim.item.detail.category.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.display",
+      "path": "Claim.item.detail.category.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.category.coding.userSelected",
+      "path": "Claim.item.detail.category.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.detail.category.text",
+      "path": "Claim.item.detail.category.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.detail.productOrService",
+      "path": "Claim.item.detail.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "Claim.item.detail.productOrService.id",
+      "path": "Claim.item.detail.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.extension",
+      "path": "Claim.item.detail.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding",
+      "path": "Claim.item.detail.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.id",
+      "path": "Claim.item.detail.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.extension",
+      "path": "Claim.item.detail.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.system",
+      "path": "Claim.item.detail.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.version",
+      "path": "Claim.item.detail.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.code",
+      "path": "Claim.item.detail.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.display",
+      "path": "Claim.item.detail.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.coding.userSelected",
+      "path": "Claim.item.detail.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.detail.productOrService.text",
+      "path": "Claim.item.detail.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.detail.modifier",
+      "path": "Claim.item.detail.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Service/Product billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "Claim.item.detail.programCode",
+      "path": "Claim.item.detail.programCode",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Program the product or service is provided under",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-program-code"
+      }
+    },
+    {
+      "id": "Claim.item.detail.programCode.id",
+      "path": "Claim.item.detail.programCode.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.programCode.extension",
+      "path": "Claim.item.detail.programCode.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding",
+      "path": "Claim.item.detail.programCode.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.id",
+      "path": "Claim.item.detail.programCode.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.extension",
+      "path": "Claim.item.detail.programCode.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.system",
+      "path": "Claim.item.detail.programCode.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.version",
+      "path": "Claim.item.detail.programCode.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.code",
+      "path": "Claim.item.detail.programCode.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.display",
+      "path": "Claim.item.detail.programCode.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.programCode.coding.userSelected",
+      "path": "Claim.item.detail.programCode.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.detail.programCode.text",
+      "path": "Claim.item.detail.programCode.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.detail.quantity",
+      "path": "Claim.item.detail.quantity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Count of products or services"
+    },
+    {
+      "id": "Claim.item.detail.unitPrice",
+      "path": "Claim.item.detail.unitPrice",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Fee, charge or cost per item"
+    },
+    {
+      "id": "Claim.item.detail.factor",
+      "path": "Claim.item.detail.factor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Price scaling factor"
+    },
+    {
+      "id": "Claim.item.detail.net",
+      "path": "Claim.item.detail.net",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total item cost"
+    },
+    {
+      "id": "Claim.item.detail.udi",
+      "path": "Claim.item.detail.udi",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Device"
+          ]
+        }
+      ],
+      "short": "Unique device identifier"
+    },
+    {
+      "id": "Claim.item.detail.subDetail",
+      "path": "Claim.item.detail.subDetail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Product or service provided"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.id",
+      "path": "Claim.item.detail.subDetail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.extension",
+      "path": "Claim.item.detail.subDetail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.modifierExtension",
+      "path": "Claim.item.detail.subDetail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.sequence",
+      "path": "Claim.item.detail.subDetail.sequence",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Item instance identifier"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.revenue",
+      "path": "Claim.item.detail.subDetail.revenue",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Revenue or cost center code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/ex-revenue-center"
+      }
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category",
+      "path": "Claim.item.detail.subDetail.category",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Benefit classification",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-benefitcategory"
+      }
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.id",
+      "path": "Claim.item.detail.subDetail.category.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.extension",
+      "path": "Claim.item.detail.subDetail.category.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding",
+      "path": "Claim.item.detail.subDetail.category.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.id",
+      "path": "Claim.item.detail.subDetail.category.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.extension",
+      "path": "Claim.item.detail.subDetail.category.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.system",
+      "path": "Claim.item.detail.subDetail.category.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.version",
+      "path": "Claim.item.detail.subDetail.category.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.code",
+      "path": "Claim.item.detail.subDetail.category.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.display",
+      "path": "Claim.item.detail.subDetail.category.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.coding.userSelected",
+      "path": "Claim.item.detail.subDetail.category.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.category.text",
+      "path": "Claim.item.detail.subDetail.category.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService",
+      "path": "Claim.item.detail.subDetail.productOrService",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Billing, service, product, or drug code",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-productorservice"
+      }
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.id",
+      "path": "Claim.item.detail.subDetail.productOrService.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.extension",
+      "path": "Claim.item.detail.subDetail.productOrService.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding",
+      "path": "Claim.item.detail.subDetail.productOrService.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.id",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.extension",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.system",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.version",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.code",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.display",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.coding.userSelected",
+      "path": "Claim.item.detail.subDetail.productOrService.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.productOrService.text",
+      "path": "Claim.item.detail.subDetail.productOrService.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.modifier",
+      "path": "Claim.item.detail.subDetail.modifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Service/Product billing modifiers",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/claim-modifiers"
+      }
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode",
+      "path": "Claim.item.detail.subDetail.programCode",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Program the product or service is provided under",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-program-code"
+      }
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.id",
+      "path": "Claim.item.detail.subDetail.programCode.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.extension",
+      "path": "Claim.item.detail.subDetail.programCode.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding",
+      "path": "Claim.item.detail.subDetail.programCode.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.id",
+      "path": "Claim.item.detail.subDetail.programCode.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.extension",
+      "path": "Claim.item.detail.subDetail.programCode.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.system",
+      "path": "Claim.item.detail.subDetail.programCode.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.version",
+      "path": "Claim.item.detail.subDetail.programCode.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.code",
+      "path": "Claim.item.detail.subDetail.programCode.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.display",
+      "path": "Claim.item.detail.subDetail.programCode.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.coding.userSelected",
+      "path": "Claim.item.detail.subDetail.programCode.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.programCode.text",
+      "path": "Claim.item.detail.subDetail.programCode.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.quantity",
+      "path": "Claim.item.detail.subDetail.quantity",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        }
+      ],
+      "short": "Count of products or services"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.unitPrice",
+      "path": "Claim.item.detail.subDetail.unitPrice",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Fee, charge or cost per item"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.factor",
+      "path": "Claim.item.detail.subDetail.factor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "decimal"
+        }
+      ],
+      "short": "Price scaling factor"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.net",
+      "path": "Claim.item.detail.subDetail.net",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total item cost"
+    },
+    {
+      "id": "Claim.item.detail.subDetail.udi",
+      "path": "Claim.item.detail.subDetail.udi",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Device"
+          ]
+        }
+      ],
+      "short": "Unique device identifier"
+    },
+    {
+      "id": "Claim.total",
+      "path": "Claim.total",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total claim cost"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# Validator (large JAR)
+validator/validator_cli.jar
+
+# Environment
+.env
+
+# Logs
+logs/
+
+# Generated outputs (reproducible)
+workspace/generated/*.json
+workspace/generated/*.py
+workspace/checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Stale root-level artifacts from old runs
+/extracted_data.json
+/generate_bundle.py
+/add_missing.py
+/InsurancePlanBundle*.json
+/generated/

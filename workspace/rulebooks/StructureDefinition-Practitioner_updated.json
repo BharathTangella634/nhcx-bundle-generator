@@ -1,0 +1,1131 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Practitioner",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+  "name": "Practitioner",
+  "description": "Thinned ABDM Practitioner Rulebook (Optimized for JSON Generation)",
+  "elements": [
+    {
+      "id": "Practitioner",
+      "path": "Practitioner",
+      "min": 0,
+      "max": "*",
+      "short": "A person with a  formal responsibility in the provisioning of healthcare or related services"
+    },
+    {
+      "id": "Practitioner.id",
+      "path": "Practitioner.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Practitioner.meta",
+      "path": "Practitioner.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Practitioner.implicitRules",
+      "path": "Practitioner.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Practitioner.language",
+      "path": "Practitioner.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Practitioner.text",
+      "path": "Practitioner.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "Practitioner.contained",
+      "path": "Practitioner.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "Practitioner.extension",
+      "path": "Practitioner.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.modifierExtension",
+      "path": "Practitioner.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "Practitioner.identifier",
+      "path": "Practitioner.identifier",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "mustSupport": true,
+      "short": "An identifier for the person as this agent"
+    },
+    {
+      "id": "Practitioner.identifier.id",
+      "path": "Practitioner.identifier.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.identifier.extension",
+      "path": "Practitioner.identifier.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.identifier.use",
+      "path": "Practitioner.identifier.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "usual | official | temp | secondary | old (If known)",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      }
+    },
+    {
+      "id": "Practitioner.identifier.type",
+      "path": "Practitioner.identifier.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Description of identifier",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-identifier-type-code"
+      }
+    },
+    {
+      "id": "Practitioner.identifier.type.id",
+      "path": "Practitioner.identifier.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.identifier.type.extension",
+      "path": "Practitioner.identifier.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding",
+      "path": "Practitioner.identifier.type.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.id",
+      "path": "Practitioner.identifier.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.extension",
+      "path": "Practitioner.identifier.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.system",
+      "path": "Practitioner.identifier.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.version",
+      "path": "Practitioner.identifier.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.code",
+      "path": "Practitioner.identifier.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.display",
+      "path": "Practitioner.identifier.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Practitioner.identifier.type.coding.userSelected",
+      "path": "Practitioner.identifier.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Practitioner.identifier.type.text",
+      "path": "Practitioner.identifier.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Practitioner.identifier.system",
+      "path": "Practitioner.identifier.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The namespace for the identifier value"
+    },
+    {
+      "id": "Practitioner.identifier.value",
+      "path": "Practitioner.identifier.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The value that is unique"
+    },
+    {
+      "id": "Practitioner.identifier.period",
+      "path": "Practitioner.identifier.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when id is/was valid for use"
+    },
+    {
+      "id": "Practitioner.identifier.assigner",
+      "path": "Practitioner.identifier.assigner",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that issued id (may be just text)"
+    },
+    {
+      "id": "Practitioner.identifier.assigner.id",
+      "path": "Practitioner.identifier.assigner.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.identifier.assigner.extension",
+      "path": "Practitioner.identifier.assigner.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.identifier.assigner.reference",
+      "path": "Practitioner.identifier.assigner.reference",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Literal reference, Relative, internal or absolute URL"
+    },
+    {
+      "id": "Practitioner.identifier.assigner.type",
+      "path": "Practitioner.identifier.assigner.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Type the reference refers to (e.g. \"Patient\")",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/resource-types"
+      }
+    },
+    {
+      "id": "Practitioner.identifier.assigner.identifier",
+      "path": "Practitioner.identifier.assigner.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Logical reference, when literal reference is not known"
+    },
+    {
+      "id": "Practitioner.identifier.assigner.display",
+      "path": "Practitioner.identifier.assigner.display",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Text alternative for the resource"
+    },
+    {
+      "id": "Practitioner.active",
+      "path": "Practitioner.active",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Whether this practitioner's record is in active use"
+    },
+    {
+      "id": "Practitioner.name",
+      "path": "Practitioner.name",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "HumanName"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The name(s) associated with the practitioner"
+    },
+    {
+      "id": "Practitioner.name.id",
+      "path": "Practitioner.name.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.name.extension",
+      "path": "Practitioner.name.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.name.use",
+      "path": "Practitioner.name.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "usual | official | temp | nickname | anonymous | old | maiden",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/name-use|4.0.1"
+      }
+    },
+    {
+      "id": "Practitioner.name.text",
+      "path": "Practitioner.name.text",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Text representation of the full name"
+    },
+    {
+      "id": "Practitioner.name.family",
+      "path": "Practitioner.name.family",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Family name (often called 'Surname')"
+    },
+    {
+      "id": "Practitioner.name.given",
+      "path": "Practitioner.name.given",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Given names (not always 'first'). Includes middle names"
+    },
+    {
+      "id": "Practitioner.name.prefix",
+      "path": "Practitioner.name.prefix",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Parts that come before the name"
+    },
+    {
+      "id": "Practitioner.name.suffix",
+      "path": "Practitioner.name.suffix",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Parts that come after the name"
+    },
+    {
+      "id": "Practitioner.name.period",
+      "path": "Practitioner.name.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when name was/is in use"
+    },
+    {
+      "id": "Practitioner.telecom",
+      "path": "Practitioner.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "mustSupport": true,
+      "short": "A contact detail for the practitioner (that apply to all roles)"
+    },
+    {
+      "id": "Practitioner.telecom.id",
+      "path": "Practitioner.telecom.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.telecom.extension",
+      "path": "Practitioner.telecom.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.telecom.system",
+      "path": "Practitioner.telecom.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "phone | fax | email | pager | url | sms | other",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"
+      }
+    },
+    {
+      "id": "Practitioner.telecom.value",
+      "path": "Practitioner.telecom.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The actual contact point details"
+    },
+    {
+      "id": "Practitioner.telecom.use",
+      "path": "Practitioner.telecom.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "home | work | temp | old | mobile - purpose of this contact point",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"
+      }
+    },
+    {
+      "id": "Practitioner.telecom.rank",
+      "path": "Practitioner.telecom.rank",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Specify preferred order of use (1 = highest)"
+    },
+    {
+      "id": "Practitioner.telecom.period",
+      "path": "Practitioner.telecom.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when the contact point was/is in use"
+    },
+    {
+      "id": "Practitioner.address",
+      "path": "Practitioner.address",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Address"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Address(es) of the practitioner that are not role specific (typically home address)"
+    },
+    {
+      "id": "Practitioner.gender",
+      "path": "Practitioner.gender",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "male | female | other | unknown",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1"
+      }
+    },
+    {
+      "id": "Practitioner.birthDate",
+      "path": "Practitioner.birthDate",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The date  on which the practitioner was born"
+    },
+    {
+      "id": "Practitioner.photo",
+      "path": "Practitioner.photo",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Attachment"
+        }
+      ],
+      "short": "Image of the person"
+    },
+    {
+      "id": "Practitioner.photo.id",
+      "path": "Practitioner.photo.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.photo.extension",
+      "path": "Practitioner.photo.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.photo.contentType",
+      "path": "Practitioner.photo.contentType",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Mime type of the content, with charset etc.",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/mimetypes|4.0.1"
+      }
+    },
+    {
+      "id": "Practitioner.photo.language",
+      "path": "Practitioner.photo.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Human language of the content (BCP-47)",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Practitioner.photo.data",
+      "path": "Practitioner.photo.data",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "base64Binary"
+        }
+      ],
+      "short": "Data inline, base64ed"
+    },
+    {
+      "id": "Practitioner.photo.url",
+      "path": "Practitioner.photo.url",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "url"
+        }
+      ],
+      "short": "Uri where the data can be found"
+    },
+    {
+      "id": "Practitioner.photo.size",
+      "path": "Practitioner.photo.size",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "unsignedInt"
+        }
+      ],
+      "short": "Number of bytes of content (if url provided)"
+    },
+    {
+      "id": "Practitioner.photo.hash",
+      "path": "Practitioner.photo.hash",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "base64Binary"
+        }
+      ],
+      "short": "Hash of the data (sha-1, base64ed)"
+    },
+    {
+      "id": "Practitioner.photo.title",
+      "path": "Practitioner.photo.title",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Label to display in place of the data"
+    },
+    {
+      "id": "Practitioner.photo.creation",
+      "path": "Practitioner.photo.creation",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Date attachment was first created"
+    },
+    {
+      "id": "Practitioner.qualification",
+      "path": "Practitioner.qualification",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Certification, licenses, or training pertaining to the provision of care"
+    },
+    {
+      "id": "Practitioner.qualification.id",
+      "path": "Practitioner.qualification.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.qualification.extension",
+      "path": "Practitioner.qualification.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.qualification.modifierExtension",
+      "path": "Practitioner.qualification.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Practitioner.qualification.identifier",
+      "path": "Practitioner.qualification.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "An identifier for this qualification for the practitioner"
+    },
+    {
+      "id": "Practitioner.qualification.code",
+      "path": "Practitioner.qualification.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Coded representation of the qualification",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://terminology.hl7.org/ValueSet/v2-2.7-0360"
+      }
+    },
+    {
+      "id": "Practitioner.qualification.code.id",
+      "path": "Practitioner.qualification.code.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.qualification.code.extension",
+      "path": "Practitioner.qualification.code.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding",
+      "path": "Practitioner.qualification.code.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.id",
+      "path": "Practitioner.qualification.code.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.extension",
+      "path": "Practitioner.qualification.code.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.system",
+      "path": "Practitioner.qualification.code.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.version",
+      "path": "Practitioner.qualification.code.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.code",
+      "path": "Practitioner.qualification.code.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.display",
+      "path": "Practitioner.qualification.code.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Practitioner.qualification.code.coding.userSelected",
+      "path": "Practitioner.qualification.code.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Practitioner.qualification.code.text",
+      "path": "Practitioner.qualification.code.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Practitioner.qualification.period",
+      "path": "Practitioner.qualification.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Period during which the qualification is valid"
+    },
+    {
+      "id": "Practitioner.qualification.issuer",
+      "path": "Practitioner.qualification.issuer",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that regulates and issues the qualification"
+    },
+    {
+      "id": "Practitioner.communication",
+      "path": "Practitioner.communication",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "A language the practitioner can use in patient communication",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    }
+  ]
+}

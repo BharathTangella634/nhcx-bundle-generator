@@ -1,0 +1,102 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Binary",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Binary",
+  "name": "Binary",
+  "description": "Thinned ABDM Binary Rulebook (Optimized for Base64 Data Handling)",
+  "elements": [
+    {
+      "id": "Binary",
+      "path": "Binary",
+      "min": 0,
+      "max": "*",
+      "short": "Pure binary content defined by a format other than FHIR"
+    },
+    {
+      "id": "Binary.id",
+      "path": "Binary.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Binary.meta",
+      "path": "Binary.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Binary.implicitRules",
+      "path": "Binary.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Binary.language",
+      "path": "Binary.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content"
+    },
+    {
+      "id": "Binary.contentType",
+      "path": "Binary.contentType",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "MimeType of the binary content"
+    },
+    {
+      "id": "Binary.securityContext",
+      "path": "Binary.securityContext",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference"
+        }
+      ],
+      "short": "Identifies another resource to use as proxy when enforcing access control"
+    },
+    {
+      "id": "Binary.data",
+      "path": "Binary.data",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "base64Binary"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The actual content"
+    }
+  ]
+}

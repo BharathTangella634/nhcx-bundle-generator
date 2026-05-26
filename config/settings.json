@@ -1,0 +1,46 @@
+{
+  "llm": {
+    "base_url": "http://localhost:8090/v1",
+    "model": "gpt-oss-120b",
+    "api_key": "not-needed",
+    "temperature": 0.2,
+    "max_tokens": 16384,
+    "request_timeout": 600
+  },
+  "agent": {
+    "max_iterations": 200,
+    "context_window_tokens": 131072,
+    "compression_threshold": 0.88,
+    "history_summary_max_chars": 8000,
+    "auto_compress_tool_output_threshold": 100000,
+    "checkpoint_interval": 10,
+    "exit_keywords": ["task complete", "validation successful", "zero errors"]
+  },
+  "pipeline": {
+    "max_extraction_retries": 3,
+    "max_generation_fix_attempts": 15,
+    "max_validation_rounds": 40,
+    "max_comprehensive_fixes": 5
+  },
+  "paths": {
+    "workspace_root": "workspace",
+    "pdf_dir": "workspace/pdf",
+    "rulebooks_dir": "workspace/rulebooks",
+    "examples_dir": "workspace/examples",
+    "generated_dir": "workspace/generated",
+    "checkpoints_dir": "workspace/checkpoints",
+    "validator_jar": "validator/validator_cli.jar",
+    "logs_dir": "logs"
+  },
+  "validator": {
+    "command_template": "java -jar {validator_jar} {bundle_path} -ig ndhm.in",
+    "timeout": 600
+  },
+  "tools": {
+    "terminal_timeout": 120,
+    "max_file_read_chars": 60000,
+    "max_terminal_output_chars": 80000,
+    "allowed_directories": ["workspace", "validator", "logs", "config"],
+    "blocked_commands": ["rm -rf /", "shutdown", "reboot", "mkfs"]
+  }
+}

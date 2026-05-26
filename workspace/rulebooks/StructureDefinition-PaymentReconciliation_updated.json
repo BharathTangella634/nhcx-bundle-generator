@@ -1,0 +1,562 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "PaymentReconciliation",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PaymentReconciliation",
+  "name": "PaymentReconciliation",
+  "description": "Thinned ABDM PaymentReconciliation Rulebook (Optimized for bulk payment tracking and claim settlement)",
+  "elements": [
+    {
+      "id": "PaymentReconciliation",
+      "path": "PaymentReconciliation",
+      "min": 0,
+      "max": "*",
+      "short": "PaymentReconciliation resource"
+    },
+    {
+      "id": "PaymentReconciliation.id",
+      "path": "PaymentReconciliation.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "PaymentReconciliation.meta",
+      "path": "PaymentReconciliation.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "PaymentReconciliation.implicitRules",
+      "path": "PaymentReconciliation.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "PaymentReconciliation.language",
+      "path": "PaymentReconciliation.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "PaymentReconciliation.text",
+      "path": "PaymentReconciliation.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "PaymentReconciliation.contained",
+      "path": "PaymentReconciliation.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "PaymentReconciliation.extension",
+      "path": "PaymentReconciliation.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PaymentReconciliation.modifierExtension",
+      "path": "PaymentReconciliation.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "PaymentReconciliation.identifier",
+      "path": "PaymentReconciliation.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business Identifier for a payment reconciliation"
+    },
+    {
+      "id": "PaymentReconciliation.status",
+      "path": "PaymentReconciliation.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "active | cancelled | draft | entered-in-error",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fm-status|4.0.1"
+      }
+    },
+    {
+      "id": "PaymentReconciliation.period",
+      "path": "PaymentReconciliation.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Period covered"
+    },
+    {
+      "id": "PaymentReconciliation.created",
+      "path": "PaymentReconciliation.created",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Creation date"
+    },
+    {
+      "id": "PaymentReconciliation.paymentIssuer",
+      "path": "PaymentReconciliation.paymentIssuer",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Party generating payment"
+    },
+    {
+      "id": "PaymentReconciliation.request",
+      "path": "PaymentReconciliation.request",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Task"
+          ]
+        }
+      ],
+      "short": "Reference to requesting resource"
+    },
+    {
+      "id": "PaymentReconciliation.requestor",
+      "path": "PaymentReconciliation.requestor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Responsible practitioner"
+    },
+    {
+      "id": "PaymentReconciliation.outcome",
+      "path": "PaymentReconciliation.outcome",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "queued | complete | error | partial",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/remittance-outcome|4.0.1"
+      }
+    },
+    {
+      "id": "PaymentReconciliation.disposition",
+      "path": "PaymentReconciliation.disposition",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Disposition message"
+    },
+    {
+      "id": "PaymentReconciliation.paymentDate",
+      "path": "PaymentReconciliation.paymentDate",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        }
+      ],
+      "short": "When payment issued"
+    },
+    {
+      "id": "PaymentReconciliation.paymentAmount",
+      "path": "PaymentReconciliation.paymentAmount",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Total amount of Payment"
+    },
+    {
+      "id": "PaymentReconciliation.paymentIdentifier",
+      "path": "PaymentReconciliation.paymentIdentifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business identifier for the payment"
+    },
+    {
+      "id": "PaymentReconciliation.detail",
+      "path": "PaymentReconciliation.detail",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Settlement particulars"
+    },
+    {
+      "id": "PaymentReconciliation.detail.id",
+      "path": "PaymentReconciliation.detail.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PaymentReconciliation.detail.extension",
+      "path": "PaymentReconciliation.detail.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PaymentReconciliation.detail.modifierExtension",
+      "path": "PaymentReconciliation.detail.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "PaymentReconciliation.detail.identifier",
+      "path": "PaymentReconciliation.detail.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business identifier of the payment detail"
+    },
+    {
+      "id": "PaymentReconciliation.detail.predecessor",
+      "path": "PaymentReconciliation.detail.predecessor",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business identifier of the prior payment detail"
+    },
+    {
+      "id": "PaymentReconciliation.detail.type",
+      "path": "PaymentReconciliation.detail.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Category of payment",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-payment-type"
+      }
+    },
+    {
+      "id": "PaymentReconciliation.detail.request",
+      "path": "PaymentReconciliation.detail.request",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Request giving rise to the payment"
+    },
+    {
+      "id": "PaymentReconciliation.detail.submitter",
+      "path": "PaymentReconciliation.detail.submitter",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Submitter of the request"
+    },
+    {
+      "id": "PaymentReconciliation.detail.response",
+      "path": "PaymentReconciliation.detail.response",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Response committing to a payment"
+    },
+    {
+      "id": "PaymentReconciliation.detail.date",
+      "path": "PaymentReconciliation.detail.date",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "date"
+        }
+      ],
+      "short": "Date of commitment to pay"
+    },
+    {
+      "id": "PaymentReconciliation.detail.responsible",
+      "path": "PaymentReconciliation.detail.responsible",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole"
+          ]
+        }
+      ],
+      "short": "Contact for the response"
+    },
+    {
+      "id": "PaymentReconciliation.detail.payee",
+      "path": "PaymentReconciliation.detail.payee",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Recipient of the payment"
+    },
+    {
+      "id": "PaymentReconciliation.detail.amount",
+      "path": "PaymentReconciliation.detail.amount",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "Amount allocated to this payable"
+    },
+    {
+      "id": "PaymentReconciliation.formCode",
+      "path": "PaymentReconciliation.formCode",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Printed form identifier",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/forms"
+      }
+    },
+    {
+      "id": "PaymentReconciliation.processNote",
+      "path": "PaymentReconciliation.processNote",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Note concerning processing"
+    },
+    {
+      "id": "PaymentReconciliation.processNote.id",
+      "path": "PaymentReconciliation.processNote.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PaymentReconciliation.processNote.extension",
+      "path": "PaymentReconciliation.processNote.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PaymentReconciliation.processNote.modifierExtension",
+      "path": "PaymentReconciliation.processNote.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "PaymentReconciliation.processNote.type",
+      "path": "PaymentReconciliation.processNote.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "display | print | printoper",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/note-type|4.0.1"
+      }
+    },
+    {
+      "id": "PaymentReconciliation.processNote.text",
+      "path": "PaymentReconciliation.processNote.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Note explanatory text"
+    }
+  ]
+}

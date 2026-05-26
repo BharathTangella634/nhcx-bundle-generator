@@ -1,0 +1,1134 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Task",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Task",
+  "name": "Task",
+  "description": "Thinned ABDM Task Rulebook (Optimized for workflow tracking and claim processing activities)",
+  "elements": [
+    {
+      "id": "Task",
+      "path": "Task",
+      "min": 0,
+      "max": "*",
+      "short": "A task to be performed"
+    },
+    {
+      "id": "Task.id",
+      "path": "Task.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Task.meta",
+      "path": "Task.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Task.implicitRules",
+      "path": "Task.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Task.language",
+      "path": "Task.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Task.text",
+      "path": "Task.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "Task.contained",
+      "path": "Task.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "Task.extension",
+      "path": "Task.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Task.modifierExtension",
+      "path": "Task.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "Task.identifier",
+      "path": "Task.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Task Instance Identifier"
+    },
+    {
+      "id": "Task.instantiatesCanonical",
+      "path": "Task.instantiatesCanonical",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "canonical",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/ActivityDefinition"
+          ]
+        }
+      ],
+      "short": "Formal definition of task"
+    },
+    {
+      "id": "Task.instantiatesUri",
+      "path": "Task.instantiatesUri",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Formal definition of task"
+    },
+    {
+      "id": "Task.basedOn",
+      "path": "Task.basedOn",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Request fulfilled by this task"
+    },
+    {
+      "id": "Task.groupIdentifier",
+      "path": "Task.groupIdentifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Requisition or grouper id"
+    },
+    {
+      "id": "Task.partOf",
+      "path": "Task.partOf",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Task"
+          ]
+        }
+      ],
+      "short": "Composite task"
+    },
+    {
+      "id": "Task.status",
+      "path": "Task.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "draft | requested | received | accepted | +",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/task-status|4.0.1"
+      }
+    },
+    {
+      "id": "Task.statusReason",
+      "path": "Task.statusReason",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Reason for current status",
+      "binding": {
+        "strength": "example",
+        "valueSet": null
+      }
+    },
+    {
+      "id": "Task.businessStatus",
+      "path": "Task.businessStatus",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "E.g. \"Specimen collected\", \"IV prepped\"",
+      "binding": {
+        "strength": "example",
+        "valueSet": null
+      }
+    },
+    {
+      "id": "Task.intent",
+      "path": "Task.intent",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/task-intent|4.0.1"
+      }
+    },
+    {
+      "id": "Task.priority",
+      "path": "Task.priority",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "routine | urgent | asap | stat",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/request-priority|4.0.1"
+      }
+    },
+    {
+      "id": "Task.code",
+      "path": "Task.code",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Code that will briefly describing what task involves.",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-task-codes"
+      }
+    },
+    {
+      "id": "Task.description",
+      "path": "Task.description",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Human-readable explanation of task"
+    },
+    {
+      "id": "Task.focus",
+      "path": "Task.focus",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "What task is acting on"
+    },
+    {
+      "id": "Task.for",
+      "path": "Task.for",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Beneficiary of the Task"
+    },
+    {
+      "id": "Task.encounter",
+      "path": "Task.encounter",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+          ]
+        }
+      ],
+      "short": "Healthcare event during which this task originated"
+    },
+    {
+      "id": "Task.executionPeriod",
+      "path": "Task.executionPeriod",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Start and end time of execution"
+    },
+    {
+      "id": "Task.authoredOn",
+      "path": "Task.authoredOn",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Task Creation Date"
+    },
+    {
+      "id": "Task.lastModified",
+      "path": "Task.lastModified",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "dateTime"
+        }
+      ],
+      "short": "Task Last Modified Date"
+    },
+    {
+      "id": "Task.requester",
+      "path": "Task.requester",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Device",
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole"
+          ]
+        }
+      ],
+      "short": "Who is asking for task to be done"
+    },
+    {
+      "id": "Task.performerType",
+      "path": "Task.performerType",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Requested performer",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/performer-role"
+      }
+    },
+    {
+      "id": "Task.owner",
+      "path": "Task.owner",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/CareTeam",
+            "http://hl7.org/fhir/StructureDefinition/HealthcareService",
+            "http://hl7.org/fhir/StructureDefinition/Device",
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Responsible individual"
+    },
+    {
+      "id": "Task.location",
+      "path": "Task.location",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "short": "Where task occurs"
+    },
+    {
+      "id": "Task.reasonCode",
+      "path": "Task.reasonCode",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Why task is needed",
+      "binding": {
+        "strength": "example",
+        "valueSet": null
+      }
+    },
+    {
+      "id": "Task.reasonCode.id",
+      "path": "Task.reasonCode.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Task.reasonCode.extension",
+      "path": "Task.reasonCode.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Task.reasonCode.coding",
+      "path": "Task.reasonCode.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "short": "Code defined by a terminology system",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-reason-code"
+      }
+    },
+    {
+      "id": "Task.reasonCode.text",
+      "path": "Task.reasonCode.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Task.reasonReference",
+      "path": "Task.reasonReference",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        }
+      ],
+      "short": "Why task is needed"
+    },
+    {
+      "id": "Task.insurance",
+      "path": "Task.insurance",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ClaimResponse",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Coverage"
+          ]
+        }
+      ],
+      "short": "Associated insurance coverage"
+    },
+    {
+      "id": "Task.note",
+      "path": "Task.note",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Annotation"
+        }
+      ],
+      "short": "Comments made about the task"
+    },
+    {
+      "id": "Task.relevantHistory",
+      "path": "Task.relevantHistory",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Provenance"
+          ]
+        }
+      ],
+      "short": "Key events in history of the Task"
+    },
+    {
+      "id": "Task.restriction",
+      "path": "Task.restriction",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Constraints on fulfillment tasks"
+    },
+    {
+      "id": "Task.restriction.id",
+      "path": "Task.restriction.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Task.restriction.extension",
+      "path": "Task.restriction.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Task.restriction.modifierExtension",
+      "path": "Task.restriction.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Task.restriction.repetitions",
+      "path": "Task.restriction.repetitions",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "How many times to repeat"
+    },
+    {
+      "id": "Task.restriction.period",
+      "path": "Task.restriction.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "When fulfillment sought"
+    },
+    {
+      "id": "Task.restriction.recipient",
+      "path": "Task.restriction.recipient",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "http://hl7.org/fhir/StructureDefinition/Group",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "For whom is fulfillment sought?"
+    },
+    {
+      "id": "Task.input",
+      "path": "Task.input",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Information that may be needed in the execution of the task. Depending on the specified use case, Communication, CommunicationRequest or PaymentNotice etc can be utilized ."
+    },
+    {
+      "id": "Task.input.id",
+      "path": "Task.input.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Task.input.extension",
+      "path": "Task.input.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Task.input.modifierExtension",
+      "path": "Task.input.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Task.input.type",
+      "path": "Task.input.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Label for the input",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-task-input-type-code"
+      }
+    },
+    {
+      "id": "Task.input.value[x]",
+      "path": "Task.input.value[x]",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "base64Binary"
+        },
+        {
+          "code": "boolean"
+        },
+        {
+          "code": "canonical"
+        },
+        {
+          "code": "code"
+        },
+        {
+          "code": "date"
+        },
+        {
+          "code": "dateTime"
+        },
+        {
+          "code": "decimal"
+        },
+        {
+          "code": "id"
+        },
+        {
+          "code": "instant"
+        },
+        {
+          "code": "integer"
+        },
+        {
+          "code": "markdown"
+        },
+        {
+          "code": "oid"
+        },
+        {
+          "code": "positiveInt"
+        },
+        {
+          "code": "string"
+        },
+        {
+          "code": "time"
+        },
+        {
+          "code": "unsignedInt"
+        },
+        {
+          "code": "uri"
+        },
+        {
+          "code": "url"
+        },
+        {
+          "code": "uuid"
+        },
+        {
+          "code": "Address"
+        },
+        {
+          "code": "Age"
+        },
+        {
+          "code": "Annotation"
+        },
+        {
+          "code": "Attachment"
+        },
+        {
+          "code": "CodeableConcept"
+        },
+        {
+          "code": "Coding"
+        },
+        {
+          "code": "ContactPoint"
+        },
+        {
+          "code": "Count"
+        },
+        {
+          "code": "Distance"
+        },
+        {
+          "code": "Duration"
+        },
+        {
+          "code": "HumanName"
+        },
+        {
+          "code": "Identifier"
+        },
+        {
+          "code": "Money"
+        },
+        {
+          "code": "Period"
+        },
+        {
+          "code": "Quantity"
+        },
+        {
+          "code": "Range"
+        },
+        {
+          "code": "Ratio"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        },
+        {
+          "code": "SampledData"
+        },
+        {
+          "code": "Signature"
+        },
+        {
+          "code": "Timing"
+        },
+        {
+          "code": "ContactDetail"
+        },
+        {
+          "code": "Contributor"
+        },
+        {
+          "code": "DataRequirement"
+        },
+        {
+          "code": "Expression"
+        },
+        {
+          "code": "ParameterDefinition"
+        },
+        {
+          "code": "RelatedArtifact"
+        },
+        {
+          "code": "TriggerDefinition"
+        },
+        {
+          "code": "UsageContext"
+        },
+        {
+          "code": "Dosage"
+        },
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Content to use in performing the task"
+    },
+    {
+      "id": "Task.output",
+      "path": "Task.output",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Outputs/Information produced as part of Task"
+    },
+    {
+      "id": "Task.output.id",
+      "path": "Task.output.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Task.output.extension",
+      "path": "Task.output.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Task.output.modifierExtension",
+      "path": "Task.output.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Task.output.type",
+      "path": "Task.output.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Label for output",
+      "binding": {
+        "strength": "example",
+        "valueSet": null
+      }
+    },
+    {
+      "id": "Task.output.value[x]",
+      "path": "Task.output.value[x]",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "base64Binary"
+        },
+        {
+          "code": "boolean"
+        },
+        {
+          "code": "canonical"
+        },
+        {
+          "code": "code"
+        },
+        {
+          "code": "date"
+        },
+        {
+          "code": "dateTime"
+        },
+        {
+          "code": "decimal"
+        },
+        {
+          "code": "id"
+        },
+        {
+          "code": "instant"
+        },
+        {
+          "code": "integer"
+        },
+        {
+          "code": "markdown"
+        },
+        {
+          "code": "oid"
+        },
+        {
+          "code": "positiveInt"
+        },
+        {
+          "code": "string"
+        },
+        {
+          "code": "time"
+        },
+        {
+          "code": "unsignedInt"
+        },
+        {
+          "code": "uri"
+        },
+        {
+          "code": "url"
+        },
+        {
+          "code": "uuid"
+        },
+        {
+          "code": "Address"
+        },
+        {
+          "code": "Age"
+        },
+        {
+          "code": "Annotation"
+        },
+        {
+          "code": "Attachment"
+        },
+        {
+          "code": "CodeableConcept"
+        },
+        {
+          "code": "Coding"
+        },
+        {
+          "code": "ContactPoint"
+        },
+        {
+          "code": "Count"
+        },
+        {
+          "code": "Distance"
+        },
+        {
+          "code": "Duration"
+        },
+        {
+          "code": "HumanName"
+        },
+        {
+          "code": "Identifier"
+        },
+        {
+          "code": "Money"
+        },
+        {
+          "code": "Period"
+        },
+        {
+          "code": "Quantity"
+        },
+        {
+          "code": "Range"
+        },
+        {
+          "code": "Ratio"
+        },
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Resource"
+          ]
+        },
+        {
+          "code": "SampledData"
+        },
+        {
+          "code": "Signature"
+        },
+        {
+          "code": "Timing"
+        },
+        {
+          "code": "ContactDetail"
+        },
+        {
+          "code": "Contributor"
+        },
+        {
+          "code": "DataRequirement"
+        },
+        {
+          "code": "Expression"
+        },
+        {
+          "code": "ParameterDefinition"
+        },
+        {
+          "code": "RelatedArtifact"
+        },
+        {
+          "code": "TriggerDefinition"
+        },
+        {
+          "code": "UsageContext"
+        },
+        {
+          "code": "Dosage"
+        },
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Result of output",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-task-output-value"
+      }
+    }
+  ]
+}

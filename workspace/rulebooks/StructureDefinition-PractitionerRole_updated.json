@@ -1,0 +1,1137 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "PractitionerRole",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/PractitionerRole",
+  "name": "PractitionerRole",
+  "description": "Thinned ABDM PractitionerRole Rulebook (Optimized for Context)",
+  "elements": [
+    {
+      "id": "PractitionerRole",
+      "path": "PractitionerRole",
+      "min": 0,
+      "max": "*",
+      "short": "Roles/organizations the practitioner is associated with"
+    },
+    {
+      "id": "PractitionerRole.id",
+      "path": "PractitionerRole.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "PractitionerRole.meta",
+      "path": "PractitionerRole.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "PractitionerRole.implicitRules",
+      "path": "PractitionerRole.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "PractitionerRole.language",
+      "path": "PractitionerRole.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "PractitionerRole.text",
+      "path": "PractitionerRole.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "PractitionerRole.contained",
+      "path": "PractitionerRole.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "PractitionerRole.extension",
+      "path": "PractitionerRole.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.modifierExtension",
+      "path": "PractitionerRole.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "PractitionerRole.identifier",
+      "path": "PractitionerRole.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business Identifiers that are specific to a role/location"
+    },
+    {
+      "id": "PractitionerRole.identifier.id",
+      "path": "PractitionerRole.identifier.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.identifier.extension",
+      "path": "PractitionerRole.identifier.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.identifier.use",
+      "path": "PractitionerRole.identifier.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "usual | official | temp | secondary | old (If known)",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      }
+    },
+    {
+      "id": "PractitionerRole.identifier.type",
+      "path": "PractitionerRole.identifier.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Description of identifier",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-identifier-type-code"
+      }
+    },
+    {
+      "id": "PractitionerRole.identifier.type.id",
+      "path": "PractitionerRole.identifier.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.extension",
+      "path": "PractitionerRole.identifier.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding",
+      "path": "PractitionerRole.identifier.type.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.id",
+      "path": "PractitionerRole.identifier.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.extension",
+      "path": "PractitionerRole.identifier.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.system",
+      "path": "PractitionerRole.identifier.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.version",
+      "path": "PractitionerRole.identifier.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.code",
+      "path": "PractitionerRole.identifier.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.display",
+      "path": "PractitionerRole.identifier.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.coding.userSelected",
+      "path": "PractitionerRole.identifier.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "PractitionerRole.identifier.type.text",
+      "path": "PractitionerRole.identifier.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "PractitionerRole.identifier.system",
+      "path": "PractitionerRole.identifier.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The namespace for the identifier value"
+    },
+    {
+      "id": "PractitionerRole.identifier.value",
+      "path": "PractitionerRole.identifier.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The value that is unique"
+    },
+    {
+      "id": "PractitionerRole.identifier.period",
+      "path": "PractitionerRole.identifier.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when id is/was valid for use"
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner",
+      "path": "PractitionerRole.identifier.assigner",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that issued id (may be just text)"
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner.id",
+      "path": "PractitionerRole.identifier.assigner.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner.extension",
+      "path": "PractitionerRole.identifier.assigner.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner.reference",
+      "path": "PractitionerRole.identifier.assigner.reference",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Literal reference, Relative, internal or absolute URL"
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner.type",
+      "path": "PractitionerRole.identifier.assigner.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Type the reference refers to (e.g. \"Patient\")",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/resource-types"
+      }
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner.identifier",
+      "path": "PractitionerRole.identifier.assigner.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Logical reference, when literal reference is not known"
+    },
+    {
+      "id": "PractitionerRole.identifier.assigner.display",
+      "path": "PractitionerRole.identifier.assigner.display",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Text alternative for the resource"
+    },
+    {
+      "id": "PractitionerRole.active",
+      "path": "PractitionerRole.active",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Whether this practitioner role record is in active use"
+    },
+    {
+      "id": "PractitionerRole.period",
+      "path": "PractitionerRole.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "The period during which the practitioner is authorized to perform in these role(s)"
+    },
+    {
+      "id": "PractitionerRole.practitioner",
+      "path": "PractitionerRole.practitioner",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
+          ]
+        }
+      ],
+      "short": "Practitioner that is able to provide the defined services for the organization"
+    },
+    {
+      "id": "PractitionerRole.organization",
+      "path": "PractitionerRole.organization",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization where the roles are available"
+    },
+    {
+      "id": "PractitionerRole.code",
+      "path": "PractitionerRole.code",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Roles which this practitioner may perform",
+      "binding": {
+        "strength": "example",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-practitioner-role"
+      }
+    },
+    {
+      "id": "PractitionerRole.code.id",
+      "path": "PractitionerRole.code.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.code.extension",
+      "path": "PractitionerRole.code.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.code.coding",
+      "path": "PractitionerRole.code.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "PractitionerRole.code.coding.id",
+      "path": "PractitionerRole.code.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.code.coding.extension",
+      "path": "PractitionerRole.code.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.code.coding.system",
+      "path": "PractitionerRole.code.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "fixedUri": "http://snomed.info/sct",
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "PractitionerRole.code.coding.version",
+      "path": "PractitionerRole.code.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "PractitionerRole.code.coding.code",
+      "path": "PractitionerRole.code.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "PractitionerRole.code.coding.display",
+      "path": "PractitionerRole.code.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "PractitionerRole.code.coding.userSelected",
+      "path": "PractitionerRole.code.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "PractitionerRole.code.text",
+      "path": "PractitionerRole.code.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "PractitionerRole.specialty",
+      "path": "PractitionerRole.specialty",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Specific specialty of the practitioner",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/c80-practice-codes"
+      }
+    },
+    {
+      "id": "PractitionerRole.specialty.id",
+      "path": "PractitionerRole.specialty.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.specialty.extension",
+      "path": "PractitionerRole.specialty.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding",
+      "path": "PractitionerRole.specialty.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.id",
+      "path": "PractitionerRole.specialty.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.extension",
+      "path": "PractitionerRole.specialty.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.system",
+      "path": "PractitionerRole.specialty.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "fixedUri": "http://snomed.info/sct",
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.version",
+      "path": "PractitionerRole.specialty.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.code",
+      "path": "PractitionerRole.specialty.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.display",
+      "path": "PractitionerRole.specialty.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "PractitionerRole.specialty.coding.userSelected",
+      "path": "PractitionerRole.specialty.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "PractitionerRole.specialty.text",
+      "path": "PractitionerRole.specialty.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "PractitionerRole.location",
+      "path": "PractitionerRole.location",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Location"
+          ]
+        }
+      ],
+      "short": "The location(s) at which this practitioner provides care"
+    },
+    {
+      "id": "PractitionerRole.healthcareService",
+      "path": "PractitionerRole.healthcareService",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/HealthcareService"
+          ]
+        }
+      ],
+      "short": "The list of healthcare services that this worker provides for this role's Organization/Location(s)"
+    },
+    {
+      "id": "PractitionerRole.telecom",
+      "path": "PractitionerRole.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "short": "Contact details that are specific to the role/location/service"
+    },
+    {
+      "id": "PractitionerRole.telecom.id",
+      "path": "PractitionerRole.telecom.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.telecom.extension",
+      "path": "PractitionerRole.telecom.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.telecom.system",
+      "path": "PractitionerRole.telecom.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "phone | fax | email | pager | url | sms | other",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"
+      }
+    },
+    {
+      "id": "PractitionerRole.telecom.value",
+      "path": "PractitionerRole.telecom.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The actual contact point details"
+    },
+    {
+      "id": "PractitionerRole.telecom.use",
+      "path": "PractitionerRole.telecom.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "home | work | temp | old | mobile - purpose of this contact point",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"
+      }
+    },
+    {
+      "id": "PractitionerRole.telecom.rank",
+      "path": "PractitionerRole.telecom.rank",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Specify preferred order of use (1 = highest)"
+    },
+    {
+      "id": "PractitionerRole.telecom.period",
+      "path": "PractitionerRole.telecom.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when the contact point was/is in use"
+    },
+    {
+      "id": "PractitionerRole.availableTime",
+      "path": "PractitionerRole.availableTime",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Times the Service Site is available"
+    },
+    {
+      "id": "PractitionerRole.availableTime.id",
+      "path": "PractitionerRole.availableTime.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.availableTime.extension",
+      "path": "PractitionerRole.availableTime.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.availableTime.modifierExtension",
+      "path": "PractitionerRole.availableTime.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "PractitionerRole.availableTime.daysOfWeek",
+      "path": "PractitionerRole.availableTime.daysOfWeek",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "mon | tue | wed | thu | fri | sat | sun",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/days-of-week|4.0.1"
+      }
+    },
+    {
+      "id": "PractitionerRole.availableTime.allDay",
+      "path": "PractitionerRole.availableTime.allDay",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Always available? e.g. 24 hour service"
+    },
+    {
+      "id": "PractitionerRole.availableTime.availableStartTime",
+      "path": "PractitionerRole.availableTime.availableStartTime",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "time"
+        }
+      ],
+      "short": "Opening time of day (ignored if allDay = true)"
+    },
+    {
+      "id": "PractitionerRole.availableTime.availableEndTime",
+      "path": "PractitionerRole.availableTime.availableEndTime",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "time"
+        }
+      ],
+      "short": "Closing time of day (ignored if allDay = true)"
+    },
+    {
+      "id": "PractitionerRole.notAvailable",
+      "path": "PractitionerRole.notAvailable",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Not available during this time due to provided reason"
+    },
+    {
+      "id": "PractitionerRole.notAvailable.id",
+      "path": "PractitionerRole.notAvailable.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "PractitionerRole.notAvailable.extension",
+      "path": "PractitionerRole.notAvailable.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "PractitionerRole.notAvailable.modifierExtension",
+      "path": "PractitionerRole.notAvailable.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "PractitionerRole.notAvailable.description",
+      "path": "PractitionerRole.notAvailable.description",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Reason presented to the user explaining why time not available"
+    },
+    {
+      "id": "PractitionerRole.notAvailable.during",
+      "path": "PractitionerRole.notAvailable.during",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Service not available from this date"
+    },
+    {
+      "id": "PractitionerRole.availabilityExceptions",
+      "path": "PractitionerRole.availabilityExceptions",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Description of availability exceptions"
+    },
+    {
+      "id": "PractitionerRole.endpoint",
+      "path": "PractitionerRole.endpoint",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Endpoint"
+          ]
+        }
+      ],
+      "short": "Technical endpoints providing access to services operated for the practitioner with this role"
+    }
+  ]
+}

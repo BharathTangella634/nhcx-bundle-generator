@@ -1,0 +1,571 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Coverage",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Coverage",
+  "name": "Coverage",
+  "description": "Thinned ABDM Coverage Rulebook (Optimized for Policy and Insurance detail extraction)",
+  "elements": [
+    {
+      "id": "Coverage",
+      "path": "Coverage",
+      "min": 0,
+      "max": "*",
+      "short": "Insurance or medical plan or a payment agreement"
+    },
+    {
+      "id": "Coverage.id",
+      "path": "Coverage.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Coverage.meta",
+      "path": "Coverage.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Coverage.implicitRules",
+      "path": "Coverage.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Coverage.language",
+      "path": "Coverage.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Coverage.text",
+      "path": "Coverage.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "Coverage.contained",
+      "path": "Coverage.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "Coverage.extension",
+      "path": "Coverage.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Coverage.modifierExtension",
+      "path": "Coverage.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "Coverage.identifier",
+      "path": "Coverage.identifier",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Business Identifier for the coverage"
+    },
+    {
+      "id": "Coverage.status",
+      "path": "Coverage.status",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "active | cancelled | draft | entered-in-error",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fm-status|4.0.1"
+      }
+    },
+    {
+      "id": "Coverage.type",
+      "path": "Coverage.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Coverage category such as medical or accident",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-type"
+      }
+    },
+    {
+      "id": "Coverage.policyHolder",
+      "path": "Coverage.policyHolder",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Owner of the policy"
+    },
+    {
+      "id": "Coverage.subscriber",
+      "path": "Coverage.subscriber",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Subscriber to the policy"
+    },
+    {
+      "id": "Coverage.subscriberId",
+      "path": "Coverage.subscriberId",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "ID assigned to the subscriber"
+    },
+    {
+      "id": "Coverage.beneficiary",
+      "path": "Coverage.beneficiary",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        }
+      ],
+      "short": "Plan beneficiary"
+    },
+    {
+      "id": "Coverage.dependent",
+      "path": "Coverage.dependent",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Dependent number"
+    },
+    {
+      "id": "Coverage.relationship",
+      "path": "Coverage.relationship",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Beneficiary relationship to the subscriber",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/subscriber-relationship"
+      }
+    },
+    {
+      "id": "Coverage.period",
+      "path": "Coverage.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Coverage start and end dates"
+    },
+    {
+      "id": "Coverage.payor",
+      "path": "Coverage.payor",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient",
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Issuer of the policy"
+    },
+    {
+      "id": "Coverage.class",
+      "path": "Coverage.class",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Additional coverage classifications"
+    },
+    {
+      "id": "Coverage.class.id",
+      "path": "Coverage.class.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Coverage.class.extension",
+      "path": "Coverage.class.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Coverage.class.modifierExtension",
+      "path": "Coverage.class.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Coverage.class.type",
+      "path": "Coverage.class.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Type of class such as 'group' or 'plan'",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-class"
+      }
+    },
+    {
+      "id": "Coverage.class.value",
+      "path": "Coverage.class.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Value associated with the type"
+    },
+    {
+      "id": "Coverage.class.name",
+      "path": "Coverage.class.name",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Human readable description of the type and value"
+    },
+    {
+      "id": "Coverage.order",
+      "path": "Coverage.order",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Relative order of the coverage"
+    },
+    {
+      "id": "Coverage.network",
+      "path": "Coverage.network",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Insurer network"
+    },
+    {
+      "id": "Coverage.costToBeneficiary",
+      "path": "Coverage.costToBeneficiary",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Patient payments for services/products"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.id",
+      "path": "Coverage.costToBeneficiary.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.extension",
+      "path": "Coverage.costToBeneficiary.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.modifierExtension",
+      "path": "Coverage.costToBeneficiary.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.type",
+      "path": "Coverage.costToBeneficiary.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Cost category",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-copay-type"
+      }
+    },
+    {
+      "id": "Coverage.costToBeneficiary.value[x]",
+      "path": "Coverage.costToBeneficiary.value[x]",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "Quantity"
+        },
+        {
+          "code": "Money"
+        }
+      ],
+      "short": "The amount or percentage due from the beneficiary"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception",
+      "path": "Coverage.costToBeneficiary.exception",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Exceptions for patient payments"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.id",
+      "path": "Coverage.costToBeneficiary.exception.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.extension",
+      "path": "Coverage.costToBeneficiary.exception.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.modifierExtension",
+      "path": "Coverage.costToBeneficiary.exception.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.type",
+      "path": "Coverage.costToBeneficiary.exception.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Exception category",
+      "binding": {
+        "strength": "example",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-financial-exception"
+      }
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.period",
+      "path": "Coverage.costToBeneficiary.exception.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "The effective period of the exception"
+    },
+    {
+      "id": "Coverage.subrogation",
+      "path": "Coverage.subrogation",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Reimbursement to insurer"
+    },
+    {
+      "id": "Coverage.contract",
+      "path": "Coverage.contract",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Contract"
+          ]
+        }
+      ],
+      "short": "Contract details"
+    }
+  ]
+}

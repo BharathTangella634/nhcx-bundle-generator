@@ -1,0 +1,887 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Organization",
+  "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization",
+  "name": "Organization",
+  "description": "Thinned ABDM Organization Rulebook (Optimized for 27B LLM)",
+  "elements": [
+    {
+      "id": "Organization",
+      "path": "Organization",
+      "min": 0,
+      "max": "*",
+      "short": "A grouping of people or organizations with a common purpose"
+    },
+    {
+      "id": "Organization.id",
+      "path": "Organization.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Logical id of this artifact"
+    },
+    {
+      "id": "Organization.meta",
+      "path": "Organization.meta",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Meta"
+        }
+      ],
+      "short": "Metadata about the resource"
+    },
+    {
+      "id": "Organization.implicitRules",
+      "path": "Organization.implicitRules",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "A set of rules under which this content was created"
+    },
+    {
+      "id": "Organization.language",
+      "path": "Organization.language",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Language of the resource content",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    },
+    {
+      "id": "Organization.text",
+      "path": "Organization.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Narrative"
+        }
+      ],
+      "short": "Text summary of the resource, for human interpretation"
+    },
+    {
+      "id": "Organization.contained",
+      "path": "Organization.contained",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Resource"
+        }
+      ],
+      "short": "Contained, inline Resources"
+    },
+    {
+      "id": "Organization.extension",
+      "path": "Organization.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.modifierExtension",
+      "path": "Organization.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored"
+    },
+    {
+      "id": "Organization.identifier",
+      "path": "Organization.identifier",
+      "min": 1,
+      "max": "*",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Identifies this organization  across multiple systems"
+    },
+    {
+      "id": "Organization.identifier.id",
+      "path": "Organization.identifier.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.identifier.extension",
+      "path": "Organization.identifier.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.identifier.use",
+      "path": "Organization.identifier.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "usual | official | temp | secondary | old (If known)",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      }
+    },
+    {
+      "id": "Organization.identifier.type",
+      "path": "Organization.identifier.type",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Description of identifier",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-identifier-type-code"
+      }
+    },
+    {
+      "id": "Organization.identifier.type.id",
+      "path": "Organization.identifier.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.identifier.type.extension",
+      "path": "Organization.identifier.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.identifier.type.coding",
+      "path": "Organization.identifier.type.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Organization.identifier.type.coding.id",
+      "path": "Organization.identifier.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.identifier.type.coding.extension",
+      "path": "Organization.identifier.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.identifier.type.coding.system",
+      "path": "Organization.identifier.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Organization.identifier.type.coding.version",
+      "path": "Organization.identifier.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Organization.identifier.type.coding.code",
+      "path": "Organization.identifier.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Organization.identifier.type.coding.display",
+      "path": "Organization.identifier.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Organization.identifier.type.coding.userSelected",
+      "path": "Organization.identifier.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Organization.identifier.type.text",
+      "path": "Organization.identifier.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Organization.identifier.system",
+      "path": "Organization.identifier.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The namespace for the identifier value"
+    },
+    {
+      "id": "Organization.identifier.value",
+      "path": "Organization.identifier.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "The value that is unique"
+    },
+    {
+      "id": "Organization.identifier.period",
+      "path": "Organization.identifier.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when id is/was valid for use"
+    },
+    {
+      "id": "Organization.identifier.assigner",
+      "path": "Organization.identifier.assigner",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "Organization that issued id (may be just text)"
+    },
+    {
+      "id": "Organization.identifier.assigner.id",
+      "path": "Organization.identifier.assigner.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.identifier.assigner.extension",
+      "path": "Organization.identifier.assigner.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.identifier.assigner.reference",
+      "path": "Organization.identifier.assigner.reference",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Literal reference, Relative, internal or absolute URL"
+    },
+    {
+      "id": "Organization.identifier.assigner.type",
+      "path": "Organization.identifier.assigner.type",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "short": "Type the reference refers to (e.g. \"Patient\")",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/resource-types"
+      }
+    },
+    {
+      "id": "Organization.identifier.assigner.identifier",
+      "path": "Organization.identifier.assigner.identifier",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Identifier"
+        }
+      ],
+      "short": "Logical reference, when literal reference is not known"
+    },
+    {
+      "id": "Organization.identifier.assigner.display",
+      "path": "Organization.identifier.assigner.display",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Text alternative for the resource"
+    },
+    {
+      "id": "Organization.active",
+      "path": "Organization.active",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "Whether the organization's record is still in active use"
+    },
+    {
+      "id": "Organization.type",
+      "path": "Organization.type",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "Kind of organization",
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/organization-type"
+      }
+    },
+    {
+      "id": "Organization.type.id",
+      "path": "Organization.type.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.type.extension",
+      "path": "Organization.type.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.type.coding",
+      "path": "Organization.type.coding",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Coding"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Code defined by a terminology system"
+    },
+    {
+      "id": "Organization.type.coding.id",
+      "path": "Organization.type.coding.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.type.coding.extension",
+      "path": "Organization.type.coding.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.type.coding.system",
+      "path": "Organization.type.coding.system",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "uri"
+        }
+      ],
+      "fixedUri": "http://terminology.hl7.org/CodeSystem/organization-type",
+      "short": "Identity of the terminology system"
+    },
+    {
+      "id": "Organization.type.coding.version",
+      "path": "Organization.type.coding.version",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Version of the system - if relevant"
+    },
+    {
+      "id": "Organization.type.coding.code",
+      "path": "Organization.type.coding.code",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "short": "Symbol in syntax defined by the system"
+    },
+    {
+      "id": "Organization.type.coding.display",
+      "path": "Organization.type.coding.display",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Representation defined by the system"
+    },
+    {
+      "id": "Organization.type.coding.userSelected",
+      "path": "Organization.type.coding.userSelected",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "boolean"
+        }
+      ],
+      "short": "If this coding was chosen directly by the user"
+    },
+    {
+      "id": "Organization.type.text",
+      "path": "Organization.type.text",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "Plain text representation of the concept"
+    },
+    {
+      "id": "Organization.name",
+      "path": "Organization.name",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "mustSupport": true,
+      "short": "Name used for the organization"
+    },
+    {
+      "id": "Organization.alias",
+      "path": "Organization.alias",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "A list of alternate names that the organization is known as, or was known as in the past"
+    },
+    {
+      "id": "Organization.telecom",
+      "path": "Organization.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "mustSupport": true,
+      "short": "A contact detail for the organization"
+    },
+    {
+      "id": "Organization.telecom.id",
+      "path": "Organization.telecom.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.telecom.extension",
+      "path": "Organization.telecom.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.telecom.system",
+      "path": "Organization.telecom.system",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "phone | fax | email | pager | url | sms | other",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"
+      }
+    },
+    {
+      "id": "Organization.telecom.value",
+      "path": "Organization.telecom.value",
+      "min": 1,
+      "max": "1",
+      "type": [
+        {
+          "code": "string"
+        }
+      ],
+      "short": "The actual contact point details"
+    },
+    {
+      "id": "Organization.telecom.use",
+      "path": "Organization.telecom.use",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "code"
+        }
+      ],
+      "mustSupport": true,
+      "short": "home | work | temp | old | mobile - purpose of this contact point",
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"
+      }
+    },
+    {
+      "id": "Organization.telecom.rank",
+      "path": "Organization.telecom.rank",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "positiveInt"
+        }
+      ],
+      "short": "Specify preferred order of use (1 = highest)"
+    },
+    {
+      "id": "Organization.telecom.period",
+      "path": "Organization.telecom.period",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Period"
+        }
+      ],
+      "short": "Time period when the contact point was/is in use"
+    },
+    {
+      "id": "Organization.address",
+      "path": "Organization.address",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Address"
+        }
+      ],
+      "mustSupport": true,
+      "short": "An address for the organization"
+    },
+    {
+      "id": "Organization.partOf",
+      "path": "Organization.partOf",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        }
+      ],
+      "short": "The organization of which this organization forms a part"
+    },
+    {
+      "id": "Organization.contact",
+      "path": "Organization.contact",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "BackboneElement"
+        }
+      ],
+      "short": "Contact for the organization for a certain purpose"
+    },
+    {
+      "id": "Organization.contact.id",
+      "path": "Organization.contact.id",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "http://hl7.org/fhirpath/System.String"
+        }
+      ],
+      "short": "Unique id for inter-element referencing"
+    },
+    {
+      "id": "Organization.contact.extension",
+      "path": "Organization.contact.extension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Additional content defined by implementations"
+    },
+    {
+      "id": "Organization.contact.modifierExtension",
+      "path": "Organization.contact.modifierExtension",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Extension"
+        }
+      ],
+      "short": "Extensions that cannot be ignored even if unrecognized"
+    },
+    {
+      "id": "Organization.contact.purpose",
+      "path": "Organization.contact.purpose",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "CodeableConcept"
+        }
+      ],
+      "short": "The type of contact",
+      "binding": {
+        "strength": "extensible",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contactentity-type"
+      }
+    },
+    {
+      "id": "Organization.contact.name",
+      "path": "Organization.contact.name",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "HumanName"
+        }
+      ],
+      "short": "A name associated with the contact"
+    },
+    {
+      "id": "Organization.contact.telecom",
+      "path": "Organization.contact.telecom",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "ContactPoint"
+        }
+      ],
+      "short": "Contact details (telephone, email, etc.)  for a contact"
+    },
+    {
+      "id": "Organization.contact.address",
+      "path": "Organization.contact.address",
+      "min": 0,
+      "max": "1",
+      "type": [
+        {
+          "code": "Address"
+        }
+      ],
+      "short": "Visiting or postal addresses for the contact"
+    },
+    {
+      "id": "Organization.endpoint",
+      "path": "Organization.endpoint",
+      "min": 0,
+      "max": "*",
+      "type": [
+        {
+          "code": "Reference",
+          "targetProfile": [
+            "http://hl7.org/fhir/StructureDefinition/Endpoint"
+          ]
+        }
+      ],
+      "short": "Technical endpoints providing access to services operated for the organization"
+    }
+  ]
+}
