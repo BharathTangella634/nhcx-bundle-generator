@@ -186,23 +186,23 @@ class NHCXPipeline:
             self.stage_generate()
             self.stage_results["generate"] = "complete"
 
-            # ──── STAGE 2.5: POST-PROCESS (deterministic fixes) ────
-            self._print_stage_header(2, "POST-PROCESS BUNDLE (deterministic fixes)")
+            # ──── STAGE 3: CASCADE PREVENTION ────
+            self._print_stage_header(3, "CASCADE PREVENTION (postprocess)")
             self.stage_postprocess()
             self.stage_results["postprocess"] = "complete"
 
-            # ──── STAGE 3: VALIDATE & FIX ────
-            self._print_stage_header(3, "VALIDATE & FIX ERRORS")
+            # ──── STAGE 4: VALIDATE & FIX (LLM-driven loop) ────
+            self._print_stage_header(4, "VALIDATE & FIX (LLM-driven)")
             self.stage_validate_and_fix()
             self.stage_results["validate"] = "complete"
 
-            # ──── STAGE 4: VERIFY COMPLETENESS ────
-            self._print_stage_header(4, "VERIFY COMPLETENESS")
+            # ──── STAGE 5: VERIFY COMPLETENESS ────
+            self._print_stage_header(5, "VERIFY COMPLETENESS")
             self.stage_verify()
             self.stage_results["verify"] = "complete"
 
-            # ──── STAGE 5: FINAL VALIDATION ────
-            self._print_stage_header(5, "FINAL VALIDATION")
+            # ──── STAGE 6: FINAL VALIDATION ────
+            self._print_stage_header(6, "FINAL VALIDATION")
             errors, warnings, _ = self._run_fhir_validator()
             self.stage_results["final_errors"] = len(errors)
             self.stage_results["final_warnings"] = len(warnings)
@@ -210,8 +210,9 @@ class NHCXPipeline:
                 print(f"  VALIDATION PASSED: 0 errors, {len(warnings)} warnings")
             else:
                 print(f"  {len(errors)} errors remain, {len(warnings)} warnings")
-                for e in errors[:20]:
-                    print(f"    - {e['message'][:120]}")
+                error_summary = self._build_error_summary(errors)
+                for group in error_summary["groups"][:15]:
+                    print(f"    [{group['count']}x] {group['message'][:120]}")
 
             elapsed = (datetime.now() - self.start_time).total_seconds()
             result = {
@@ -843,7 +844,8 @@ Generate the complete Python script now. Output ONLY Python code."""
     }
 
     def stage_postprocess(self):
-        """Deterministic structural fixes applied before validation."""
+        """Light deterministic fixes for known cascade-causing patterns.
+        Everything else is handled dynamically by the LLM in the validate-fix loop."""
         if not os.path.exists(self.bundle_path):
             raise RuntimeError(f"Bundle not found: {self.bundle_path}")
 
@@ -852,154 +854,61 @@ Generate the complete Python script now. Output ONLY Python code."""
 
         fixes = 0
 
-        # ── Fix 1: Remove request/response from entries (collection bundles) ──
-        for entry in bundle.get("entry", []):
-            if "request" in entry:
-                del entry["request"]
-                fixes += 1
-            if "response" in entry:
-                del entry["response"]
-                fixes += 1
-        if fixes:
-            print(f"  [fix] Removed request/response from entries ({fixes} fixes)")
-
-        # ── Fix 2: Ensure InsurancePlan.type has exactly 1 entry ──
+        # ── Cascade fix: Claim-Exclusion codes/display names ──
+        # Wrong display or unknown codes cause ALL other extensions to fail validation
         for entry in bundle.get("entry", []):
             resource = entry.get("resource", {})
             if resource.get("resourceType") != "InsurancePlan":
                 continue
-
-            type_arr = resource.get("type", [])
-            if len(type_arr) > 1:
-                resource["type"] = [type_arr[0]]
-                print(f"  [fix] InsurancePlan.type trimmed from {len(type_arr)} to 1")
-                fixes += 1
-
-            # Ensure the single type entry has correct structure
-            if resource.get("type"):
-                t = resource["type"][0]
-                # Remove any extension/benefit that got misplaced into type
-                for bad_key in ["extension", "benefit", "type"]:
-                    if bad_key in t and bad_key != "coding" and bad_key != "text":
-                        del t[bad_key]
-                        fixes += 1
-
-        # ── Fix 3: Fix unknown SNOMED codes ──
-        for entry in bundle.get("entry", []):
-            resource = entry.get("resource", {})
-            if resource.get("resourceType") != "InsurancePlan":
-                continue
-
-            for coverage in resource.get("coverage", []):
-                self._fix_snomed_in_codeable_concept(coverage.get("type", {}))
-                for benefit in coverage.get("benefit", []):
-                    self._fix_snomed_in_codeable_concept(benefit.get("type", {}))
-
-            for plan in resource.get("plan", []):
-                for sc in plan.get("specificCost", []):
-                    self._fix_snomed_in_codeable_concept(sc.get("category", {}))
-                    for b in sc.get("benefit", []):
-                        self._fix_snomed_in_codeable_concept(b.get("type", {}))
-
-        # ── Fix 4: Fix text.status for resources with extensions ──
-        for entry in bundle.get("entry", []):
-            resource = entry.get("resource", {})
-            if resource.get("extension"):
-                text = resource.get("text", {})
-                if text.get("status") == "generated":
-                    text["status"] = "extensions"
-                    resource["text"] = text
-                    fixes += 1
-
-        # ── Fix 5: Ensure all entries have fullUrl ──
-        for entry in bundle.get("entry", []):
-            if "fullUrl" not in entry:
-                resource = entry.get("resource", {})
-                rid = resource.get("id", str(uuid.uuid4()))
-                entry["fullUrl"] = f"urn:uuid:{rid}"
-                fixes += 1
-
-        # ── Fix 6: Ensure bundle has required fields ──
-        if "type" not in bundle:
-            bundle["type"] = "collection"
-            fixes += 1
-        if "timestamp" not in bundle:
-            bundle["timestamp"] = datetime.now().isoformat() + "Z"
-            fixes += 1
-
-        # ── Fix 7: Ensure meta.profile on bundle ──
-        if "meta" not in bundle:
-            bundle["meta"] = {}
-        if "profile" not in bundle.get("meta", {}):
-            bundle["meta"]["profile"] = ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"]
-            fixes += 1
-        if "security" not in bundle.get("meta", {}):
-            bundle["meta"]["security"] = [{
-                "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
-                "code": "V",
-                "display": "very restricted"
-            }]
-            fixes += 1
-
-        # ── Fix 8: Fix Claim-Exclusion codes and display names (CASCADE FIX) ──
-        # Invalid codes or wrong display names cause ALL other extensions to fail
-        for entry in bundle.get("entry", []):
-            resource = entry.get("resource", {})
-            if resource.get("resourceType") != "InsurancePlan":
-                continue
-            fixed_exts = []
             for ext in resource.get("extension", []):
-                url = ext.get("url", "")
-                if "Claim-Exclusion" in url:
-                    ext = self._fix_exclusion_extension(ext)
-                    if ext:
-                        fixed_exts.append(ext)
-                        fixes += 1
-                else:
-                    fixed_exts.append(ext)
-            resource["extension"] = fixed_exts
-        print(f"  [fix] Fixed Claim-Exclusion codes/display names")
-
-        # ── Fix 9: Fix InsurancePlan type display names ──
-        for entry in bundle.get("entry", []):
-            resource = entry.get("resource", {})
-            if resource.get("resourceType") != "InsurancePlan":
-                continue
-            for t in resource.get("type", []):
-                for coding in t.get("coding", []):
-                    system = coding.get("system", "")
-                    code = coding.get("code", "")
-                    if "ndhm-insuranceplan-type" in system and code in INSURANCEPLAN_TYPE_DISPLAY:
-                        correct_display = INSURANCEPLAN_TYPE_DISPLAY[code]
-                        if coding.get("display") != correct_display:
-                            coding["display"] = correct_display
-                            fixes += 1
-
-        # ── Fix 10: Fix extension structure for Claim-Condition ──
-        for entry in bundle.get("entry", []):
-            resource = entry.get("resource", {})
-            if resource.get("resourceType") != "InsurancePlan":
-                continue
-            for coverage in resource.get("coverage", []):
-                self._fix_claim_condition_extensions(coverage)
-                for benefit in coverage.get("benefit", []):
-                    self._fix_claim_condition_extensions(benefit)
-
-        # ── Fix 11: Ensure coverage.type is CodeableConcept (not array) ──
-        for entry in bundle.get("entry", []):
-            resource = entry.get("resource", {})
-            if resource.get("resourceType") != "InsurancePlan":
-                continue
-            for coverage in resource.get("coverage", []):
-                ctype = coverage.get("type")
-                if isinstance(ctype, list):
-                    coverage["type"] = ctype[0] if ctype else {"text": "Unknown"}
+                if "Claim-Exclusion" in ext.get("url", ""):
+                    self._fix_exclusion_extension(ext)
                     fixes += 1
+
+        # ── Cascade fix: Invalid SNOMED codes ──
+        # Unknown SNOMED codes cascade errors on other codings in the same resource
+        for entry in bundle.get("entry", []):
+            resource = entry.get("resource", {})
+            if resource.get("resourceType") != "InsurancePlan":
+                continue
+            for coverage in resource.get("coverage", []):
+                if self._fix_snomed_in_codeable_concept(coverage.get("type", {})):
+                    fixes += 1
+                for benefit in coverage.get("benefit", []):
+                    if self._fix_snomed_in_codeable_concept(benefit.get("type", {})):
+                        fixes += 1
+
+        # ── Fix SNOMED display names ──
+        self._fix_snomed_display_names(bundle)
 
         with open(self.bundle_path, "w", encoding="utf-8") as f:
             json.dump(bundle, f, indent=2, ensure_ascii=False)
 
-        print(f"  Total deterministic fixes applied: {fixes}")
+        print(f"  Postprocess: {fixes} cascade-prevention fixes applied")
+
+    def _fix_snomed_display_names(self, bundle: dict):
+        """Fix wrong SNOMED display names to valid ones."""
+        SNOMED_DISPLAYS = {}
+        for key, (code, display) in SNOMED_LOOKUP.items():
+            SNOMED_DISPLAYS[code] = display
+        for entry in bundle.get("entry", []):
+            resource = entry.get("resource", {})
+            if resource.get("resourceType") != "InsurancePlan":
+                continue
+            for coverage in resource.get("coverage", []):
+                self._fix_cc_display(coverage.get("type", {}), SNOMED_DISPLAYS)
+                for benefit in coverage.get("benefit", []):
+                    self._fix_cc_display(benefit.get("type", {}), SNOMED_DISPLAYS)
+
+    def _fix_cc_display(self, cc: dict, display_map: dict):
+        """Fix display name in a CodeableConcept."""
+        if not cc or not isinstance(cc, dict):
+            return
+        for coding in cc.get("coding", []):
+            if coding.get("system") == "http://snomed.info/sct":
+                code = coding.get("code", "")
+                if code in display_map:
+                    coding["display"] = display_map[code]
 
     def _fix_snomed_in_codeable_concept(self, cc: dict) -> bool:
         """Fix invalid SNOMED codes in a CodeableConcept. Returns True if fixed."""
@@ -1092,36 +1001,44 @@ Generate the complete Python script now. Output ONLY Python code."""
     # ═══════════════════════════════════════════════════════════
 
     def stage_validate_and_fix(self):
-        """Run FHIR validator, parse errors, fix them iteratively."""
+        """Dynamic validate-and-fix loop. Runs real FHIR validator, parses errors,
+        applies deterministic fixes first, then uses LLM for remaining issues."""
         if not os.path.exists(self.bundle_path):
             raise RuntimeError(f"Bundle not found: {self.bundle_path}")
 
-        max_rounds = 50
+        max_rounds = self.settings.get("pipeline", {}).get("max_validation_rounds", 40)
         prev_error_count = float('inf')
         stall_count = 0
-        comprehensive_attempts = 0
-        max_comprehensive = 8
 
         for round_num in range(max_rounds):
             print(f"\n  ── Validation round {round_num + 1}/{max_rounds} ──")
-            errors, warnings, raw_output = self._run_fhir_validator()
 
+            # Run real FHIR validator (takes 20-60 seconds)
+            errors, warnings, raw_output = self._run_fhir_validator()
             error_count = len(errors)
-            warning_count = len(warnings)
-            print(f"  Errors: {error_count}, Warnings: {warning_count}")
+            print(f"  Errors: {error_count}, Warnings: {len(warnings)}")
 
             if error_count == 0:
                 print(f"  VALIDATION PASSED: 0 errors!")
                 self.stage_results["validation_rounds"] = round_num + 1
-                self.stage_results["final_errors"] = 0
-                self.stage_results["final_warnings"] = warning_count
                 return
 
-            # ── Step A: Try deterministic fixes first ──
-            det_fixes = self._apply_deterministic_fixes(errors)
-            if det_fixes > 0:
-                print(f"  Applied {det_fixes} deterministic fixes. Re-validating...")
-                continue
+            # ── Step A: Always try postprocess first (catches structural issues) ──
+            if round_num == 0 or error_count > 20:
+                print(f"  Running postprocess to fix structural issues...")
+                self.stage_postprocess()
+                # Re-validate after postprocess
+                errors2, _, _ = self._run_fhir_validator()
+                new_count = len(errors2)
+                print(f"  After postprocess: {new_count} errors (was {error_count})")
+                if new_count == 0:
+                    print(f"  VALIDATION PASSED after postprocess!")
+                    self.stage_results["validation_rounds"] = round_num + 1
+                    return
+                if new_count < error_count:
+                    errors = errors2
+                    error_count = new_count
+                    continue
 
             # ── Step B: Check for stall ──
             if error_count >= prev_error_count:
@@ -1130,127 +1047,141 @@ Generate the complete Python script now. Output ONLY Python code."""
                 stall_count = 0
             prev_error_count = error_count
 
-            # ── Step C: Group errors and fix via LLM ──
-            error_groups = self._group_errors(errors)
-            print(f"  Unique error types: {len(error_groups)}")
+            if stall_count >= 4:
+                print(f"  Stalled at {error_count} errors for {stall_count} rounds.")
+                break
 
-            with open(self.bundle_path, "r", encoding="utf-8") as f:
-                bundle = json.load(f)
+            # ── Step C: Build smart error summary for LLM ──
+            error_summary = self._build_error_summary(errors)
+            print(f"  Error categories: {len(error_summary['groups'])}")
+            for group in error_summary["groups"][:8]:
+                print(f"    [{group['count']}x] {group['message'][:90]}")
 
-            fixes_applied = 0
-            for group_key, group_errors in sorted(error_groups.items(),
-                                                    key=lambda x: len(x[1]), reverse=True):
-                count = len(group_errors)
-                sample = group_errors[0]
-                print(f"    Fixing [{count}x]: {sample['message'][:100]}...")
+            # ── Step D: Ask LLM to generate a fix script ──
+            print(f"  Asking LLM to fix {error_count} errors...")
+            self._llm_fix_validation_errors(error_summary)
 
-                fixed_bundle = self._fix_error_group(bundle, group_errors)
-                if fixed_bundle:
-                    bundle = fixed_bundle
-                    fixes_applied += 1
-
-            if fixes_applied > 0:
-                with open(self.bundle_path, "w", encoding="utf-8") as f:
-                    json.dump(bundle, f, indent=2, ensure_ascii=False)
-                print(f"  Applied {fixes_applied} LLM fix groups. Re-validating...")
-                continue
-
-            # ── Step D: Comprehensive fix when stalled or no individual fixes work ──
-            if stall_count >= 3 or fixes_applied == 0:
-                if comprehensive_attempts < max_comprehensive:
-                    comprehensive_attempts += 1
-                    print(f"  Trying comprehensive fix (attempt {comprehensive_attempts}/{max_comprehensive})...")
-                    self._comprehensive_fix(errors, raw_output)
-                    stall_count = 0
-                else:
-                    print(f"  Max comprehensive attempts reached.")
-                    break
+            # ── Step E: Re-run postprocess after LLM fix ──
+            self.stage_postprocess()
 
         self.stage_results["validation_rounds"] = round_num + 1
         self.stage_results["final_errors"] = error_count
-        print(f"  Max validation rounds reached. {error_count} errors remain.")
+        print(f"  Completed {round_num + 1} rounds. {error_count} errors remain.")
 
-    def _apply_deterministic_fixes(self, errors: list) -> int:
-        """Apply deterministic (non-LLM) fixes for known error patterns. Returns fix count."""
+    def _build_error_summary(self, errors: list) -> dict:
+        """Build a compact, deduplicated error summary for the LLM."""
+        groups = {}
+        for err in errors:
+            # Normalize: remove UUIDs, array indices, line numbers
+            msg = err["message"]
+            norm = re.sub(r'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}', '<UUID>', msg)
+            norm = re.sub(r'\[\d+\]', '[N]', norm)
+            if norm not in groups:
+                groups[norm] = {
+                    "message": msg,
+                    "count": 0,
+                    "examples": [],
+                }
+            groups[norm]["count"] += 1
+            if len(groups[norm]["examples"]) < 3:
+                groups[norm]["examples"].append({
+                    "path": err["path"],
+                    "line": err.get("line", 0),
+                    "message": msg,
+                })
+
+        sorted_groups = sorted(groups.values(), key=lambda g: g["count"], reverse=True)
+        return {
+            "total_errors": len(errors),
+            "unique_types": len(sorted_groups),
+            "groups": sorted_groups,
+        }
+
+    def _llm_fix_validation_errors(self, error_summary: dict):
+        """LLM-driven: analyze errors, reason about fixes, generate and run a fix script."""
         with open(self.bundle_path, "r", encoding="utf-8") as f:
-            bundle = json.load(f)
+            bundle_content = f.read()
 
-        fixes = 0
-        error_messages = [e["message"] for e in errors]
+        # Provide enough of the bundle for context, but truncate large ones
+        if len(bundle_content) > 50000:
+            bundle_excerpt = bundle_content[:25000] + "\n...[truncated]...\n" + bundle_content[-20000:]
+        else:
+            bundle_excerpt = bundle_content
 
-        # Fix: type cardinality (max allowed = 1)
-        if any("InsurancePlan.type: max allowed = 1" in m for m in error_messages):
-            for entry in bundle.get("entry", []):
-                r = entry.get("resource", {})
-                if r.get("resourceType") == "InsurancePlan" and len(r.get("type", [])) > 1:
-                    r["type"] = [r["type"][0]]
-                    fixes += 1
+        example = self._read_file(
+            os.path.join(self.examples_dir, "Bundle-InsurancePlanBundle-example-01.json")
+        )
 
-        # Fix: Unknown SNOMED codes
-        if any("Unknown code" in m and "snomed" in m.lower() for m in error_messages):
-            for entry in bundle.get("entry", []):
-                r = entry.get("resource", {})
-                if r.get("resourceType") != "InsurancePlan":
-                    continue
-                for coverage in r.get("coverage", []):
-                    if self._fix_snomed_in_codeable_concept(coverage.get("type", {})):
-                        fixes += 1
-                    for benefit in coverage.get("benefit", []):
-                        if self._fix_snomed_in_codeable_concept(benefit.get("type", {})):
-                            fixes += 1
+        # Build error text — show each unique type with count and sample paths
+        error_lines = []
+        for group in error_summary["groups"][:30]:
+            error_lines.append(f"[{group['count']}x] {group['message']}")
+            for ex in group["examples"][:2]:
+                error_lines.append(f"      at {ex['path']} (line {ex['line']})")
+        error_text = "\n".join(error_lines)
 
-        # Fix: bdl-3 / bdl-4 (request/response in collection bundle)
-        if any("bdl-3" in m or "bdl-4" in m for m in error_messages):
-            for entry in bundle.get("entry", []):
-                if "request" in entry:
-                    del entry["request"]
-                    fixes += 1
-                if "response" in entry:
-                    del entry["response"]
-                    fixes += 1
+        system = (
+            "You are a FHIR R4 expert specializing in NHCX/ABDM-compliant InsurancePlan bundles. "
+            "You have deep knowledge of FHIR resource structures, extensions, CodeSystems, and validation rules. "
+            "Analyze the validation errors, understand their root causes, and generate a Python script "
+            "that fixes ALL of them while preserving every piece of data. "
+            "Think step by step about each error category before writing the fix. "
+            "Output ONLY the complete Python script — no markdown blocks, no explanations."
+        )
 
-        # Fix: Wrong display names and unknown codes in exclusions (causes cascade failures!)
-        if any("Wrong Display Name" in m or ("Unknown code" in m and "ndhm-claim-exclusion" in m) for m in error_messages):
-            for entry in bundle.get("entry", []):
-                r = entry.get("resource", {})
-                if r.get("resourceType") != "InsurancePlan":
-                    continue
-                fixed_exts = []
-                for ext in r.get("extension", []):
-                    if "Claim-Exclusion" in ext.get("url", ""):
-                        fixed = self._fix_exclusion_extension(ext)
-                        if fixed:
-                            fixed_exts.append(fixed)
-                            fixes += 1
-                    else:
-                        fixed_exts.append(ext)
-                r["extension"] = fixed_exts
-                # Also fix InsurancePlan type display
-                for t in r.get("type", []):
-                    for coding in t.get("coding", []):
-                        code = coding.get("code", "")
-                        if code in INSURANCEPLAN_TYPE_DISPLAY:
-                            correct = INSURANCEPLAN_TYPE_DISPLAY[code]
-                            if coding.get("display") != correct:
-                                coding["display"] = correct
-                                fixes += 1
+        user = f"""I ran the FHIR HL7 validator on an NHCX InsurancePlanBundle and got {error_summary['total_errors']} errors across {error_summary['unique_types']} unique types.
 
-        # Fix: extension not allowed at this point
-        if any("extension" in m and "not allowed" in m for m in error_messages):
-            for entry in bundle.get("entry", []):
-                r = entry.get("resource", {})
-                if r.get("resourceType") != "InsurancePlan":
-                    continue
-                for t in r.get("type", []):
-                    if "extension" in t:
-                        del t["extension"]
-                        fixes += 1
+BUNDLE_PATH = r"{self.bundle_path}"
 
-        if fixes > 0:
-            with open(self.bundle_path, "w", encoding="utf-8") as f:
-                json.dump(bundle, f, indent=2, ensure_ascii=False)
+═══ VALIDATION ERRORS ═══
+{error_text}
 
-        return fixes
+═══ REFERENCE EXAMPLE (this bundle validates with 0 errors — study its structure) ═══
+{example[:15000]}
+
+═══ CURRENT BUNDLE (to be fixed) ═══
+{bundle_excerpt}
+
+Generate a Python script that:
+1. Reads the bundle from BUNDLE_PATH
+2. Analyzes and fixes ALL the errors listed above
+3. Uses the reference example as a guide for correct FHIR structure
+4. Preserves ALL data (coverages, exclusions, benefits, plans, organization info)
+5. Writes the corrected bundle back to BUNDLE_PATH
+
+The script must handle each error type intelligently. For example:
+- If a property is "Unrecognized", understand where it should go based on FHIR spec
+- If a code is "Unknown", either fix it to a valid code or convert to text-only
+- If a required element is missing, add it with appropriate values
+- If an array should be an object (or vice versa), restructure it correctly
+
+Output ONLY Python code."""
+
+        response = self._llm_call(system, user, max_tokens=16384, temperature=0.15)
+        code = self._extract_code_from_response(response)
+
+        if not code:
+            print(f"  LLM failed to generate fix script")
+            return
+
+        script_path = os.path.join(self.generated_dir, "validation_fix.py")
+        with open(script_path, "w", encoding="utf-8") as f:
+            f.write(code)
+
+        returncode, stdout, stderr = self._run_command(f"python3 {script_path}", timeout=120)
+        if returncode == 0:
+            print(f"  Fix script ran successfully")
+        else:
+            print(f"  Fix script error: {stderr[:200]}")
+            fixed_code = self._llm_fix_python_error(code, stderr)
+            if fixed_code:
+                with open(script_path, "w", encoding="utf-8") as f:
+                    f.write(fixed_code)
+                rc2, _, se2 = self._run_command(f"python3 {script_path}", timeout=120)
+                if rc2 == 0:
+                    print(f"  Fix script ran after retry")
+                else:
+                    print(f"  Fix script failed after retry: {se2[:150]}")
 
     def _run_fhir_validator(self) -> tuple:
         """Run the FHIR validator and return (errors, warnings, raw_output)."""
@@ -1272,8 +1203,8 @@ Generate the complete Python script now. Output ONLY Python code."""
         warnings = []
 
         for line in raw_output.split('\n'):
-            line = line.strip()
             line = re.sub(r'\033\[[0-9;]*m', '', line)
+            line = line.strip()
             if not line:
                 continue
 
@@ -1324,346 +1255,6 @@ Generate the complete Python script now. Output ONLY Python code."""
 
         return errors, warnings, raw_output
 
-    def _group_errors(self, errors: list) -> dict:
-        """Group errors by their normalized message (ignoring UUIDs, indices, line numbers)."""
-        groups = {}
-        for err in errors:
-            # Normalize the message for grouping
-            normalized = err["message"]
-            normalized = re.sub(r'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}', '<UUID>', normalized)
-            normalized = re.sub(r'\[\d+\]', '[N]', normalized)
-
-            if normalized not in groups:
-                groups[normalized] = []
-            groups[normalized].append(err)
-
-        return groups
-
-    def _fix_error_group(self, bundle: dict, error_group: list) -> dict:
-        """Fix a group of similar errors in the bundle via LLM."""
-        sample_error = error_group[0]
-
-        section_json = self._extract_section_at_path(bundle, sample_error["path"])
-        if section_json is None:
-            section_json = "Could not extract section"
-        else:
-            section_json = json.dumps(section_json, indent=2)
-            if len(section_json) > 12000:
-                section_json = section_json[:12000] + "\n... [truncated]"
-
-        error_details = f"Error: {sample_error['message']}\n"
-        error_details += f"Path: {sample_error['path']}\n"
-        error_details += f"Occurrences: {len(error_group)}\n"
-        if len(error_group) > 1:
-            error_details += "All affected paths:\n"
-            for e in error_group[:15]:
-                error_details += f"  - {e['path']}: {e['message'][:120]}\n"
-
-        rulebook_hint = self._get_rulebook_hint_for_error(sample_error)
-
-        # Get relevant example section for reference
-        example_hint = ""
-        if "coverage" in sample_error["path"].lower():
-            example = self._read_file(
-                os.path.join(self.examples_dir, "Bundle-InsurancePlanBundle-example-01.json")
-            )
-            try:
-                ex_bundle = json.loads(example)
-                for e in ex_bundle.get("entry", []):
-                    if e.get("resource", {}).get("resourceType") == "InsurancePlan":
-                        covs = e["resource"].get("coverage", [])
-                        if covs:
-                            example_hint = f"\nEXAMPLE of correct coverage structure (0 errors):\n{json.dumps(covs[0], indent=2)}"
-                        break
-            except Exception:
-                pass
-
-        system = (
-            "You are a FHIR validation error fixer for NHCX InsurancePlan bundles. "
-            "Fix the error while preserving ALL data. Never remove coverages, benefits, or exclusions. "
-            "Output ONLY valid JSON — no markdown, no explanations."
-        )
-
-        user = f"""Fix this FHIR validation error:
-
-{error_details}
-
-CURRENT JSON at the error location:
-{section_json}
-
-{rulebook_hint}
-{example_hint}
-
-RULES:
-- Do NOT remove any data — fix structure only
-- SNOMED codes: only use these valid codes: 737481003, 710967003, 409972000, 49122002, 737850002, 105461009, 309904001, 87612001, 24099007, 224663004, 60689008, 373784001, 11429006
-- If a SNOMED code is invalid, replace coding with text-only: {{"text": "description"}}
-- InsurancePlan.type must have exactly 1 entry
-- Claim-Condition extension format: {{"extension": [{{"url": "claim-condition", "valueString": "..."}}], "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"}}
-- text.status should be "extensions" if resource has extensions
-
-Return a JSON object with:
-{{
-  "fix_type": "replace_section",
-  "path": "the JSON path to fix (e.g., entry[0].resource.coverage[0])",
-  "corrected_value": <the corrected JSON value>
-}}"""
-
-        response = self._llm_call(system, user, temperature=0.1)
-        fix = self._extract_json_from_response(response)
-
-        if fix and "corrected_value" in fix:
-            try:
-                return self._apply_fix_to_bundle(bundle, fix)
-            except Exception as e:
-                logger.warning(f"Failed to apply fix: {e}")
-                return None
-
-        return None
-
-    def _comprehensive_fix(self, errors: list, raw_output: str):
-        """When individual fixes stall, try a comprehensive approach using Python script."""
-        with open(self.bundle_path, "r", encoding="utf-8") as f:
-            bundle_content = f.read()
-
-        if len(bundle_content) > 60000:
-            bundle_excerpt = bundle_content[:30000] + "\n... [middle truncated] ...\n" + bundle_content[-30000:]
-        else:
-            bundle_excerpt = bundle_content
-
-        # Read the example for reference
-        example = self._read_file(
-            os.path.join(self.examples_dir, "Bundle-InsurancePlanBundle-example-01.json")
-        )
-
-        error_summary = []
-        seen = set()
-        for err in errors:
-            key = err["message"][:120]
-            if key not in seen:
-                seen.add(key)
-                error_summary.append(f"  [{err['severity']}] {err['path']}: {err['message']}")
-        error_text = "\n".join(error_summary[:40])
-
-        system = (
-            "You are a FHIR expert fixing NHCX InsurancePlanBundle validation errors. "
-            "Generate a Python script that reads the bundle JSON, fixes ALL the listed errors, "
-            "and writes the corrected bundle back. "
-            "CRITICAL: The script must preserve ALL data — every coverage, exclusion, benefit, and plan. "
-            "Only fix structural/coding issues. Output ONLY the Python code."
-        )
-
-        user = f"""Fix ALL these validation errors by generating a Python script:
-
-CRITICAL: Use this EXACT path for reading and writing the bundle (do NOT construct your own):
-BUNDLE_PATH = r"{self.bundle_path}"
-
-ERRORS:
-{error_text}
-
-RULES:
-- InsurancePlan.type array MUST have exactly 1 entry
-- Bundle entries MUST NOT have "request" or "response" (it is a collection bundle)
-- SNOMED codes must be valid — if not, replace with text-only CodeableConcept
-- Claim-Condition extension structure: {{"extension": [{{"url": "claim-condition", "valueString": "..."}}], "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"}}
-- Claim-Condition is allowed on: InsurancePlan.coverage, InsurancePlan.coverage.benefit, InsurancePlan.plan
-- Claim-Condition is NOT allowed on: InsurancePlan.type
-- text.status should be "extensions" if resource has extensions, "generated" otherwise
-- All resources must have meta.profile
-
-VALID SNOMED CODES (only these): 737481003, 710967003, 409972000, 49122002, 737850002, 105461009, 309904001, 87612001, 24099007, 224663004, 60689008, 373784001, 11429006, 165340005, 118189007, 133906008
-
-REFERENCE EXAMPLE (passes validation with 0 errors):
-{example[:15000]}
-
-CURRENT BUNDLE:
-{bundle_excerpt}
-
-Generate a Python script that:
-1. Reads the bundle from BUNDLE_PATH = r"{self.bundle_path}"
-2. Fixes ALL the listed errors
-3. Preserves ALL existing data (coverages, benefits, exclusions, plans)
-4. Writes corrected JSON back to the SAME path
-
-Output ONLY Python code."""
-
-        response = self._llm_call(system, user, max_tokens=16384, temperature=0.1)
-        code = self._extract_code_from_response(response)
-
-        if code:
-            script_path = os.path.join(self.generated_dir, "comprehensive_fix.py")
-            with open(script_path, "w", encoding="utf-8") as f:
-                f.write(code)
-
-            returncode, stdout, stderr = self._run_command(f"python3 {script_path}", timeout=120)
-            if returncode == 0:
-                # Verify the fix preserved data
-                try:
-                    with open(self.bundle_path) as f:
-                        fixed_bundle = json.load(f)
-
-                    ip_resource = None
-                    for e in fixed_bundle.get("entry", []):
-                        if e.get("resource", {}).get("resourceType") == "InsurancePlan":
-                            ip_resource = e["resource"]
-                            break
-
-                    if ip_resource:
-                        n_cov = len(ip_resource.get("coverage", []))
-                        n_ext = len(ip_resource.get("extension", []))
-                        print(f"  Comprehensive fix applied (coverages={n_cov}, extensions={n_ext})")
-                    else:
-                        print(f"  Comprehensive fix applied")
-                except (json.JSONDecodeError, KeyError):
-                    print(f"  Comprehensive fix produced invalid JSON — reverting")
-            else:
-                print(f"  Comprehensive fix script failed: {stderr[:200]}")
-                # Try to fix the script error
-                fixed_code = self._llm_fix_python_error(code, stderr)
-                if fixed_code:
-                    with open(script_path, "w", encoding="utf-8") as f:
-                        f.write(fixed_code)
-                    rc2, _, se2 = self._run_command(f"python3 {script_path}", timeout=120)
-                    if rc2 == 0:
-                        print(f"  Comprehensive fix applied (after script fix)")
-                    else:
-                        print(f"  Comprehensive fix script still failed: {se2[:200]}")
-
-    def _extract_section_at_path(self, bundle: dict, fhir_path: str):
-        """Navigate the bundle JSON to extract the section at a FHIR path."""
-        try:
-            path = fhir_path
-            path = re.sub(r'\.ofType\([^)]+\)', '', path)
-            # Remove /*ResourceType/UUID*/ annotations from validator paths
-            path = re.sub(r'/\*[^*]+\*/', '', path)
-            parts = re.split(r'\.', path)
-
-            current = bundle
-            for part in parts:
-                if part in ('Bundle', '') or part.startswith('resource'):
-                    if part == 'resource' and isinstance(current, dict) and 'resource' in current:
-                        current = current['resource']
-                    continue
-
-                match = re.match(r'(\w+)\[(\d+)\]', part)
-                if match:
-                    key = match.group(1)
-                    idx = int(match.group(2))
-                    if isinstance(current, dict) and key in current:
-                        current = current[key]
-                        if isinstance(current, list) and idx < len(current):
-                            current = current[idx]
-                        else:
-                            return current
-                    else:
-                        return None
-                elif isinstance(current, dict) and part in current:
-                    current = current[part]
-                else:
-                    return None
-
-            return current
-        except Exception:
-            return None
-
-    def _apply_fix_to_bundle(self, bundle: dict, fix: dict) -> dict:
-        """Apply a fix to the bundle JSON."""
-        fixed_bundle = copy.deepcopy(bundle)
-        path_str = fix.get("path", "")
-        corrected = fix["corrected_value"]
-
-        if not path_str:
-            return None
-
-        # Navigate to parent and set the value
-        parts = re.split(r'\.', path_str)
-        current = fixed_bundle
-
-        for i, part in enumerate(parts[:-1]):
-            match = re.match(r'(\w+)\[(\d+)\]', part)
-            if match:
-                key = match.group(1)
-                idx = int(match.group(2))
-                current = current[key][idx]
-            elif part in current:
-                current = current[part]
-            else:
-                return None
-
-        # Set the last part
-        last_part = parts[-1]
-        last_match = re.match(r'(\w+)\[(\d+)\]', last_part)
-        if last_match:
-            key = last_match.group(1)
-            idx = int(last_match.group(2))
-            if key in current and isinstance(current[key], list) and idx < len(current[key]):
-                current[key][idx] = corrected
-        else:
-            current[last_part] = corrected
-
-        return fixed_bundle
-
-    def _get_rulebook_hint_for_error(self, error: dict) -> str:
-        """Get relevant rulebook section for an error."""
-        path = error["path"]
-        message = error["message"]
-
-        hints = []
-
-        if "InsurancePlan" in path or "InsurancePlan" in message:
-            # Read relevant InsurancePlan rulebook section
-            try:
-                rb = self._load_json_file(
-                    os.path.join(self.rulebooks_dir, "StructureDefinition-InsurancePlan_updated.json")
-                )
-                if rb and "elements" in rb:
-                    relevant = []
-                    search_terms = []
-                    if "coverage" in path.lower():
-                        search_terms = ["InsurancePlan.coverage"]
-                    elif "plan" in path.lower():
-                        search_terms = ["InsurancePlan.plan"]
-                    elif "extension" in path.lower():
-                        search_terms = ["InsurancePlan.extension"]
-                    else:
-                        search_terms = ["InsurancePlan"]
-
-                    for elem in rb["elements"]:
-                        if any(term in elem.get("path", "") for term in search_terms):
-                            relevant.append(elem)
-
-                    if relevant:
-                        hints.append(f"RELEVANT RULEBOOK CONSTRAINTS:\n{json.dumps(relevant[:5], indent=2)}")
-            except Exception:
-                pass
-
-        if "Organization" in path:
-            try:
-                rb = self._load_json_file(
-                    os.path.join(self.rulebooks_dir, "StructureDefinition-Organization_updated.json")
-                )
-                if rb and "elements" in rb:
-                    relevant = [e for e in rb["elements"] if "Organization" in e.get("path", "")][:5]
-                    if relevant:
-                        hints.append(f"RELEVANT RULEBOOK CONSTRAINTS:\n{json.dumps(relevant, indent=2)}")
-            except Exception:
-                pass
-
-        if "Claim-Condition" in message:
-            hints.append(
-                "RULE: Claim-Condition extension MUST be placed on InsurancePlan.coverage.benefit, "
-                "NOT directly on InsurancePlan.coverage."
-            )
-
-        if "profile" in message.lower():
-            hints.append(
-                "RULE: All resources must have meta.profile. Use:\n"
-                '  InsurancePlan: ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"]\n'
-                '  Organization: ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"]\n'
-                '  Bundle: ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"]'
-            )
-
-        return "\n\n".join(hints) if hints else ""
 
     # ═══════════════════════════════════════════════════════════
     # STAGE 4: VERIFY COMPLETENESS
