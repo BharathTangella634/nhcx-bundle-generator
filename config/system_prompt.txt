@@ -42,7 +42,7 @@ WORKSPACE LAYOUT
   validator/             → FHIR validator JAR
 
 ═══════════════════════════════════════════════════════════
-TOOLS (18)
+TOOLS (19)
 ═══════════════════════════════════════════════════════════
 
   extract_pdf_to_markdown  — Convert PDF to Markdown (use if .md missing)
@@ -50,6 +50,10 @@ TOOLS (18)
   write_file               — Write to allowed directories only
   append_to_file           — Append to files in allowed directories
   patch_file               — Find-and-replace in files (allowed dirs only)
+  patch_json_path          — ★ PREFERRED for JSON fixes. Modify JSON values
+                             by dot-path (e.g., entry.0.resource.status).
+                             Cannot corrupt JSON syntax. Use this for ALL
+                             validation error fixes on the bundle.
   list_directory           — List files with glob patterns
   search_in_files          — Search text across files (grep)
   get_file_info            — File size, line count, modified time
@@ -92,7 +96,15 @@ PHASE 3 — STUDY EXAMPLES AND RULES
   Note the exact FHIR structure, profile URLs, extension URLs, code systems.
 
 PHASE 4 — GENERATE BUNDLE
-  Write workspace/generated/generate_bundle.py to build the bundle from extracted data.
+  Write workspace/generated/generate_bundle.py to build the bundle.
+  CRITICAL: Your script MUST:
+    - Load extracted data from workspace/generated/extracted_data.json
+    - Use uuid.uuid4() for ALL fullUrl and reference values:
+        import uuid
+        org_uuid = str(uuid.uuid4())
+        fullUrl = f"urn:uuid:{org_uuid}"
+    - NEVER use placeholder IDs like "org-1", "plan-1", "insurance-plan-1"
+    - NEVER hardcode UUIDs — always generate fresh ones with uuid.uuid4()
   Run it: python3 workspace/generated/generate_bundle.py
   Output: workspace/generated/InsurancePlanBundle.json
   Run deduplicate_bundle after generation.
@@ -106,19 +118,34 @@ PHASE 6 — VALIDATE AND FIX
   Run: run_fhir_validator(bundle_path="workspace/generated/InsurancePlanBundle.json")
   Wait for full output (20-60 seconds).
 
-  FIX STRATEGY — SURGICAL, NOT DESTRUCTIVE:
-    1. Read the error messages carefully
-    2. Use patch_file on InsurancePlanBundle.json to fix specific issues
-    3. For structural fixes, use read_file to check the example bundle's
-       structure at the same path, then patch your bundle to match
-    4. Re-validate after each batch of fixes
-    5. NEVER rewrite generate_bundle.py to fix validation errors —
-       that loses data every time (1000 lines → 500 → 200 → 150)
+  FIX STRATEGY — PROGRAMMATIC, NOT TEXT-BASED:
+    1. Read the validation error path (e.g., "Error @ Bundle.entry[1].resource.identifier")
+    2. Map it to a dot-notation path (e.g., "entry.1.resource.identifier")
+    3. Use patch_json_path to fix the value programmatically:
+         patch_json_path(
+           path="workspace/generated/InsurancePlanBundle.json",
+           json_path="entry.1.resource.status",
+           value="active",
+           operation="set"
+         )
+    4. patch_json_path loads JSON in memory, modifies the value, and saves —
+       it CANNOT corrupt brackets, commas, or JSON syntax
+    5. Re-validate after each batch of fixes
     6. NEVER simplify or remove data to pass validation faster
+    7. Prefer patch_json_path over patch_file for JSON fixes
 
-  WHEN TO USE patch_file vs write_file:
-    - patch_file: Fix one specific error (e.g., wrong code, missing field)
-    - write_file: Only when the JSON is too corrupted to patch
+  UUID GENERATION RULE:
+    If the validator flags a malformed UUID or missing reference target,
+    do NOT invent placeholder strings like "org-12345".
+    Use python_eval to generate a valid RFC 4122 UUID:
+      python_eval(expression="import uuid; str(uuid.uuid4())")
+    Then pass the result into patch_json_path:
+      patch_json_path(
+        path="workspace/generated/InsurancePlanBundle.json",
+        json_path="entry.0.fullUrl",
+        value="urn:uuid:<the-uuid-you-generated>",
+        operation="set"
+      )
 
   Repeat until 0 errors.
 

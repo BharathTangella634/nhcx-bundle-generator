@@ -29,6 +29,7 @@ class ToolRegistry:
             "write_file": self.write_file,
             "append_to_file": self.append_to_file,
             "patch_file": self.patch_file,
+            "patch_json_path": self.patch_json_path,
             "list_directory": self.list_directory,
             "search_in_files": self.search_in_files,
             "get_file_info": self.get_file_info,
@@ -149,7 +150,9 @@ class ToolRegistry:
         return f"Appended {len(content)} chars to {path}"
 
     def patch_file(self, path: str, search_text: str, replace_text: str) -> str:
-        """Find and replace text in a file. Only allowed in: workspace/generated/, workspace/scratch/, logs/."""
+        """Find and replace text in a file. Only allowed in: workspace/generated/, workspace/scratch/, logs/.
+        WARNING: For JSON files, prefer patch_json_path — it modifies values programmatically
+        without risking bracket/comma corruption."""
         resolved = self._resolve_write_path(path)
         if not os.path.exists(resolved):
             return f"ERROR: File not found: {path}"
@@ -162,6 +165,120 @@ class ToolRegistry:
         with open(resolved, "w", encoding="utf-8") as f:
             f.write(new_content)
         return f"Patched {count} occurrence(s) in {path}"
+
+    def patch_json_path(self, path: str, json_path: str, value: str, operation: str = "set") -> str:
+        """Programmatically modify a specific value in a JSON file using dot-notation path.
+        This is SAFER than patch_file for JSON — it loads/saves via json module so
+        brackets, commas, and syntax are always valid.
+
+        Operations:
+          set     — set the value at json_path (value is parsed as JSON)
+          delete  — remove the key/element at json_path (value is ignored)
+          append  — append value (parsed as JSON) to the array at json_path
+        """
+        resolved = self._resolve_write_path(path)
+        if not os.path.exists(resolved):
+            return f"ERROR: File not found: {path}"
+
+        with open(resolved, "r", encoding="utf-8") as f:
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError as e:
+                return f"ERROR: File contains invalid JSON: {e}"
+
+        keys = json_path.replace("[", ".").replace("]", "").split(".")
+        keys = [k for k in keys if k]
+
+        if not keys:
+            return "ERROR: json_path cannot be empty"
+
+        # Parse the value as JSON (supports strings, numbers, objects, arrays, booleans, null).
+        # Handles common LLM formatting issues:
+        #   - Double-escaped quotes: "\"active\"" → "active"
+        #   - Bare strings without quotes: active → "active"
+        parsed_value = None
+        if operation != "delete":
+            if isinstance(value, str):
+                stripped = value.strip()
+                # Fix double-escaped string literals: "\"active\"" or '\"active\"'
+                if stripped.startswith('\\"') and stripped.endswith('\\"'):
+                    stripped = '"' + stripped[2:-2] + '"'
+                # Try JSON parse first
+                try:
+                    parsed_value = json.loads(stripped)
+                except (json.JSONDecodeError, TypeError):
+                    # Bare string (no quotes) — treat as string value
+                    parsed_value = stripped
+            else:
+                parsed_value = value
+
+        # Navigate to the parent of the target key
+        current = data
+        for i, key in enumerate(keys[:-1]):
+            try:
+                if isinstance(current, list):
+                    current = current[int(key)]
+                elif isinstance(current, dict):
+                    if key not in current and operation == "set":
+                        current[key] = {}
+                    current = current[key]
+                else:
+                    return f"ERROR: Cannot navigate '{key}' — found {type(current).__name__}"
+            except (KeyError, IndexError, ValueError) as e:
+                return f"ERROR: Path '{json_path}' failed at '{key}': {e}"
+
+        final_key = keys[-1]
+
+        try:
+            if operation == "set":
+                if isinstance(current, list):
+                    idx = int(final_key)
+                    if idx < len(current):
+                        current[idx] = parsed_value
+                    else:
+                        return f"ERROR: Array index {idx} out of range (length={len(current)})"
+                elif isinstance(current, dict):
+                    current[final_key] = parsed_value
+                else:
+                    return f"ERROR: Cannot set on {type(current).__name__}"
+
+            elif operation == "delete":
+                if isinstance(current, list):
+                    idx = int(final_key)
+                    if idx < len(current):
+                        current.pop(idx)
+                    else:
+                        return f"ERROR: Array index {idx} out of range (length={len(current)})"
+                elif isinstance(current, dict):
+                    if final_key in current:
+                        del current[final_key]
+                    else:
+                        return f"ERROR: Key '{final_key}' not found"
+                else:
+                    return f"ERROR: Cannot delete from {type(current).__name__}"
+
+            elif operation == "append":
+                if isinstance(current, dict):
+                    target = current.get(final_key)
+                elif isinstance(current, list):
+                    target = current[int(final_key)]
+                else:
+                    target = None
+                if not isinstance(target, list):
+                    return f"ERROR: '{json_path}' is not an array — cannot append"
+                target.append(parsed_value)
+
+            else:
+                return f"ERROR: Unknown operation '{operation}'. Use: set, delete, append"
+
+        except (ValueError, TypeError) as e:
+            return f"ERROR: Operation failed: {e}"
+
+        with open(resolved, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+
+        size = os.path.getsize(resolved)
+        return f"OK: {operation} at '{json_path}' in {path} ({size} bytes)"
 
     # ═══════════════════════════════════════════
     # DISCOVERY & SEARCH
@@ -763,7 +880,7 @@ class ToolRegistry:
                 "type": "function",
                 "function": {
                     "name": "patch_file",
-                    "description": "Find and replace specific text in a file. ONLY edits files in: workspace/generated/, workspace/scratch/, logs/. Use for surgical fixes to the bundle JSON.",
+                    "description": "Find and replace specific text in a file. ONLY edits files in: workspace/generated/, workspace/scratch/, logs/. WARNING: For JSON files, prefer patch_json_path instead — it prevents bracket/comma corruption.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -772,6 +889,23 @@ class ToolRegistry:
                             "replace_text": {"type": "string", "description": "Text to replace with"},
                         },
                         "required": ["path", "search_text", "replace_text"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "patch_json_path",
+                    "description": "PREFERRED tool for fixing JSON validation errors. Programmatically modifies a specific value in a JSON file using dot-notation path (e.g., 'entry.0.resource.status'). Unlike patch_file, this CANNOT corrupt JSON syntax — it loads via json.load, modifies in memory, and saves via json.dump. Operations: 'set' (change a value), 'delete' (remove a key/element), 'append' (add to an array).",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "description": "Path to the JSON file"},
+                            "json_path": {"type": "string", "description": "Dot-notation path to the target value (e.g., 'entry.0.fullUrl', 'entry.1.resource.coverage.0.type.coding.0.code')"},
+                            "value": {"type": "string", "description": "New value as JSON string (e.g., '\"active\"', '42', '{\"system\":\"http://...\",\"code\":\"x\"}', '[1,2,3]'). Ignored for delete."},
+                            "operation": {"type": "string", "enum": ["set", "delete", "append"], "description": "Operation: set (default), delete, or append to array"},
+                        },
+                        "required": ["path", "json_path", "value"],
                     },
                 },
             },

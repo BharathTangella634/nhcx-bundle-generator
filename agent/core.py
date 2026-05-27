@@ -316,6 +316,21 @@ class ReActAgent:
             print(f"  🔧 {tool_name}({self._format_args(tool_args)})")
             self._log_trace(f"  TOOL: {tool_name}({json.dumps(tool_args, default=str)[:300]})\n")
 
+            # Guide the LLM toward patch_json_path for validation fixes.
+            # No hard blocks — allow writes but track data integrity.
+            if self.validator_run_count > 0:
+                if tool_name == "write_file":
+                    target = str(tool_args.get("path", "") or tool_args.get("file_path", ""))
+                    if "generate_bundle" in target:
+                        bundle_path = os.path.join(self.project_root, "workspace", "generated", "InsurancePlanBundle.json")
+                        if os.path.exists(bundle_path):
+                            self._pre_regen_bundle_size = os.path.getsize(bundle_path)
+                        print(f"  ⚠️  Overwriting generate_bundle.py post-validation — tracking data integrity")
+                elif tool_name == "patch_file":
+                    target = str(tool_args.get("path", ""))
+                    if target.endswith(".json"):
+                        print(f"  ⚠️  Hint: prefer patch_json_path for JSON files (safer than text replace)")
+
             # Execute with per-tool error isolation
             start = time.time()
             try:
@@ -328,6 +343,26 @@ class ReActAgent:
             preview = result[:200].replace("\n", " ")
             print(f"  📋 → {preview}{'...' if len(result) > 200 else ''} ({elapsed:.1f}s)")
             self._log_trace(f"  RESULT ({elapsed:.1f}s): {result[:500]}\n")
+
+            # Data integrity check: if generate_bundle.py just ran, check bundle size
+            if tool_name == "run_terminal" and "generate_bundle" in str(tool_args.get("command", "")):
+                bundle_path = os.path.join(self.project_root, "workspace", "generated", "InsurancePlanBundle.json")
+                pre_size = getattr(self, '_pre_regen_bundle_size', 0)
+                if os.path.exists(bundle_path):
+                    new_size = os.path.getsize(bundle_path)
+                    if pre_size > 0 and new_size < pre_size * 0.5:
+                        shrink_warning = (
+                            f"⚠️ DATA LOSS DETECTED: Bundle shrank from {pre_size} bytes to {new_size} bytes "
+                            f"({100 - (new_size*100//pre_size)}% smaller). The regenerated script likely lost data. "
+                            f"Read workspace/generated/extraction_notes.txt and compare against the bundle. "
+                            f"Add back any missing coverages, exclusions, plans, and extensions using "
+                            f"patch_json_path on the bundle JSON."
+                        )
+                        print(f"  ⚠️  DATA LOSS: {pre_size}B → {new_size}B")
+                        self.context_manager.add_tool_result(
+                            tool_id + "_integrity", "system", shrink_warning
+                        )
+                    self._pre_regen_bundle_size = new_size
 
             # Track validator results to prevent false completion
             if tool_name == "run_fhir_validator":

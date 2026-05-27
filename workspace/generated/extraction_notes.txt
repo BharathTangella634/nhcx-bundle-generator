@@ -1,0 +1,135 @@
+# Extraction Notes: Universal Sompo General Insurance Policy
+
+## Insurer Details
+- Name: Universal Sompo General Insurance Co Ltd
+- IRDAI Registration Number: NOT FOUND IN PDF
+- Address: NOT FOUND IN PDF
+- Contact: 
+  - Website: www.universalsompo.com
+  - Toll Free: 1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or chargeable numbers at +91-22-27639800/+91-22-39133700
+  - Email: contactus@universalsompo.com
+  - Fax: (022) 39171419
+  - Courier: Universal Sompo General Insurance Co. Ltd, Unit No- 601 & 602 A Wing, 6th Floor, Reliable Tech Park, Cloud City Campus; Thane- Belapur Road, Airoli- 400708
+
+## Policy Details
+- Product Type: Individual/ Floater
+- Policy Period: Standard Product shall be offered with a policy tenure of one year (12 Months)
+- Sum Insured: Rs 10,000/- (Ten Thousand) to 2,00,000/- (Two Lakh) (in the multiples of ten thousand)
+- Eligibility: 
+  - Minimum entry age shall be 18 years for principal insured
+  - Maximum age at entry shall not be less than 65 years for all the insured members including principal insured
+  - Policy can be availed for Self and the following family members:
+    i. Legally wedded spouse.
+    ii. Parents and Parents-in-law.
+    iii. Dependent Children (i.e. natural or legally adopted) between the day 1 of age to 25 years. If the child above 18 years of age is financially independent, he or she shall be ineligible.
+
+## Plan Variants
+- Individual basis - SI shall apply to each individual family member
+- Floater basis - SI shall apply to the entire family
+
+## Coverages
+### Hospitalization Benefit
+- Lump sum benefit equal to 100% of the Sum Insured (excluding the amount paid under diagnosis cover, if any) shall be payable on positive diagnosis (through laboratory examination and confirmed by the medical practitioner) of any of the following vector borne disease (s) if insured is hospitalized for a minimum period of seventy-two (72) consecutive hours.
+- Covered diseases:
+  i. Dengue fever
+  ii. Malaria
+  iii. Filaria (Lymphatic Filariasis)
+  iv. Kala-azar
+  v. Chikungunya
+  vi. Japanese Encephalitis
+  vii. Zika Virus
+
+### Diagnosis Cover
+- 2% of the sum insured shall be payable on positive diagnosis (through laboratory examination and confirmed by the medical practitioner) of every covered vector borne disease on the first diagnosis during the Cover Period, subject to policy terms and conditions.
+- The Policyholder is entitled for payments under 'diagnosis cover' for each disease only once in each of the policy years.
+
+## Sub-limits
+- Diagnosis cover: 2% of sum insured
+
+## Exclusions
+### General Exclusions
+- Claim for any illness/disease other than for vector borne diseases covered under the policy.
+- Diagnosis / Treatment outside the geographical limits of India.
+- Any laboratory test not recognized/ approved in India for diagnosis of the covered vector borne diseases is not covered.
+- Unproven Treatments: Expenses related to any unproven treatment, services and supplies for or in connection with any treatment. Unproven treatments are treatments, procedures or supplies that lack significant medical documentation to support their effectiveness.
+
+### Specific to Section 4.1
+- Domiciliary Hospitalization, Day care OPD treatment.
+- Investigation & Evaluation:
+  a) Expenses related to any admission primarily for diagnostics and evaluation purposes.
+  b) Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment
+- Rest Cure, rehabilitation and respite care:
+  Expenses related to any admission primarily for enforced bed rest and not for receiving treatment. This also includes:
+  a) Custodial care either at home or in a nursing facility for personal care such as help with activities of daily living such as bathing, dressing, moving around either by skilled nurses or assistant or non-skilled persons.
+  b) Any services for people who are terminally ill to address physical, social, emotional and spiritual needs.
+- Excluded Providers:
+  Expenses incurred towards treatment in any hospital or by any Medical Practitioner or any other provider specifically excluded by the Insurer and disclosed in its website / notified to the policyholders are not admissible. However, in case of life threatening situations expenses up to the stage of stabilization are payable but not the complete claim.
+- Treatments received in heath hydros, nature cure clinics, spas or similar establishments or private beds registered as a nursing home attached to such establishments or where admission is arranged wholly or partly for domestic reasons.
+- Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure.
+- Hospitalization for treatment other than allopathy.
+- Hospitalization for less than a minimum period of seventy-two (72) consecutive hours.
+
+## Waiting Periods
+### First fifteen-days waiting period
+- The Company shall not be liable to make any payment under the policy if the covered vector borne disease is diagnosed or hospitalization takes place during first fifteen days (15 days) from the commencement date of this Policy unless insured person is covered under this Policy continuously and without any break in the previous Policy Year.
+
+### Cooling Off Period
+- If the Policy is renewed within 30 days from the date of discharge of the previously paid claim for the named insured a 30 days cooling off period shall apply for the same ailment in the renewed Policy. However, there would be no waiting period for other listed vector borne diseases.
+
+## Claim Procedure
+### Notification of claim
+- Notice with full particulars shall be sent to the Company/TPA (if applicable) as under:
+  i. Within 24 hours from the date of emergency hospitalization.
+  ii. At least 48 hours prior to admission in Hospital in case of a planned Hospitalization.
+
+### Procedure for reimbursement of claims
+| Sl No | Type of Claim           | Prescribed Time limit |
+|-------|-------------------------|-----------------------|
+| 1     | Hospitalization Benefit | Within thirty days (30 days) from date of discharge from hospital following positive diagnosis of covered vector borne disease |
+| 2     | Diagnosis Cover         | Within Fifteen days (15 days) of Diagnosis of the covered vector borne disease |
+
+### Documents Required
+#### Hospitalization Benefit
+1. Duly filled and signed Claim Form
+2. Photo Identity proof of the patient
+3. Medical practitioner's prescription advising admission
+4. Discharge summary including complete medical history of the patient along with other details.
+5. Laboratory report(s) confirming the diagnosis
+6. OT notes or Surgeon's certificate giving details of the operation performed, wherever applicable
+7. NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque.
+8. KYC (Identity proof with Address) of the proposer, where claim liability is above Rs one (1) Lakh or as per extant AML Guidelines.
+9. Legal heir/succession certificate, wherever applicable
+10. Any other relevant document required by Company/TPA for assessment of the claim.
+
+#### Diagnosis Cover
+1. Duly filled and signed Claim Form
+2. Photo Identity proof of the patient
+3. Laboratory report(s) confirming the diagnosis
+4. Payment receipt(s)
+5. NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque
+6. Legal heir/succession certificate, wherever applicable
+7. Any other relevant document required by Company/TPA for assessment of the claim.
+
+## Supporting Documents Required for Claims
+- Proof of identity
+- Proof of address
+
+## Grievance Redressal
+- Website: www.universalsompo.com
+- Toll Free: 1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or chargeable numbers at +91-22-27639800/+91-22-39133700
+- Email: contactus@universalsompo.com
+- Fax: (022) 39171419
+- Courier: Universal Sompo General Insurance Co. Ltd, Unit No- 601 & 602 A Wing, 6th Floor, Reliable Tech Park, Cloud City Campus; Thane- Belapur Road, Airoli- 400708
+
+## Additional Information
+- The policy is a vector borne disease policy
+- Covers only vector borne diseases
+- No mention of premium or cost details
+- No mention of co-pay or co-insurance
+- No mention of deductible
+- No mention of sub-limits for specific treatments
+- No mention of specific waiting periods for specific diseases
+- No mention of portability or migration
+- No mention of pre-existing disease coverage details beyond the 48-month waiting period
+- No mention of specific coverage for day care procedures beyond the general exclusion
+- No mention of coverage for specific treatments like chemotherapy, surgical procedures, etc.

@@ -1,157 +1,160 @@
-# Extraction Notes: Universal Sompo General Insurance Co. Ltd - Group Mashak Rakshak
+# Extraction Notes for Universal Sompo General Insurance Policy
 
 ## Insurer Details
-- **Company Name**: Universal Sompo General Insurance Co. Ltd
-- **IRDAI Registration Number**: NOT FOUND IN PDF
-- **Address**: NOT FOUND IN PDF
-- **Contact Information**: 
+- Name: Universal Sompo General Insurance Co Ltd
+- IRDAI Registration Number: NOT FOUND IN PDF
+- Address: NOT FOUND IN PDF
+- Contact: 
   - Website: www.universalsompo.com
-  - Toll Free: 1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or on chargeable numbers at +91-22-27639800/+91-22-39133700
+  - Toll Free: 1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or chargeable numbers at +91-22-27639800/+91-22-39133700
   - Email: contactus@universalsompo.com
   - Fax: (022) 39171419
   - Courier Address: Universal Sompo General Insurance Co. Ltd, Unit No- 601 & 602 A Wing, 6th Floor, Reliable Tech Park, Cloud City Campus; Thane- Belapur Road, Airoli- 400708
 
 ## Policy Details
-- **Product Type**: Individual/ Floater
-- **Policy Name**: Group Mashak Rakshak
-- **Policy Period**: Standard Product shall be offered with a policy tenure of one year (12 Months)
-- **Sum Insured**: Rs 10,000/- (Ten Thousand) to 2,00,000/- (Two Lakh) (in the multiples of ten thousand)
-- **Coverage Type**: Vector Borne Diseases
-- **UIN**: NOT FOUND IN PDF
+- Product Type: Individual/ Floater
+- Policy Name: Group Mashak Rakshak
+- Policy Period: Standard Product shall be offered with a policy tenure of one year (12 Months)
+- Sum Insured: Rs 10,000/- (Ten Thousand) to 2,00,000/- (Two Lakh) (in the multiples of ten thousand)
+  - Individual basis - SI shall apply to each individual family member
+  - Floater basis - SI shall apply to the entire family
+- Eligibility: 
+  - Minimum entry age shall be 18 years for principal insured
+  - Maximum age at entry shall not be less than 65 years for all the insured members including principal insured
+  - Policy can be availed for Self and the following family members:
+    - Legally wedded spouse
+    - Parents and Parents-in-law
+    - Dependent Children (i.e. natural or legally adopted) between the day 1 of age to 25 years. If the child above 18 years of age is financially independent, he or she shall be ineligible.
 
-## Plan Variants
-- **Individual Basis**: SI shall apply to each individual family member
-- **Floater Basis**: SI shall apply to the entire family
-- **Sum Insured Range**: Rs 10,000 to Rs 200,000 (in multiples of ten thousand)
+## Coverage Sections
 
-## Coverage Details
+### Hospitalization Benefit
+- Lump sum benefit equal to 100% of the Sum Insured (excluding the amount paid under diagnosis cover, if any) shall be payable on positive diagnosis (through laboratory examination and confirmed by the medical practitioner) of any of the following vector borne disease (s) if insured is hospitalized for a minimum period of seventy-two (72) consecutive hours.
+- Covered Vector Borne Diseases:
+  - Dengue fever
+  - Malaria
+  - Filaria (Lymphatic Filariasis)
+  - Kala-azar
+  - Chikungunya
+  - Japanese Encephalitis
+  - Zika Virus
 
-### 4.1 Hospitalization Benefit
-- Lump sum benefit up to 100% of the Sum Insured (excluding the amount paid under diagnosis cover)
-- Covered vector borne diseases:
-  1. Dengue fever
-  2. Malaria
-  3. Filaria (Lymphatic Filariasis)
-  4. Kala-azar
-  5. Chikungunya
-  6. Japanese Encephalitis
-  7. Zika Virus
-
-### 4.2 Diagnosis Cover
-- 2% of the sum insured shall be payable on positive diagnosis
-- Only once per disease per policy year
-- Total amount payable in respect of Covers 4.1 and 4.2 shall not exceed 100% of the Sum Insured during a policy period
-
-## Waiting Period
-- **First fifteen-days waiting period**: Company shall not be liable to make any payment under the policy if the covered vector borne disease is diagnosed or hospitalization takes place during first fifteen days (15 days) from the commencement date of this Policy
-- **Cooling Off Period**: If the Policy is renewed within 30 days from the date of discharge of the previously paid claim for the named insured a 30 days cooling off period shall apply for the same ailment in the renewed Policy. However, there would be no waiting period for other listed vector borne diseases
+### Diagnosis Cover
+- 2% of the sum insured shall be payable on positive diagnosis (through laboratory examination and confirmed by the medical practitioner) of every covered vector borne disease on the first diagnosis during the Cover Period, subject to policy terms and conditions.
+- The Policyholder is entitled for payments under 'diagnosis cover' for each disease only once in each of the policy years.
+- Sub-limits: Diagnosis cover: 2% of sum insured
 
 ## Exclusions
-1. **General Exclusions**:
-   - Claim for any illness/disease other than for vector borne diseases covered under the policy
-   - Diagnosis / Treatment outside the geographical limits of India
-   - Any laboratory test not recognized/ approved in India for diagnosis of the covered vector borne diseases is not covered
-   - Unproven Treatments: Expenses related to any unproven treatment, services and supplies for or in connection with any treatment
+1. Claim for any illness/disease other than for vector borne diseases covered under the policy.
+2. Diagnosis / Treatment outside the geographical limits of India.
+3. Any laboratory test not recognized/ approved by the state or central government.
+4. Unproven Treatments: Expenses related to any unproven treatment, services and supplies for or in connection with any treatment. Unproven treatments are treatments, procedures or supplies that lack significant medical documentation to support their effectiveness.
+5. Domiciliary Hospitalization, Day care OPD treatment.
+6. Investigation & Evaluation:
+   - Expenses related to any admission primarily for diagnostics and evaluation purposes.
+   - Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment
+7. Rest Cure, rehabilitation and respite care:
+   - Expenses related to any admission primarily for enforced bed rest and not for receiving treatment. This also includes:
+     - Custodial care either at home or in a nursing facility for personal care such as help with activities of daily living such as bathing, dressing, moving around either by skilled nurses or assistant or non-skilled persons.
+     - Any services for people who are terminally ill to address physical, social, emotional and spiritual needs.
+8. Excluded Providers:
+   - Expenses incurred towards treatment in any hospital or by any Medical Practitioner or any other provider specifically excluded by the Insurer and disclosed in its website / notified to the policyholders are not admissible. However, in case of life threatening situations expenses up to the stage of stabilization are payable but not the complete claim.
+9. Treatments received in heath hydros, nature cure clinics, spas or similar establishments or private beds registered as a nursing home attached to such establishments or where admission is arranged wholly or partly for domestic reasons.
+10. Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure.
+11. Hospitalization for treatment other than allopathy.
+12. Hospitalization for less than a minimum period of seventy-two (72) consecutive hours.
 
-2. **Specific to Section 4.1**:
-   - Domiciliary Hospitalization, Day care OPD treatment
-   - Investigation & Evaluation:
-     - Expenses related to any admission primarily for diagnostics and evaluation purposes
-     - Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment
-   - Rest Cure, rehabilitation and respite care:
-     - Expenses related to any admission primarily for enforced bed rest and not for receiving treatment
-     - Custodial care either at home or in a nursing facility for personal care
-     - Any services for people who are terminally ill to address physical, social, emotional and spiritual needs
-   - Excluded Providers:
-     - Expenses incurred towards treatment in any hospital or by any Medical Practitioner or any other provider specifically excluded by the Insurer
-     - In case of life threatening situations expenses up to the stage of stabilization are payable but not the complete claim
-   - Treatments received in health hydros, nature cure clinics, spas or similar establishments or private beds registered as a nursing home attached to such establishments or where admission is arranged wholly or partly for domestic reasons
-   - Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure
-   - Hospitalization for treatment other than allopathy
-   - Hospitalization for less than a minimum period of seventy-two (72) consecutive hours
+## Waiting Periods
+1. First fifteen-days waiting period:
+   - The Company shall not be liable to make any payment under the policy if the covered vector borne disease is diagnosed or hospitalization takes place during first fifteen days (15 days) from the commencement date of this Policy unless insured person is covered under this Policy continuously and without any break in the previous Policy Year.
+2. Cooling Off Period:
+   - If the Policy is renewed within 30 days from the date of discharge of the previously paid claim for the named insured a 30 days cooling off period shall apply for the same ailment in the renewed Policy. However, there would be no waiting period for other listed vector borne diseases.
 
 ## Claim Procedure
-- **Notification of claim**: 
-  - Within 24 hours from the date of emergency hospitalization
-  - At least 48 hours prior to admission in Hospital in case of a planned Hospitalization
-- **Reimbursement of claims**:
+- Notification of claim:
+  - Within 24 hours from the date of emergency hospitalization.
+  - At least 48 hours prior to admission in Hospital in case of a planned Hospitalization.
+- Reimbursement of claims:
   - Hospitalization Benefit: Within thirty days (30 days) from date of discharge from hospital following positive diagnosis of covered vector borne disease
   - Diagnosis Cover: Within Fifteen days (15 days) of Diagnosis of the covered vector borne disease
-- **Documents Required**:
+- Required Documents:
   - Hospitalization Benefit:
-    1. Duly filled and signed Claim Form
-    2. Photo Identity proof of the patient
-    3. Medical practitioner's prescription advising admission
-    4. Discharge summary including complete medical history of the patient along with other details
-    5. Laboratory report(s) confirming the diagnosis
-    6. OT notes or Surgeon's certificate giving details of the operation performed, wherever applicable
-    7. NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque
-    8. KYC (Identity proof with Address) of the proposer, where claim liability is above Rs one (1) Lakh or as per extant AML Guidelines
-    9. Legal heir/succession certificate, wherever applicable
-    10. Any other relevant document required by Company/TPA for assessment of the claim
+    - Duly filled and signed Claim Form
+    - Photo Identity proof of the patient
+    - Medical practitioner's prescription advising admission
+    - Discharge summary including complete medical history of the patient along with other details
+    - Laboratory report(s) confirming the diagnosis
+    - OT notes or Surgeon's certificate giving details of the operation performed, wherever applicable
+    - NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque
+    - KYC (Identity proof with Address) of the proposer, where claim liability is above Rs one (1) Lakh or as per extant AML Guidelines
+    - Legal heir/succession certificate, wherever applicable
+    - Any other relevant document required by Company/TPA for assessment of the claim
   - Diagnosis Cover:
-    1. Duly filled and signed Claim Form
-    2. Photo Identity proof of the patient
-    3. Laboratory report(s) confirming the diagnosis
-    4. Payment receipt(s)
-    5. NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque
-    6. Legal heir/succession certificate, wherever applicable
-    7. Any other relevant document required by Company/TPA for assessment of the claim
+    - Duly filled and signed Claim Form
+    - Photo Identity proof of the patient
+    - Laboratory report(s) confirming the diagnosis
+    - Payment receipt(s)
+    - NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque
+    - Legal heir/succession certificate, wherever applicable
+    - Any other relevant document required by Company/TPA for assessment of the claim
 
 ## General Terms & Conditions
-- **Disclosure of Information**: Policy shall be void and all premium paid thereon shall be forfeited to the Company in the event of misrepresentation, mis description or non-disclosure of any material fact by the policyholder
-- **Material Change**: Insured shall notify the Company in writing of any material change in the risk
-- **Records to be maintained**: Insured Person shall keep an accurate record containing all relevant medical records
-- **Complete Discharge**: Any payment to the policyholder shall be a valid discharge towards payment of claim by the Company
-- **Notice & Communication**: Any notice, direction, instruction or any other communication related to the Policy should be made in writing
-- **Territorial Limit**: All medical treatment for the purpose of this insurance will have to be taken in India only
-- **Fraud**: If any claim made by the insured person is fraudulent, all benefits under this policy and the premium paid shall be forfeited
-- **Cancellation**: 
-  - Policyholder may cancel this policy by giving 15days' written notice
-  - No refunds of premium shall be made in respect of Cancellation where, any claim has been admitted or has been lodged or any benefit has been availed by the insured person
-- **Renewal of Policy**: 
-  - Policy shall ordinarily be renewable except on grounds of fraud, misrepresentation by the insured person
-  - Renewal shall not be denied on the ground that the insured person had made a claim or claims in the preceding policy years
-  - Request for renewal along with requisite premium shall be received by the Company before the end of the policy period
-  - At the end of the policy period, the policy shall terminate and can be renewed within the Grace Period of 30 days to maintain continuity of benefits without break in policy
-- **Withdrawal of Policy**: 
-  - In the likelihood of this product being withdrawn in future, the Company will intimate the insured person about the same 90 days prior to expiry of the policy
-  - Insured Person will have the option to migrate to similar health insurance product available with the Company at the time of renewal with all the accrued continuity benefits
-- **Automatic change in Coverage**: 
-  - In case of Insured Person's demise, the cover shall continue for the remaining Insured Person(s) till the end of Policy Period
-  - Upon exhaustion of sum insured for the policy year, the policy is subject to renewal on the due date as per the applicable terms and conditions
-- **Territorial Jurisdiction**: All disputes or differences under or in relation to the interpretation of the terms, conditions, validity, construct, limitations and/or exclusions contained in the Policy shall be determined by the Indian court and according to Indian law
-- **Arbitration**: 
-  - If any dispute or difference shall arise as to the quantum to be paid by the Policy, such difference shall independently of all other questions, be referred to the decision of a sole arbitrator to be appointed in writing by the parties here to or if they cannot agree upon a single arbitrator within thirty days of any party invoking arbitration, the same shall be referred to a panel of three arbitrators
-- **Possibility of Revision of Terms**: The Company, with prior approval of IRDAI, may revise or modify the terms of the policy including the premium rates
-- **Free look period**: The Free Look Period shall be applicable on new individual health insurance policies and not on renewals or at the time of porting/migrating the policy
-- **Endorsements**: This policy constitutes the complete contract of insurance. Any change made by the company shall be evidenced by a written endorsement signed and stamped
-- **Change of Sum Insured**: Sum insured can be changed (increased/ decreased) only at the time of renewal or at any time, subject to underwriting by the Company
-- **Terms and conditions of the Policy**: The terms and conditions contained herein and in the Policy Schedule shall be deemed to form part of the Policy and shall be read together as one document
-- **Nomination**: The policyholder is required at the inception of the policy to make a nomination for the purpose of payment of claims under the policy in the event of death of the policyholder
+- Disclosure of Information: The policy shall be void and all premium paid thereon shall be forfeited to the Company in the event of misrepresentation, mis description or non-disclosure of any material fact by the policyholder.
+- Condition Precedent to Admission of Liability: The terms and conditions of the policy must be fulfilled by the insured person for the Company to make any payment for claim(s) arising under the policy.
+- Material Change: The Insured shall notify the Company in writing of any material change in the risk in relation to the declaration made in the proposal form or medical examination report at each Renewal and the Company may, adjust the scope of cover and / or premium, if necessary, accordingly.
+- Records to be maintained: The Insured Person shall keep an accurate record containing all relevant medical records and shall allow the Company or its representatives to inspect such records. The Policyholder or Insured Person shall furnish such information as the Company may require for settlement of any claim under the Policy, within reasonable time limit and within the time limit specified in the Policy.
+- Complete Discharge: Any payment to the policyholder, insured person or his/ her nominees or his/ her legal representative or assignee or to the Hospital, as the case may be, for any benefit under the policy shall be a valid discharge towards payment of claim by the Company to the extent of that amount for the particular claim.
+- Notice & Communication: Any notice, direction, instruction or any other communication related to the Policy should be made in writing. Such communication shall be sent to the address of the Company or through any other electronic modes specified in the Policy Schedule. The Company shall communicate to the Insured at the address or through any other electronic mode mentioned in the schedule.
+- Territorial Limit: All medical treatment for the purpose of this insurance will have to be taken in India only.
+- Fraud: If any claim made by the insured person, is in any respect fraudulent, or if any false statement, or declaration is made or used in support thereof, or if any fraudulent means or devices are used by the insured person or anyone acting on his/her behalf to obtain any benefit under this policy, all benefits under this policy and the premium paid shall be forfeited. Any amount already paid against claims made under this policy but which are found fraudulent later shall be repaid by all recipient(s)/policyholder(s), who has made that particular claim, who shall be jointly and severally liable for such repayment to the insurer.
+- Cancellation:
+  - The policyholder may cancel this policy by giving 15days' written notice and in such an event, the Company shall refund premium for the unexpired policy period as detailed below:
+    - Up to 30 days: 75%
+    - 31 to 90 days: 50%
+    - 3 to 6 months: 25%
+    - 6 to 12 months: 0%
+  - Notwithstanding anything contained herein or otherwise, no refunds of premium shall be made in respect of Cancellation where, any claim has been admitted or has been lodged or any benefit has been availed by the insured person under the policy.
+  - The Company may cancel the policy at any time on grounds of misrepresentation non-disclosure of material facts, fraud by the insured person by giving 15 days' written notice. There would be no refund of premium on cancellation on grounds of misrepresentation, non-disclosure of material facts or fraud.
+- Renewal of Policy:
+  - The policy shall ordinarily be renewable except on grounds of fraud, misrepresentation by the insured person.
+  - The Company shall endeavor to give notice for renewal. However, the Company is not under obligation to give any notice for renewal.
+  - Renewal shall not be denied on the ground that the insured person had made a claim or claims in the preceding policy years.
+  - Request for renewal along with requisite premium shall be received by the Company before the end of the policy period.
+  - At the end of the policy period, the policy shall terminate and can be renewed within the Grace Period of 30 days to maintain continuity of benefits without break in policy. Coverage is not available during the grace period.
+  - No loading shall apply on renewals based on individual claims experience.
+  - If the Policy is renewed within 30 days from the date of discharge of the previously paid claim for the named insured a 30 days cooling off period shall apply for the same ailment in the renewed Policy. However, there would be no waiting period for other listed vector borne diseases.
+- Withdrawal of Policy:
+  - In the likelihood of this product being withdrawn in future, the Company will intimate the insured person about the same 90 days prior to expiry of the policy.
+  - Insured Person will have the option to migrate to similar health insurance product available with the Company at the time of renewal with all the accrued continuity benefits such as cumulative bonus, waiver of waiting period as per IRDAI guidelines, provided the policy has been maintained without a break.
+- Automatic change in Coverage under the policy is permitted:
+  - In the case of Insured Person's demise. However, the cover shall continue for the remaining Insured Person(s) till the end of Policy Period. The other insured person(s) may also apply to renew the policy. In case, the other insured person is minor, the policy shall be renewed only through any one of natural guardian or guardian appointed by court for the minor insured person. All relevant particulars in respect of such person (including his/her relationship with the insured person) must be submitted to the company along with the application. Provided no claim has been made, and termination takes place on account of death of the insured person, pro-rata refund of premium of the deceased insured person for the balance period of the policy will be effective.
+  - Upon exhaustion of sum insured for the policy year. However, the policy is subject to renewal on the due date as per the applicable terms and conditions.
+- Territorial Jurisdiction: All disputes or differences under or in relation to the interpretation of the terms, conditions, validity, construct, limitations and/or exclusions contained in the Policy shall be determined by the Indian court and according to Indian law.
+- Arbitration: If any dispute or difference shall arise as to the quantum to be paid by the Policy, (liability being otherwise admitted) such difference shall independently of all other questions, be referred to the decision of a sole arbitrator to be appointed in writing by the parties here to or if they cannot agree upon a single arbitrator within thirty days of any party invoking arbitration, the same shall be referred to a panel of three arbitrators, comprising two arbitrators, one to be appointed by each of the parties to the dispute/difference and the third arbitrator to be appointed by such two arbitrators and arbitration shall be conducted under and in accordance with the provisions of the Arbitration and Conciliation Act 1996, as amended by Arbitration and Conciliation (Amendment) Act, 2015 (No. 3 of 2016).
+- Possibility of Revision of Terms of the Policy Including the Premium Rates: The Company, with prior approval of IRDAI, may revise or modify the terms of the policy including the premium rates. The insured person shall be notified three months before the changes are affected.
+- Free look period: The Free Look Period shall be applicable on new individual health insurance policies and not on renewals or at the time of porting/migrating the policy. The insured person shall be allowed free look period of fifteen days from date of receipt of the policy document to review the terms and conditions of the policy, and to return the same if not acceptable. If the insured has not made any claim during the Free Look Period, the insured shall be entitled to a refund of the premium paid less any expenses incurred by the Company on medical examination of the insured person and the stamp duty charges or; where the risk has already commenced and the option of return of the policy is exercised by the insured person, a deduction towards the proportionate risk premium for period of cover or; where only a part of the insurance coverage has commenced, such proportionate premium commensurate with the insurance coverage during such period.
+- Endorsements (Changes in Policy): This policy constitutes the complete contract of insurance. This Policy cannot be modified by anyone (including an insurance agent or broker) except the company. Any change made by the company shall be evidenced by a written endorsement signed and stamped. The policyholder may be changed during the Policy Period only in case of his/her demise or him/her moving out of India. The new policyholder must be the legal heir/immediate family member. Such change would be subject to acceptance by the company and payment of premium (if any).
+- Change of Sum Insured: Sum insured can be changed (increased/ decreased) only at the time of renewal or at any time, subject to underwriting by the Company. For any increase in SI, the waiting period shall start afresh only for the enhanced portion of the sum insured.
+- Terms and conditions of the Policy: The terms and conditions contained herein and in the Policy Schedule shall be deemed to form part of the Policy and shall be read together as one document.
+- Nomination: The policyholder is required at the inception of the policy to make a nomination for the purpose of payment of claims under the policy in the event of death of the policyholder. Any change of nomination shall be communicated to the company in writing and such change shall be effective only when an endorsement on the policy is made. In the event of death of the policyholder, the Company will pay the nominee {as named in the Policy Schedule/Policy Certificate/Endorsement (if any)} and in case there is no subsisting nominee, to the legal heirs or legal representatives of the policyholder whose discharge shall be treated as full and final discharge of its liability under the policy.
 
 ## Grievance Redressal
 - Website: www.universalsompo.com
-- Toll Free: 1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or on chargeable numbers at +91-22-27639800/+91-22-39133700
+- Toll Free: 1 - 800 - 224030 (For MTNL/BSNL Users) or 1 - 800 - 2004030 or on chargeable numbers at +91-22-27639800/+91-22-39133700;
 - Email: contactus@universalsompo.com
 - Fax: (022) 39171419
 - Courier Address: Universal Sompo General Insurance Co. Ltd, Unit No- 601 & 602 A Wing, 6th Floor, Reliable Tech Park, Cloud City Campus; Thane- Belapur Road, Airoli- 400708
 - Insurance Ombudsman contact details provided in Annexure-A
 
-## Sub-limits
-- Diagnosis cover: 2% of sum insured
-
-## Eligibility
-- Minimum entry age shall be 18 years for principal insured
-- Maximum age at entry shall not be less than 65 years for all the insured members including principal insured
-- Policy can be availed for Self and the following family members:
-  1. Legally wedded spouse
-  2. Parents and Parents-in-law
-  3. Dependent Children (i.e. natural or legally adopted) between the day 1 of age to 25 years. If the child above 18 years of age is financially independent, he or she shall be ineligible
-
-## Additional Notes
-- Once the Sum Insured is paid under the policy for any Insured Beneficiary for Filaria (Lymphatic Filariasis), notwithstanding the terms and conditions, no other claim for this particular condition shall be paid to the Named Insured Beneficiary in his/her entire lifetime.
+## Additional Information
 - The total amount payable in respect of Covers 4.1 and 4.2 shall not exceed 100% of the Sum Insured during a policy period.
-- Any laboratory test not recognized/ approved in India for diagnosis of the covered vector borne diseases is not covered.
-- On payment of 100% of sum insured, the policy shall be terminated for the policy year.
-- In case where a policy is issued to a family with individual sum insured for each member, policy will continue for the rest of the insured members.
+- Once the Sum Insured is paid under the policy for any Insured Beneficiary for Filaria (Lymphatic Filariasis) , notwithstanding the terms and conditions, no other claim for this particular condition shall be paid to the Named Insured Beneficiary in his/her entire lifetime.
+- On payment of 100% of sum insured, the policy shall be terminated for the policy year. In case where a policy is issued to a family with individual sum insured for each member, policy will continue for the rest of the insured members.
+- The company shall only accept medical treatment related documents only in the Insured Person's name for whom the claim is submitted.
+- In the event of a claim lodged under the Policy and the original documents having been submitted to any other insurer, the Company shall accept the copy of the documents and claim settlement advice, duly certified by the other insurer subject to satisfaction of the Company.
+- Any delay in notification or submission may be condoned on merit where delay is proved to be for reasons beyond the control of the Insured Person.
+- The Company shall settle or reject a claim, as the case may be, within 30 days from the date of receipt of last necessary document.
+- In the case of delay in the payment of a claim, the Company shall be liable to pay interest to the policyholder from the date of receipt of last necessary document to the date of payment of claim at a rate 2% above the bank rate.
+- However, where the circumstances of a claim warrant an investigation in the opinion of the Company, it shall initiate and complete such investigation at the earliest, in any case not later than 30 days from the date of receipt of last necessary document. In such cases, the Company shall settle or reject the claim within 45 days from the date of receipt of last necessary document.
+- In case of delay beyond stipulated 45 days, the Company shall be liable to pay interest to the policyholder at a rate 2% above the bank rate from the date of receipt of last necessary document to the date of payment of claim.
+- Explanation: 'Bank rate' shall mean the rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which claim has fallen due.

@@ -1,0 +1,8 @@
+{
+  "status": "active",
+  "code": 42,
+  "obj": {
+    "system": "http://snomed.info/sct",
+    "code": "737492002"
+  }
+}

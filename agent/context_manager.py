@@ -119,8 +119,10 @@ class ContextManager:
             tool_name: Name of the tool that was called
             result: The output/result from the tool
         """
-        # Auto-compress long outputs
-        if len(result) > self.auto_compress_output_threshold:
+        # Auto-compress long outputs — but EXEMPT validator results so the
+        # agent can see every error path it needs to fix
+        exempt_tools = {"run_fhir_validator", "system"}
+        if len(result) > self.auto_compress_output_threshold and tool_name not in exempt_tools:
             original_len = len(result)
             result = self._auto_compress_output(result, tool_name)
             logger.info(f"Auto-compressed tool output: {original_len} → {len(result)} chars")
@@ -242,9 +244,10 @@ class ContextManager:
             logger.info("Too few messages to compress, skipping")
             return
 
-        # Keep more recent messages — scale with context window
-        # For 262K window: keep ~20 messages; for 131K: keep ~12
-        base_keep = max(12, min(24, self.context_window_tokens // 12000))
+        # Keep more recent messages — scale with context window.
+        # During validation fix loops, the agent needs to remember which paths
+        # it already fixed. Keep 35-60 recent messages to preserve that memory.
+        base_keep = max(35, min(60, self.context_window_tokens // 3000))
         keep_count = min(base_keep, len(self.messages) - 4)
 
         # OpenAI API requires every 'tool' message to be preceded by its 'assistant' message

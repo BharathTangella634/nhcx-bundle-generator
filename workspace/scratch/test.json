@@ -1,0 +1,15 @@
+{
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:abc-123",
+      "resource": {
+        "items": [
+          1,
+          2,
+          3,
+          99
+        ]
+      }
+    }
+  ]
+}
