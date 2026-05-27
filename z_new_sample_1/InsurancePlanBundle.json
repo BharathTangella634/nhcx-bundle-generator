@@ -1,0 +1,2588 @@
+{
+  "resourceType": "Bundle",
+  "id": "ff5106a4-54e5-4e37-8633-ab4bc53fa94c",
+  "meta": {
+    "versionId": "1",
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"
+    ],
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+        "code": "V",
+        "display": "very restricted"
+      }
+    ]
+  },
+  "type": "collection",
+  "timestamp": "2026-05-26T13:00:08+00:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:13857242-a452-4f79-8e1d-c39364d28f41",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "13857242-a452-4f79-8e1d-c39364d28f41",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Organization 13857242-a452-4f79-8e1d-c39364d28f41</b></p></div>"
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "code": "ROHINI",
+                  "display": "Registry of Hospitals in Network of Insurance (ROHINI) ID"
+                }
+              ]
+            },
+            "system": "https://rohini.iib.gov.in/",
+            "value": "UNKNOWN"
+          }
+        ],
+        "name": "Aditya Birla Health Insurance Co. Limited",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "1800 270 7000",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "care.healthinsurance@adityabirlacapital.com",
+            "use": "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:76086d73-a4c1-4723-a5d4-8469ab6d8bf1",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "76086d73-a4c1-4723-a5d4-8469ab6d8bf1",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Group Protect - Policy Terms and Conditions</p></div>"
+        },
+        "identifier": [
+          {
+            "system": "https://irdai.gov.in",
+            "value": "ADIHLGP22023V032122"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-insuranceplan-type",
+                "code": "02",
+                "display": "Hospital Cash Plan"
+              }
+            ]
+          }
+        ],
+        "name": "Group Protect - Policy Terms and Conditions",
+        "ownedBy": {
+          "reference": "urn:uuid:13857242-a452-4f79-8e1d-c39364d28f41"
+        },
+        "administeredBy": {
+          "reference": "urn:uuid:13857242-a452-4f79-8e1d-c39364d28f41"
+        },
+        "coverage": [
+          {
+            "type": {
+              "text": "OPD Expenses"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Doctor Consultation"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reasonable and customary charges for medically required consultations, visits to a doctor (minimum MBBS qualification), e‑consultation and tele‑consultation for listed specialties within our network (if opted)."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Diagnostic Tests"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reasonable and customary charges for medically required diagnostic tests listed in the schedule, incurred on an outpatient basis."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Pharmacy Expenses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reasonable and customary charges for medically required pharmacy expenses incurred on an outpatient basis."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Treatment must be medically necessary and incurred on an outpatient basis."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Charges must be within the limits specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Cancer Secure Cover"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Cancer Secure Cover"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Covered illness must be first diagnosed or first manifest during the policy period as a first incidence."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Initial waiting period as specified in the policy schedule applies."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Survival period as specified in the policy schedule applies."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Second Opinion"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Second Opinion"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Benefit can be availed only once per covered illness during the policy period."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Insured must request the opinion through the call centre."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "E‑opinion is limited to the covered illness and is not for medico‑legal purposes."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Insurer does not assume liability for any loss arising from the opinion."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Post Cancer OPD Consultations/Medication"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Post Cancer OPD Consultations/Medication"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Limit is per insured person per policy year."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Applicable only after a claim for Major or Advanced Stage Cancer has been admitted."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Counselling Sessions"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Counselling Sessions"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Limit is per insured person per policy year."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "If availed with Early Stage Cancer, can be used only for Major or Advanced Stage Cancer in the subsequent policy year."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "737481003",
+                  "display": "Inpatient care management (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Reconstructive Surgery"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Limit is per insured person per policy year."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "737481003",
+                  "display": "Inpatient care management (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Palliative Care"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Limit is per insured person per policy year."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Genetic Testing"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Genetic Testing"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Limit is per insured person per policy year."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "737481003",
+                  "display": "Inpatient care management (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Income Protect"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Insured must be a salaried individual with ITR proof for the 2 years preceding loss."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Insured must be on the direct payroll of a registered Indian employer for minimum six continuous months before the start date."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Benefit payable after a deductible period of days as specified in the schedule."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Disability must be certified by a medical practitioner (minimum MBBS qualification)."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Benefit payable monthly for each 30‑day period of continuous disability after deductible, until reinstatement of employment or recovery."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Preferred Provider Network"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Preferred Provider Network"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Only cashless facilities can be availed at network providers."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Benefit is applicable only when Section II.1 (OPD Expenses) is in force."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Secure Cover"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Covered Illnesses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "First Heart Attack, Open Chest CABG, Open Heart Valve Replacement/Repair, Stroke with permanent symptoms, Implantable Cardioverter Defibrillator, Pacemaker insertion, Angioplasty, Minimally invasive aorta surgery, Major aorta surgery, Balloon Valvotomy/Valvuloplasty, Heart Transplant, Primary Pulmonary Hypertension."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Maximum liability 100 % of Sum Insured during the lifetime of the insured."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Only one claim admissible for any covered illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "If multiple illnesses diagnosed within 48 hours, only the claim with the highest payout is admissible."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Cancer Assure Cover"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "In‑patient Hospitalization"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Room rent (single private A/C), ICU charges, operation theatre, medical practitioner fees, qualified nurses, medicines, consumables, investigations, anaesthesia, blood, oxygen, surgical appliances, prosthetic devices, and prescribed medication."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Day Care Treatment"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Medical expenses for day‑care procedures performed as medically necessary, including observation period after procedure."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "OPD Treatment"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Consultations, diagnostic tests and pharmacy expenses incurred on an outpatient basis due to the covered cancer illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Pre‑hospitalization Medical Expenses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reimbursable expenses incurred before hospitalization for the same cancer illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Post‑hospitalization Medical Expenses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reimbursable expenses incurred after discharge for the same cancer illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Emergency Road Ambulance Cover"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Transportation costs by road ambulance to the nearest hospital for an emergency caused by the covered cancer illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Follow‑up Care Post Treatment"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Two medical examinations per policy year after treatment discontinuation with 'No evidence of disease' declaration."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Covered illness must be first diagnosed or first manifest during the policy period."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Initial waiting period as specified in the schedule applies."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Survival period as specified in the schedule applies."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "737850002",
+                  "display": "Day care case management"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Hospital Cash Benefit"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Hospitalization must be for at least 7 consecutive days and cause inability to perform daily routine activities."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Benefit payable for a maximum number of days per hospitalization event and per policy year as specified."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Deductible days as specified in the schedule apply before benefit starts."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "737481003",
+                  "display": "Inpatient care management (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "In‑patient Hospitalization"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Room rent (single private A/C), ICU charges, operation theatre, medical practitioner fees, qualified nurses, medicines, consumables, investigations, anaesthesia, blood, oxygen, surgical appliances, prosthetic devices, and prescribed medication."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Pre‑hospitalization Medical Expenses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reimbursable expenses incurred before hospitalization for the same major illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Post‑hospitalization Medical Expenses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Reimbursable expenses incurred after discharge for the same major illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Emergency Road Ambulance Cover"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Transportation by road ambulance to the nearest hospital for emergencies caused by a major illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Illness or surgical procedure must be first diagnosed or first manifest during the policy period."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Initial waiting period of 90 days (or as specified) applies."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Hospitalization must be medically necessary and follow written advice of a medical practitioner."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Credit Protect"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Accidental Death (AD)"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Death of the insured due to an injury within 365 days of the accident."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Permanent Total Disablement (PTD)"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Permanent total loss of sight, both hands/feet, one hand and one foot, one eye plus a limb, both ears plus a limb or sight, total loss of hearing plus speech, total loss of speech plus a limb or eye, or any condition causing inability to earn a living."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Accident must occur during the policy period."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "For PTD, the disability must be permanent, total, and occur within 365 days of the accident."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Claim must be for the insured's own loan portion if the loan is joint."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Assure Cover"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Covered Illnesses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "First Heart Attack (Myocardial Infarction), Open Chest CABG, Open Heart Valve Replacement/Repair, Stroke with permanent symptoms, Implantable Cardioverter Defibrillator, Pacemaker insertion, Angioplasty, Minimally invasive aorta surgery, Major aorta surgery, Balloon Valvotomy/Valvuloplasty, Heart Transplant, Primary Pulmonary Hypertension."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Maximum liability 100 % of Sum Insured during the lifetime of the insured."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Only one claim admissible for any covered illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "If multiple illnesses diagnosed within 48 hours, only the claim with the highest payout is admissible."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Diseases Cover"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Covered Illnesses"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "First Heart Attack, Open Chest CABG, Open Heart Valve Replacement/Repair, Stroke with permanent symptoms, Implantable Cardioverter Defibrillator, Pacemaker insertion, Angioplasty, Minimally invasive aorta surgery, Major aorta surgery, Balloon Valvotomy/Valvuloplasty, Heart Transplant, Primary Pulmonary Hypertension."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Maximum liability 100 % of Sum Insured during the lifetime of the insured."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Only one claim admissible for any covered illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "If multiple illnesses diagnosed within 48 hours, only the claim with the highest payout is admissible."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Diseases Cover – Options Grid"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Options Grid"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Diseases Cover – Definitions"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Definitions"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Diseases Cover – Initial Waiting Period"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Initial Waiting Period"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Diseases Cover – Exclusions"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Exclusions"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "409972000",
+                  "display": "Pre-hospital care (situation)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Pre‑hospitalization"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Requires acceptance of an inpatient hospitalization claim for the same illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Date of admission is the first admission for the same illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "710967003",
+                  "display": "Management of health status after discharge from hospital (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Post‑hospitalization"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Requires acceptance of an inpatient hospitalization claim for the same illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Date of discharge is the discharge date for the same illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "49122002",
+                  "display": "Ambulance, device (physical object)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Ambulance"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Ambulance provider must be registered."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Requires acceptance of an inpatient hospitalization claim for the same illness."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "11429006",
+                  "display": "Consultation (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover – Follow‑up Care"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Inpatient hospitalization claim must have been accepted."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Definitions"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Definitions"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Claims Procedure"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Claims Procedure"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "General Conditions"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "General Conditions"
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Heart Diseases Cover"
+            },
+            "benefit": [
+              {
+                "type": {
+                  "text": "Heart Diseases Cover"
+                }
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Initial Waiting Period (Applicable for all 3 Options): No payment for covered illnesses whose signs or symptoms first occur within the waiting period specified in the policy schedule."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "Condition"
+                },
+                "extension": [
+                  {
+                    "extension": [
+                      {
+                        "url": "claim-condition",
+                        "valueString": "Survival Period (Applicable for all 3 Options): Benefit payable only if the insured survives the number of days specified in the policy schedule after diagnosis or surgical procedure."
+                      }
+                    ],
+                    "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "identifier": [
+              {
+                "use": "official",
+                "value": "Group Protect - Policy Terms and Conditions"
+              }
+            ],
+            "type": {
+              "coding": [
+                {
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-plan-type",
+                  "code": "01",
+                  "display": "Individual"
+                }
+              ]
+            },
+            "generalCost": [
+              {
+                "cost": {
+                  "value": 0,
+                  "currency": "INR"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                          "code": "POI",
+                          "display": "Proof of Identity"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Photo ID and Age proof of Insured Person / Nominee (if Insured Person is not alive)"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Claim Form (in original) duly completed and signed as prescribed by Us"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Original bills, receipts and copy of prescription, clinical notes from the Medical Practitioner / medical facility"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Original bills from pharmacy supported by proper prescription (as applicable)"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Investigation reports (Including CT scan/ MRI /USG / Histopathology or Biopsy report) and original bills, payment receipts"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Doctor's prescriptions (as applicable)"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Cancelled cheque for NEFT"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "text": "Other Documents"
+                    }
+                  },
+                  {
+                    "url": "code",
+                    "valueCodeableConcept": {
+                      "text": "Any other document as required by Us or the TPA to investigate the claim or Our obligation to make any payment for it"
+                    }
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment directly or indirectly arising from or consequent upon war or any act of war, invasion, act of foreign enemy, war like operations (whether war be declared or not or caused during service in the armed forces of any country), civil war, public defense, rebellion, uprising, revolution, insurrection, military or usurped acts, nuclear weapons / materials, chemical and biological weapons, ionizing radiation, contamination by radioactive material or radiation of any kind, nuclear fuel, nuclear waste."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl10",
+                          "display": "Breach of law"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses for treatment directly arising from or consequent upon any Insured Person committing or attempting to commit a breach of law with criminal intent."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Willful or deliberate exposure to danger, intentional self- Injury, non- adherence to Medical Advice, participation or involvement in naval, military or air force operation."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl09",
+                          "display": "Hazardous or Adventure sports"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses related to any treatment necessitated due to participation as a professional in hazardous or adventure sports, including but not limited to, para-jumping, rock climbing, mountaineering, rafting, motor racing, horse racing or scuba diving, hand gliding, sky diving, deep-sea diving."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl12",
+                          "display": "Rehabilitation"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment for, Alcoholism, drug or substance abuse or any addictive condition and consequences thereof."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Any Illness/Injury/Accident due to abuse of intoxicants, smoking cessation programs and the treatment of nicotine addiction, unless prescribed by a Medical Practitioner."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl06",
+                          "display": "Obesity/Weight Control"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Obesity/ Weight Control. Expenses related to the surgical treatment of obesity that does not fulfil all the below conditions:\n1) Surgery to be conducted is upon the advice of the Doctor\n2) The surgery/Procedure conducted should be supported by clinical protocols\n3) The member has to be 18 years of age or older and\n4) Body Mass Index (BMI);\n   a) greater than or equal to 40 or\n   b) greater than or equal to 35 in conjunction with any of the following severe co-morbidities following failure of less invasive methods of weight loss:\n   i. Obesity-related cardiomyopathy\n   ii. Coronary heart disease\n   iii. Severe Sleep Apnea\n   iv. Uncontrolled Type2 Diabetes"
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl15",
+                          "display": "Refractive Error"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Refractive Error. Expenses related to the treatment for correction of eye sight due to refractive error less than 7.5 dioptres."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "All routine examinations and preventive health check-ups."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl08",
+                          "display": "Cosmetic or plastic Surgery"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Cosmetic or plastic Surgery. Expenses for cosmetic or plastic surgery or any treatment to change appearance unless for reconstruction following an Accident, Burn(s) or Cancer or as part of medically necessary treatment to remove a direct and immediate health risk to the insured. For this to be considered a medical necessity, it must be certified by the attending Medical Practitioner."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Circumcisions (unless necessitated by Illness or Injury and forming part of treatment)."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl07",
+                          "display": "Change-of-Gender treatments"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Change-of-Gender treatments. Expenses related to any treatment, including surgical management, to change characteristics of the body to those of the opposite sex."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Non- allopathic treatment unless mentioned as part of inclusions in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Conditions for which treatment could have been done on an out-patient basis without any Hospitalization (This exclusion is not applicable for Section II.1 'OPD Expenses')."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Experimental treatment, investigational treatments, devices and pharmacological regimens."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl16",
+                          "display": "Unproven Treatments"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Unproven Treatments. Expenses related to any unproven treatment, services and supplies for or in connection with any treatment. Unproven treatments are treatments, procedures or supplies that lack significant medical documentation to support their effectiveness."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl04",
+                          "display": "Investigation Evaluation"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Investigation & Evaluation. Expenses related to any admission primarily for diagnostics and evaluation purposes only are excluded.\n3. Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment are excluded.\n- b) Diagnostic expenses means and includes Diagnostic tests/procedures/treatment/consumables."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl05",
+                          "display": "Rest Cure,Rehabilitation and Respite Care"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Rest Cure, rehabilitation and respite care. Expenses related to any admission primarily for enforced bed rest and not for receiving treatment. This also includes:\n i. Custodial care either at home or in a nursing facility for personal care such as help with activities of daily living such as bathing, dressing, moving around either by skilled nurses or assistant or non-skilled persons.\n ii. Any services for people who are terminally ill to address physical, social, emotional and spiritual needs."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Convalescence, cure, sanatorium treatment, private duty nursing."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Preventive care, vaccination including inoculation and immunizations (except in case of post-bite treatment); any examinations or testing."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Admission for nutritional and electrolyte supplements unless certified to be required by the attending Medical Practitioner as a direct consequence of an otherwise covered claim."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Hearing aids, spectacles or contact lenses including optometric therapy, multifocal lens."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment for alopecia, baldness, wigs, or toupees, and all treatment related to the same."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Medical supplies including elastic stockings, diabetic test strips, and products as specified in the Annexure B of this Policy - Non Medical Expenses , and on Our website www.adityabirlahealth.com/healthinsurance."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Any expenses incurred on prosthesis, corrective devices external durable medical equipment of any kind, like wheelchairs crutches, instruments used in treatment of sleep apnea syndrome or continuous ambulatory peritoneal dialysis (C.A.P .D.) and oxygen concentrator for bronchial asthmatic condition, cost of cochlear implant(s) unless necessitated by an Accident. Cost of artificial limbs, crutches or any other external appliance and/or device used for diagnosis or treatment."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Parkinson disease, general debility or exhaustion ('rundown condition'), sleep-apnea, stress."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "External Congenital Anomalies, diseases or defects."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Stem cell therapy (except Hematopoietic stem cells for bone marrow transplant for haematological conditions) or surgery, or Growth hormone therapy or Hormone Replacement Therapy."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl18",
+                          "display": "Maternity expenses"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Maternity Expenses. \n- i. Medical treatment expenses traceable to childbirth (including complicated deliveries and caesarean sections incurred during hospitalization) except ectopic pregnancy;\n- ii. Expenses towards miscarriage (unless due to an accident) and lawful medical termination of pregnancy during the policy period."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl17",
+                          "display": "Sterility and infertility"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Sterility and Infertility. Expenses related to sterility and infertility. This includes:\n- i. Any type of contraception, sterilization\n- ii. Assisted Reproduction services including artificial insemination and advanced reproductive technologies such as IVF, ZIFT, GIFT, ICSI\n- iii. Gestational Surrogacy\n- iv. Reversal of sterilization"
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses for organ donor screening, or save as and to the extent provided for in the treatment of the donor (including Surgery to remove organs from a donor in the case of transplant Surgery)."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Admission for Organ Transplant but not compliant under the Transplantation of Human Organs Act, 1994 (amended)."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment and supplies for analysis and adjustments of spinal subluxation, diagnosis and treatment by manipulation of the skeletal structure; muscle stimulation by any means except treatment of fractures (excluding hairline fractures) and dislocations of the mandible and extremities."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Dentures and artificial teeth, Dental Treatment and Surgery of any kind, unless requiring Hospitalization due to an Accident."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Cost incurred for any health check-up or for the purpose of issuance of medical certificates and examinations required for employment or travel or any other such purpose."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment for, Rotational Field Quantum Magnetic Resonance (RFQMR), External Counter Pulsation (ECP), Enhanced External Counter Pulsation (EECP), Hyperbaric Oxygen Therapy, KTP Laser Surgeries, cyber knife treatment, Femto laser surgeries, bioabsorbable stents, bioabsorbable valves, bioabsorbable implants, use of Infliximab, rituximab, avastin, lucentis & similar molecules."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses which are medically not required such as items of personal comfort and convenience including but not limited to television (if specifically charged), charges for access to telephone and telephone calls (if specifically charged), food stuffs (save for patient's diet), cosmetics, hygiene articles, body care products and bath additives, barber expenses, beauty service, guest service as well as similar incidental services and supplies, vitamins and tonics unless certified to be required by the attending Medical Practitioner as a direct consequence of an otherwise covered claim. Non-Medical Expenses including but not limited to RMO, CMO, DMO charges, surcharges, night charges, service charges levied by the hospital under any head as specified in the Annexure B of this Policy, for Non- Medical Expenses and on Our website."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment taken from a person not falling within the scope of definition of registered Medical Practitioner with any state medical council/ medical council of India."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment charges or fees charged by any Medical Practitioner acting outside the scope of license or registration granted to him by any medical council."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatments rendered by a Medical Practitioner who is a member of the Insured Person's immediate family or stays with him in the same residence, except if pre-approved by Us."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Any treatment or part of a treatment that is not of a reasonable charge, is not a Medically Necessary Treatment. drugs or treatments which are not supported by a prescription."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl14",
+                          "display": "Non-prescription"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Charges related to a Hospital stay not expressly mentioned as being covered, including but not limited to charges for admission, discharge, administration, registration, documentation and filing, including MRD charges (medical records department charges)."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Treatment taken outside India."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "In the event of the death of the Insured Person within the stipulated survival period as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy for the applicable Benefits."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Use of Radio Frequency (RF) probe for ablation or other procedure unless specifically approved by Us in writing in advance."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl11",
+                          "display": "Excluded providers"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Excluded Providers. Expenses incurred towards treatment in any hospital or by any Medical Practitioner or any other provider specifically excluded by the Insurer as per Annexure C to this Policy and disclosed in website (www.adityabirlahealth.com/healthinsurance) / notified to the policyholders are not admissible. However, in case of life threatening situations or following an accident, expenses up to the stage of stabilization are payable but not the complete claim."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl13",
+                          "display": "Hydrotherapy"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Treatments received in health hydros, nature cure clinics, spas or similar establishments or private beds registered as a nursing home attached to such establishments or where admission is arranged wholly or partly for domestic reasons."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "In respect of the existing diseases, disclosed by the insured and mentioned in the policy schedule (based on insured's consent), policyholder is not entitled to get the coverage for specified ICD codes."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl01",
+                          "display": "Pre-Existing Diseases"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses related to the treatment of a pre-existing Disease (PED) and its direct complications shall be excluded until the expiry of number of months of continuous coverage after the Date of inception of the first policy with insurer, as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy.\n\nb) In case of enhancement of sum insured the exclusion shall apply afresh to the extent of sum insured increase.\n\nc) If the Insured Person is continuously covered without any break as defined under the portability norms of the extant IRDAI (Health Insurance) Regulations, then waiting period for the same wouId be reduced to the extent of prior coverage.\n\nd) Coverage under the policy after the expiry of the number of months as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table for any pre-existing disease is subject to the same being declared at the time of application and accepted by Us."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "category",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                          "code": "Excl02",
+                          "display": "Specified disease/procedure waiting period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses related to the treatment of the listed Conditions, surgeries/treatments shall be excluded until the expiry of 24 months of continuous coverage after the date of inception of the first policy with Us. This exclusion shall not be applicable for claims arising due to an accident.\n\nb) In case of enhancement of sum insured the exclusion shall apply afresh to the extent of sum insured increase.\n\nc) If any of the specified disease/procedure falls under the waiting period specified for pre-existing diseases, then the longer of the two waiting periods shall apply.\n\nd) The waiting period for listed conditions shall apply even if contracted after the policy or declared and accepted without a specific exclusion.\n\ne) If the Insured Person is continuously covered without any break as defined under the applicable norms on portability stipulated by IRDAI, then waiting period for the same would be reduced to the extent of prior coverage.\n\nf) List of specific diseases/procedures:"
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Expenses related to the treatment of any illness within 30 days from the first policy commencement date shall be excluded except claims arising due to an accident, provided the same are covered.\n\ni. This exclusion shall not, however, apply if the Insured Person has Continuous Coverage for more than twelve months.\n\nii. The within referred waiting period is made applicable to the enhanced sum insured in the event of granting higher sum insured subsequently."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "We shall not be liable to make any payment in respect of this Benefit as specified in this Section II.1 for any Hospitalization first commencing within the number of days as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy from the Start Date of initial Policy with Us."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "We shall not be liable to make any payment in respect of any of the covered Illnesses of the nature specified in this Section II.2 whose consultation, investigation, diagnosis, treatment or admission commencing within the number of days as specified in the Policy Schedule/ Certificate of Insurance, from the Start Date of this Policy."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "We shall not be liable to make any payment in respect of this Benefit as specified in this Section II.3 for any Hospitalization first commencing within the number of days as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy from the Start Date of initial Policy with Us."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "We shall not be liable to make any payment in respect of any of the covered Illnesses of the nature specified in this Section II.5 whose signs or symptoms first occur within the number of days as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy from the Start Date of this Policy."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "We shall not be liable to make any payment in respect of the covered Illness as specified under Section II.6 (a) of the nature specified in this Section II.6 whose signs or symptoms first occur within the number of days as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy from the Start Date of initial Policy with Us. The initial Waiting Period is not applicable for Renewal policies, if renewed continuously and without any break with Us."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "We shall not be liable to make any payment in respect of any of the covered Illnesses of the nature specified in this Section II.10 whose signs or symptoms first occur within the number of days as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table of this Policy from the Start Date of this Policy."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+              }
+            ]
+          }
+        ],
+        "period": {
+          "start": "2026-05-26",
+          "end": "2027-05-26"
+        },
+        "extension": [
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                      "code": "POI",
+                      "display": "Proof of identity"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "code",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                      "code": "ADN",
+                      "display": "Adhaar number"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                      "code": "POA",
+                      "display": "Proof of address"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "code",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                      "code": "PPN",
+                      "display": "Passport number"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -237,87 +237,151 @@ class ContextManager:
             self._compress_history()
 
     def _compress_history(self):
-        """Compress older messages into a summary."""
-        if len(self.messages) < 6:
-            # Not enough messages to compress
+        """Compress older messages into a summary, preserving critical context."""
+        if len(self.messages) < 10:
             logger.info("Too few messages to compress, skipping")
             return
 
-        # Keep the most recent messages, compress older ones
-        # Strategy: Keep last 4 message pairs (8 messages), compress the rest
-        keep_count = min(8, len(self.messages))
-        
-        # CRITICAL FIX: The OpenAI API requires that every 'tool' message is immediately
-        # preceded by an 'assistant' message with matching 'tool_calls'.
-        # If our slice starts with a 'tool' message, we MUST expand the slice by 1 
-        # to include the preceding 'assistant' message.
+        # Keep more recent messages — scale with context window
+        # For 262K window: keep ~20 messages; for 131K: keep ~12
+        base_keep = max(12, min(24, self.context_window_tokens // 12000))
+        keep_count = min(base_keep, len(self.messages) - 4)
+
+        # OpenAI API requires every 'tool' message to be preceded by its 'assistant' message
         while keep_count < len(self.messages) and self.messages[-keep_count].get("role") == "tool":
             keep_count += 1
-            
+
         messages_to_compress = self.messages[:-keep_count]
         messages_to_keep = self.messages[-keep_count:]
 
         if not messages_to_compress:
             return
 
-        # Build a text summary of the old messages
-        summary_parts = []
+        # Build structured summary that doesn't depend on LLM quality
+        # Extract critical facts directly from messages
+        files_read = set()
+        files_written = set()
+        tools_used = []
+        validator_results = []
+        key_findings = []
+
         for msg in messages_to_compress:
             role = msg.get("role", "unknown")
-            content = msg.get("content", "")
-            if content and len(content) > 200:
-                content = content[:200] + "..."
+            content = msg.get("content", "") or ""
+
             if role == "assistant" and msg.get("tool_calls"):
-                tool_names = []
                 for tc in msg["tool_calls"]:
                     if isinstance(tc, dict) and "function" in tc:
-                        tool_names.append(tc["function"]["name"])
-                summary_parts.append(f"[Assistant called tools: {', '.join(tool_names)}]")
+                        func = tc["function"]
+                        name = func.get("name", "")
+                        args = func.get("arguments", "{}")
+                        try:
+                            parsed = json.loads(args) if isinstance(args, str) else args
+                        except Exception:
+                            parsed = {}
+
+                        tools_used.append(name)
+                        if name == "read_file" and "path" in parsed:
+                            files_read.add(parsed["path"])
+                        elif name == "write_file" and "path" in parsed:
+                            files_written.add(parsed["path"])
+
             elif role == "tool":
-                content_preview = content[:500] + "..." if content and len(content) > 500 else content
-                summary_parts.append(f"[Tool result: {content_preview}]")
+                if "VALIDATION SUCCESSFUL" in content:
+                    validator_results.append("PASSED (0 errors)")
+                elif "VALIDATION FAILED" in content:
+                    import re
+                    m = re.search(r'(\d+)\s+errors', content)
+                    count = m.group(1) if m else "?"
+                    validator_results.append(f"FAILED ({count} errors)")
+                    # Preserve the error types
+                    for line in content.split('\n'):
+                        if line.strip().startswith('[') and 'x]' in line:
+                            key_findings.append(f"Validator: {line.strip()}")
+
+                # Capture extraction notes content
+                if "extraction_notes" in content.lower() and len(content) > 200:
+                    key_findings.append(f"Extraction notes written ({len(content)} chars)")
+
+            elif role == "assistant" and content:
+                # Capture the agent's key decisions and findings
+                content_lower = content.lower()
+                if any(w in content_lower for w in ["found", "extracted", "coverage", "exclusion",
+                                                      "error", "fix", "phase", "plan"]):
+                    key_findings.append(f"Agent: {content[:300]}")
+
+        # Build the structured summary
+        structured_parts = []
+        structured_parts.append("=== COMPRESSION SUMMARY ===")
+        structured_parts.append(f"Messages compressed: {len(messages_to_compress)}")
+
+        if files_read:
+            structured_parts.append(f"\nFiles read: {', '.join(sorted(files_read))}")
+        if files_written:
+            structured_parts.append(f"Files written: {', '.join(sorted(files_written))}")
+        if validator_results:
+            structured_parts.append(f"Validator runs: {' → '.join(validator_results)}")
+
+        # Also build a raw text summary for LLM compression
+        raw_parts = []
+        for msg in messages_to_compress:
+            role = msg.get("role", "unknown")
+            content = msg.get("content", "") or ""
+            if role == "assistant" and msg.get("tool_calls"):
+                tool_names = [tc["function"]["name"] for tc in msg["tool_calls"]
+                              if isinstance(tc, dict) and "function" in tc]
+                raw_parts.append(f"[Tools: {', '.join(tool_names)}]")
+            elif role == "tool":
+                preview = content[:800] + "..." if len(content) > 800 else content
+                raw_parts.append(f"[Result: {preview}]")
             elif content:
-                summary_parts.append(f"[{role}]: {content}")
+                preview = content[:500] + "..." if len(content) > 500 else content
+                raw_parts.append(f"[{role}]: {preview}")
 
-        raw_summary = "\n".join(summary_parts)
+        raw_summary = "\n".join(raw_parts)
 
-        # Use LLM to compress if available, otherwise just truncate
+        # Use LLM to compress the raw parts, but prepend the structured facts
+        llm_summary = ""
         if self.llm_client:
             try:
-                compressed = self.llm_client.simple_complete(
+                # Limit input to avoid overwhelming the summarization call
+                input_text = raw_summary[:40000]
+                llm_summary = self.llm_client.simple_complete(
                     prompt=(
-                        f"You are summarizing an AI agent's progress for an insurance FHIR bundle task. "
-                        f"Create a DENSE, SPECIFIC summary (max {self.history_summary_max_chars} characters). "
-                        f"You MUST preserve ALL of these if present: "
-                        f"(1) exact coverage names and amounts extracted from PDF, "
-                        f"(2) exact exclusion names and waiting periods, "
-                        f"(3) plan variant names and sum insured values, "
-                        f"(4) file names read or written, "
-                        f"(5) exact FHIR error counts and error types, "
-                        f"(6) UIN/IRDAI/ROHINI identifiers found, "
-                        f"(7) what phase the agent is currently in. "
-                        f"Format as a numbered list. Be specific, not vague.\n\n"
-                        f"History to summarize:\n{raw_summary}"
+                        f"Summarize this AI agent's progress in a FHIR bundle generation task. "
+                        f"Write a LONG, DETAILED summary (aim for {self.history_summary_max_chars // 2} characters minimum). "
+                        f"You MUST preserve ALL specific details: file paths, coverage names, "
+                        f"SNOMED codes, error messages, exclusion codes, amounts, identifiers, "
+                        f"and what phase the agent is in. DO NOT be brief — detail is critical.\n\n"
+                        f"Agent history:\n{input_text}"
                     ),
                     system_prompt=(
-                        "You are a precise technical summarizer for an insurance FHIR bundle agent. "
-                        "NEVER replace specific facts (amounts, names, counts) with vague descriptions. "
-                        "Every monetary amount, coverage name, and error count must be preserved verbatim."
+                        "You are summarizing an AI agent's work. Write a DETAILED summary. "
+                        "Preserve EVERY specific fact: file paths, coverage names, SNOMED codes, "
+                        "error types and counts, exclusion names, identifiers. "
+                        "A longer, more detailed summary is BETTER than a short one. "
+                        "Minimum 2000 characters."
                     )
                 )
-                new_summary = compressed[:self.history_summary_max_chars]
             except Exception as e:
-                logger.warning(f"LLM compression failed, using truncation: {e}")
-                new_summary = raw_summary[:self.history_summary_max_chars]
-        else:
-            new_summary = raw_summary[:self.history_summary_max_chars]
+                logger.warning(f"LLM compression failed: {e}")
 
-        # Update state
+        # Combine structured facts + LLM summary
+        structured_text = "\n".join(structured_parts)
+        if key_findings:
+            structured_text += "\n\nKey findings:\n" + "\n".join(key_findings[:20])
+
+        if llm_summary:
+            new_summary = f"{structured_text}\n\n=== DETAILED SUMMARY ===\n{llm_summary}"
+        else:
+            new_summary = f"{structured_text}\n\n=== RAW HISTORY ===\n{raw_summary}"
+
+        new_summary = new_summary[:self.history_summary_max_chars]
+
+        # Update state — preserve previous summaries better
         if self.compressed_summary:
-            self.compressed_summary = (
-                f"[Previous summary]: {self.compressed_summary[:200]}...\n"
-                f"[Latest activity]: {new_summary}"
-            )
+            combined = f"{self.compressed_summary}\n\n{new_summary}"
+            self.compressed_summary = combined[:self.history_summary_max_chars]
         else:
             self.compressed_summary = new_summary
 
@@ -326,7 +390,8 @@ class ContextManager:
         self.compression_events += 1
 
         new_usage = self.get_current_token_usage()
-        logger.info(f"Compressed {len(messages_to_compress)} messages. "
+        logger.info(f"Compressed {len(messages_to_compress)} messages → kept {keep_count}. "
+                   f"Summary: {len(self.compressed_summary)} chars. "
                    f"New usage: {new_usage}/{self.context_window_tokens} tokens")
 
     def _auto_compress_output(self, output: str, tool_name: str) -> str:

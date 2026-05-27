@@ -78,9 +78,9 @@ def main():
         test_connection(settings)
         return
 
-    from agent.pipeline import NHCXPipeline
-    pipeline = NHCXPipeline(project_root=PROJECT_ROOT, settings=settings)
-    result = pipeline.run(pdf_path=args.pdf)
+    from agent.core import ReActAgent
+    agent = ReActAgent(project_root=PROJECT_ROOT, settings=settings)
+    result = agent.run(pdf_path=args.pdf)
 
     results_path = os.path.join(PROJECT_ROOT, "logs", "last_run_result.json")
     with open(results_path, "w", encoding="utf-8") as f:

@@ -42,6 +42,7 @@ class ToolRegistry:
             "save_checkpoint": self.save_checkpoint,
             "load_checkpoint": self.load_checkpoint,
             "extract_pdf_to_markdown": self.extract_pdf_to_markdown,
+            "deduplicate_bundle": self.deduplicate_bundle,
         }
 
     def execute(self, tool_name: str, arguments: dict) -> str:
@@ -55,8 +56,17 @@ class ToolRegistry:
             logger.error(f"Tool '{tool_name}' failed: {e}")
             return f"ERROR: {type(e).__name__}: {e}"
 
+    WRITABLE_DIRS = ["workspace/generated", "workspace/scratch", "logs"]
+
     def _resolve_path(self, path: str) -> str:
-        """Resolve a path relative to project root, with safety checks."""
+        """Resolve a path relative to project root, with safety checks.
+        Handles common LLM mistakes like '/workspace/...' (absolute but meant relative)."""
+        # Fix common LLM mistake: absolute paths starting with /workspace/, /logs/, /config/, /validator/
+        if os.path.isabs(path):
+            for prefix in ["/workspace/", "/logs/", "/config/", "/validator/", "/agent/"]:
+                if path.startswith(prefix):
+                    path = path.lstrip("/")
+                    break
         if os.path.isabs(path):
             resolved = os.path.abspath(path)
         else:
@@ -64,6 +74,21 @@ class ToolRegistry:
         if not resolved.startswith(self.project_root):
             raise PermissionError(f"Path '{path}' is outside project root")
         return resolved
+
+    def _resolve_write_path(self, path: str) -> str:
+        """Resolve a path for writing — must be inside an allowed writable directory."""
+        resolved = self._resolve_path(path)
+        rel = os.path.relpath(resolved, self.project_root)
+        for allowed in self.WRITABLE_DIRS:
+            if rel == allowed or rel.startswith(allowed + os.sep):
+                return resolved
+        raise PermissionError(
+            f"WRITE BLOCKED: '{rel}' is not in an allowed directory. "
+            f"You can ONLY write to: {', '.join(self.WRITABLE_DIRS)}. "
+            f"Use 'workspace/generated/' for final outputs (InsurancePlanBundle.json, "
+            f"extraction_notes.txt, generate_bundle.py). "
+            f"Use 'workspace/scratch/' for temporary/test files."
+        )
 
     # ═══════════════════════════════════════════
     # FILE OPERATIONS
@@ -106,8 +131,8 @@ class ToolRegistry:
         return content
 
     def write_file(self, path: str, content: str, create_dirs: bool = True) -> str:
-        """Write content to a file (creates directories if needed)."""
-        resolved = self._resolve_path(path)
+        """Write content to a file. Only allowed in: workspace/generated/, workspace/scratch/, logs/."""
+        resolved = self._resolve_write_path(path)
         if create_dirs:
             os.makedirs(os.path.dirname(resolved), exist_ok=True)
         with open(resolved, "w", encoding="utf-8") as f:
@@ -116,16 +141,16 @@ class ToolRegistry:
         return f"File written: {path} ({size} bytes, {content.count(chr(10))+1} lines)"
 
     def append_to_file(self, path: str, content: str) -> str:
-        """Append content to an existing file."""
-        resolved = self._resolve_path(path)
+        """Append content to an existing file. Only allowed in: workspace/generated/, workspace/scratch/, logs/."""
+        resolved = self._resolve_write_path(path)
         os.makedirs(os.path.dirname(resolved), exist_ok=True)
         with open(resolved, "a", encoding="utf-8") as f:
             f.write(content)
         return f"Appended {len(content)} chars to {path}"
 
     def patch_file(self, path: str, search_text: str, replace_text: str) -> str:
-        """Find and replace text in a file. Targeted editing without rewriting the whole file."""
-        resolved = self._resolve_path(path)
+        """Find and replace text in a file. Only allowed in: workspace/generated/, workspace/scratch/, logs/."""
+        resolved = self._resolve_write_path(path)
         if not os.path.exists(resolved):
             return f"ERROR: File not found: {path}"
         with open(resolved, "r", encoding="utf-8") as f:
@@ -265,6 +290,27 @@ class ToolRegistry:
 
     def run_terminal(self, command: str, timeout: int = None, cwd: str = None) -> str:
         """Execute a shell command and return output."""
+        # Block copying example bundles to generated output
+        if ("cp " in command or "copy " in command) and "examples/" in command and "generated/" in command:
+            return (
+                "ERROR: BLOCKED. You cannot copy example bundles to the generated output. "
+                "You must generate the bundle from the PDF data using your Python script. "
+                "Fix the validation errors in your generated bundle instead of copying the example."
+            )
+
+        # Block redirect/tee writes outside allowed directories
+        import shlex
+        for pattern in [" > ", " >> ", " | tee "]:
+            if pattern in command:
+                after = command.split(pattern, 1)[1].strip().split()[0] if pattern in command else ""
+                after = after.strip("'\"")
+                if after and not any(after.startswith(d) for d in self.WRITABLE_DIRS):
+                    if not after.startswith("/dev/"):
+                        return (
+                            f"ERROR: BLOCKED. Cannot write to '{after}'. "
+                            f"Only these directories are writable: {', '.join(self.WRITABLE_DIRS)}"
+                        )
+
         # Safety check
         blocked = self.settings.get("tools", {}).get("blocked_commands", [])
         for b in blocked:
@@ -386,7 +432,7 @@ class ToolRegistry:
             return f"INVALID JSON: {e}"
 
     def run_fhir_validator(self, bundle_path: str, extra_args: str = "") -> str:
-        """Run the FHIR validator on a bundle file."""
+        """Run the FHIR validator on a bundle file. Waits for full output and parses errors."""
         resolved_bundle = self._resolve_path(bundle_path)
         validator_jar = os.path.join(
             self.project_root,
@@ -406,49 +452,218 @@ class ToolRegistry:
         if extra_args:
             cmd += f" {extra_args}"
 
-        timeout = self.settings.get("validator", {}).get("timeout", 120)
-        raw_output = self.run_terminal(cmd, timeout=timeout)
-        
-        # Parse and group errors to avoid overwhelming the LLM context
-        errors = {}
-        warnings = {}
-        
+        timeout = self.settings.get("validator", {}).get("timeout", 600)
+
+        # Run validator directly (not through run_terminal) to get full untruncated output
+        try:
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True,
+                timeout=timeout, cwd=self.project_root,
+            )
+            raw_output = (result.stdout or "") + "\n" + (result.stderr or "")
+        except subprocess.TimeoutExpired:
+            return f"ERROR: Validator timed out after {timeout}s"
+
+        # Save raw output for debugging
+        logs_dir = os.path.join(self.project_root, "logs")
+        os.makedirs(logs_dir, exist_ok=True)
+        try:
+            with open(os.path.join(logs_dir, "last_validator_output.txt"), "w") as f:
+                f.write(raw_output)
+        except Exception:
+            pass
+
+        # Parse the summary line first (e.g., "*FAILURE*: 110 errors, 0 warnings, 41 notes")
+        summary_error_count = None
+        summary_status = None
+        clean_output = re.sub(r'\033\[[0-9;]*m', '', raw_output)
+        summary_match = re.search(
+            r'\*?(success|failure|information|warning)\*?\s*:\s*(\d+)\s+errors?,\s*(\d+)\s+warnings?',
+            clean_output,
+            re.IGNORECASE
+        )
+        if summary_match:
+            summary_status = summary_match.group(1).upper()
+            summary_error_count = int(summary_match.group(2))
+
+        # Parse individual error and warning lines
+        errors = []
+        warnings = []
+        grouped_errors = {}
+        grouped_warnings = {}
+
         for line in raw_output.split('\n'):
+            # Strip ANSI escape codes FIRST
+            line = re.sub(r'\033\[[0-9;]*m', '', line)
             line = line.strip()
-            if not line: continue
-            
-            if line.startswith('Error @') or 'Error:' in line:
-                # Normalize to group similar errors together
-                norm = re.sub(r'\(line \d+, col\d+\)', '', line)
-                norm = re.sub(r'[0-9a-fA-F\-]{32,36}', '<UUID>', norm)
-                norm = re.sub(r'Bundle\.entry\[\d+\]', 'Bundle.entry[X]', norm)
-                norm = re.sub(r'/\*.*?\*/', '/*', norm) # Strip inline comments like /*Organization/uuid*/
-                errors[norm] = errors.get(norm, 0) + 1
-                
-            elif line.startswith('Warning @') or 'Warning:' in line:
-                norm = re.sub(r'\(line \d+, col\d+\)', '', line)
-                norm = re.sub(r'[0-9a-fA-F\-]{32,36}', '<UUID>', norm)
-                norm = re.sub(r'Bundle\.entry\[\d+\]', 'Bundle.entry[X]', norm)
-                norm = re.sub(r'/\*.*?\*/', '/*', norm)
-                warnings[norm] = warnings.get(norm, 0) + 1
-                
-        if not errors and ("Success" in raw_output or "0 errors" in raw_output.lower()):
-            return f"VALIDATION SUCCESSFUL: 0 errors.\nRaw tail output:\n{raw_output[-500:]}"
-            
-        summary = ["FHIR VALIDATION RESULTS (DEDUPLICATED & NORMALIZED):"]
-        summary.append(f"\nTotal Unique Error Types: {len(errors)}")
-        for err, count in sorted(errors.items(), key=lambda x: x[1], reverse=True):
-            summary.append(f"  [{count}x] {err}")
-            
-        summary.append(f"\nTotal Unique Warning Types: {len(warnings)}")
-        for warn, count in sorted(warnings.items(), key=lambda x: x[1], reverse=True)[:5]: # Only show top 5 warnings
-            summary.append(f"  [{count}x] {warn}")
-            
-        if len(warnings) > 5:
-            summary.append(f"  ... plus {len(warnings) - 5} more warning types. Focus on errors first.")
-            
-        summary.append("\nNote: Exact line numbers and UUIDs were masked to '<UUID>' and '[X]' to group errors.")
-        return "\n".join(summary)
+            if not line:
+                continue
+
+            # Pattern 1: Error @ <path> (line X, colY) : <message>
+            match = re.match(
+                r'(Error|Warning|Information|Fatal)\s+@\s+(.*?)\s+'
+                r'\(line\s+(\d+),\s*col\s*(\d+)\)'
+                r'(?:\s+in\s+\S+)?'
+                r'\s*:\s*(.*)',
+                line
+            )
+            if not match:
+                # Pattern 2: Error @ <path> : <message> (no line/col)
+                match = re.match(
+                    r'(Error|Warning|Information|Fatal)\s+@\s+(.*?)\s*:\s*(.*)',
+                    line
+                )
+                if match:
+                    severity = match.group(1).lower()
+                    path = match.group(2).strip()
+                    message = match.group(3).strip()
+                else:
+                    continue
+            else:
+                severity = match.group(1).lower()
+                path = match.group(2).strip()
+                message = match.group(5).strip()
+
+            if severity in ("error", "fatal"):
+                errors.append({"path": path, "message": message, "raw": line})
+                # Normalize for grouping
+                norm_msg = re.sub(r'\(line \d+, col\s*\d+\)', '', line)
+                norm_msg = re.sub(r'[0-9a-fA-F\-]{32,36}', '<UUID>', norm_msg)
+                norm_msg = re.sub(r'Bundle\.entry\[\d+\]', 'Bundle.entry[X]', norm_msg)
+                norm_msg = re.sub(r'\.plan\[\d+\]', '.plan[X]', norm_msg)
+                norm_msg = re.sub(r'\.coverage\[\d+\]', '.coverage[X]', norm_msg)
+                norm_msg = re.sub(r'\.benefit\[\d+\]', '.benefit[X]', norm_msg)
+                norm_msg = re.sub(r'\.extension\[\d+\]', '.extension[X]', norm_msg)
+                norm_msg = re.sub(r'/\*.*?\*/', '/*...*/', norm_msg)
+                grouped_errors[norm_msg] = grouped_errors.get(norm_msg, 0) + 1
+            elif severity == "warning":
+                warnings.append({"path": path, "message": message})
+                norm_msg = re.sub(r'\(line \d+, col\s*\d+\)', '', line)
+                norm_msg = re.sub(r'[0-9a-fA-F\-]{32,36}', '<UUID>', norm_msg)
+                norm_msg = re.sub(r'Bundle\.entry\[\d+\]', 'Bundle.entry[X]', norm_msg)
+                norm_msg = re.sub(r'/\*.*?\*/', '/*...*/', norm_msg)
+                grouped_warnings[norm_msg] = grouped_warnings.get(norm_msg, 0) + 1
+
+        total_errors = len(errors)
+
+        # Success case: 0 errors found
+        if total_errors == 0:
+            # Summary line confirms 0 errors (SUCCESS, INFORMATION, or WARNING with 0 errors)
+            if summary_error_count == 0:
+                return f"VALIDATION SUCCESSFUL: 0 errors, {len(warnings)} warnings. (Status: {summary_status})"
+            # Summary line found but says errors > 0 — trust the summary
+            if summary_error_count is not None and summary_error_count > 0:
+                return (
+                    f"VALIDATION FAILED: Summary reports {summary_error_count} errors but parser "
+                    f"could not extract them. Raw output (last 3000 chars):\n\n"
+                    f"{clean_output[-3000:]}"
+                )
+            # No summary line found — check if validator actually ran
+            has_done_line = "Done. Times:" in clean_output
+            if has_done_line:
+                return f"VALIDATION SUCCESSFUL: 0 errors, {len(warnings)} warnings."
+            else:
+                return (
+                    f"VALIDATION RESULT UNCLEAR: Validator may not have completed. "
+                    f"Raw output (last 2000 chars):\n{clean_output[-2000:]}"
+                )
+
+        # Build structured error report
+        output_lines = [
+            f"VALIDATION FAILED: {total_errors} errors, {len(warnings)} warnings.",
+            f"",
+            f"ERRORS GROUPED BY TYPE ({len(grouped_errors)} unique types):",
+        ]
+        for err, count in sorted(grouped_errors.items(), key=lambda x: x[1], reverse=True):
+            output_lines.append(f"  [{count}x] {err}")
+
+        if grouped_warnings:
+            output_lines.append(f"\nWARNINGS ({len(grouped_warnings)} unique types, showing top 5):")
+            for warn, count in sorted(grouped_warnings.items(), key=lambda x: x[1], reverse=True)[:5]:
+                output_lines.append(f"  [{count}x] {warn}")
+
+        # Add first few raw errors for context (LLM needs exact paths to fix)
+        output_lines.append(f"\nFIRST 10 RAW ERRORS (use these paths to locate issues):")
+        for err in errors[:10]:
+            output_lines.append(f"  - {err['raw']}")
+
+        output_lines.append(f"\nFix the most common error type first, then re-validate.")
+        return "\n".join(output_lines)
+
+    # ═══════════════════════════════════════════
+    # BUNDLE DEDUPLICATION
+    # ═══════════════════════════════════════════
+
+    def deduplicate_bundle(self, bundle_path: str) -> str:
+        """Remove duplicate entries from all arrays in a FHIR bundle JSON file."""
+        resolved = self._resolve_path(bundle_path)
+        if not os.path.exists(resolved):
+            return f"ERROR: File not found: {bundle_path}"
+
+        try:
+            with open(resolved, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except json.JSONDecodeError as e:
+            return f"ERROR: Invalid JSON: {e}"
+
+        original_size = os.path.getsize(resolved)
+        stats = {"arrays_cleaned": 0, "items_removed": 0, "empty_removed": 0}
+        self._dedup_recursive(data, stats)
+
+        with open(resolved, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+
+        new_size = os.path.getsize(resolved)
+        reduction = original_size - new_size
+        pct = (reduction / original_size * 100) if original_size > 0 else 0
+
+        return (
+            f"Deduplication complete:\n"
+            f"  Original size: {original_size:,} bytes\n"
+            f"  New size: {new_size:,} bytes\n"
+            f"  Reduced by: {reduction:,} bytes ({pct:.1f}%)\n"
+            f"  Arrays cleaned: {stats['arrays_cleaned']}\n"
+            f"  Duplicate items removed: {stats['items_removed']}\n"
+            f"  Empty elements removed: {stats['empty_removed']}"
+        )
+
+    def _dedup_recursive(self, obj, stats: dict):
+        """Recursively deduplicate arrays and remove empty elements in a JSON structure."""
+        if isinstance(obj, dict):
+            keys_to_remove = []
+            for key, value in obj.items():
+                if isinstance(value, list):
+                    deduped = self._dedup_array(value)
+                    removed = len(value) - len(deduped)
+                    if removed > 0:
+                        stats["arrays_cleaned"] += 1
+                        stats["items_removed"] += removed
+                    obj[key] = deduped
+                    for item in obj[key]:
+                        self._dedup_recursive(item, stats)
+                elif isinstance(value, dict):
+                    self._dedup_recursive(value, stats)
+                if value is None or value == "" or value == [] or value == {}:
+                    keys_to_remove.append(key)
+            for key in keys_to_remove:
+                del obj[key]
+                stats["empty_removed"] += 1
+        elif isinstance(obj, list):
+            for item in obj:
+                self._dedup_recursive(item, stats)
+
+    def _dedup_array(self, arr: list) -> list:
+        """Remove duplicate items from a JSON array while preserving order."""
+        if not arr:
+            return arr
+        seen = []
+        result = []
+        for item in arr:
+            serialized = json.dumps(item, sort_keys=True)
+            if serialized not in seen:
+                seen.append(serialized)
+                result.append(item)
+        return result
 
     # ═══════════════════════════════════════════
     # CONTEXT MANAGEMENT
@@ -518,7 +733,7 @@ class ToolRegistry:
                 "type": "function",
                 "function": {
                     "name": "write_file",
-                    "description": "Write content to a file. Creates the file and parent directories if they don't exist. Overwrites existing content.",
+                    "description": "Write content to a file. ONLY writes to: workspace/generated/ (final outputs), workspace/scratch/ (temp files), logs/. Writing anywhere else is blocked.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -533,7 +748,7 @@ class ToolRegistry:
                 "type": "function",
                 "function": {
                     "name": "append_to_file",
-                    "description": "Append content to the end of an existing file.",
+                    "description": "Append content to a file. ONLY writes to: workspace/generated/, workspace/scratch/, logs/.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -548,7 +763,7 @@ class ToolRegistry:
                 "type": "function",
                 "function": {
                     "name": "patch_file",
-                    "description": "Find and replace specific text in a file. Use for targeted edits without rewriting the whole file.",
+                    "description": "Find and replace specific text in a file. ONLY edits files in: workspace/generated/, workspace/scratch/, logs/. Use for surgical fixes to the bundle JSON.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -748,6 +963,20 @@ class ToolRegistry:
                             "output_path": {"type": "string", "description": "Path for the output .md file (default: same directory as PDF, same name with .md extension)"},
                         },
                         "required": ["pdf_path"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "deduplicate_bundle",
+                    "description": "Remove duplicate entries from all arrays in a FHIR bundle JSON file. Run this after generating or modifying a bundle to prevent bloat from repeated extensions, exclusions, or coverages. Also removes empty elements.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "bundle_path": {"type": "string", "description": "Path to the bundle JSON file to deduplicate"},
+                        },
+                        "required": ["bundle_path"],
                     },
                 },
             },

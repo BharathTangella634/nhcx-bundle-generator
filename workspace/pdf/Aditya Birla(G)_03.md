@@ -1567,7 +1567,9 @@ or
 
 Group Protect, Product UIN: ADIHLGP22023V032122.
 
-## Health Insurance Aditya Birla Health Insurance Co. Limited
+## Health Insurance
+
+## Aditya Birla Health Insurance Co. Limited
 
 (A subsidiary of Aditya Birla Capital Ltd.)
 

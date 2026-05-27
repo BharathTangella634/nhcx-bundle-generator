@@ -14,6 +14,7 @@ Key design decisions:
 """
 
 import os
+import re
 import json
 import time
 import traceback
@@ -48,8 +49,16 @@ class ReActAgent:
         # Error tracking for resilience
         self.consecutive_errors = 0
         self.consecutive_empty = 0
+        self.consecutive_text_only = 0
         self.total_errors = 0
         self.MAX_CONSECUTIVE_ERRORS = 5
+        self.MAX_TEXT_ONLY_BEFORE_NUDGE = 5
+
+        # Validation tracking — prevents false completion claims
+        self.last_validator_passed = False
+        self.last_validator_result_summary = ""
+        self.validator_run_count = 0
+        self.consecutive_validator_passes = 0
 
         # Initialize components
         llm_cfg = settings.get("llm", {})
@@ -203,6 +212,7 @@ class ReActAgent:
                         print(f"  💭 Thinking: {response['content'][:120]}...")
                     self._handle_tool_calls(response)
                     self.consecutive_empty = 0
+                    self.consecutive_text_only = 0
 
                 elif has_content:
                     # LLM gave a text response — could be thinking, planning, or done
@@ -319,7 +329,56 @@ class ReActAgent:
             print(f"  📋 → {preview}{'...' if len(result) > 200 else ''} ({elapsed:.1f}s)")
             self._log_trace(f"  RESULT ({elapsed:.1f}s): {result[:500]}\n")
 
+            # Track validator results to prevent false completion
+            if tool_name == "run_fhir_validator":
+                self.validator_run_count += 1
+                if "VALIDATION SUCCESSFUL" in result and "0 errors" in result:
+                    self.last_validator_passed = True
+                    self.last_validator_result_summary = "0 errors"
+                    self.consecutive_validator_passes += 1
+                    print(f"  ✅ Validator PASSED (0 errors) [{self.consecutive_validator_passes} consecutive]")
+                else:
+                    self.last_validator_passed = False
+                    self.consecutive_validator_passes = 0
+                    err_match = re.search(r'(\d+)\s+errors?', result)
+                    err_count = err_match.group(1) if err_match else "unknown"
+                    self.last_validator_result_summary = f"{err_count} errors"
+                    print(f"  ❌ Validator FAILED ({err_count} errors)")
+
             self.context_manager.add_tool_result(tool_id, tool_name, result)
+
+        # Check for completion in the LLM's thinking text alongside tool calls
+        content = response.get("content", "")
+        if content and "task complete: bundle generated with zero validation errors" in content.lower():
+            if self.last_validator_passed and self.validator_run_count > 0:
+                cheat_check = self._check_bundle_not_example_copy()
+                if cheat_check:
+                    print(f"  ⚠️  CHEAT DETECTED: {cheat_check}")
+                    self.context_manager.add_user_message(cheat_check)
+                    self.last_validator_passed = False
+                    return
+                self.is_complete = True
+                self.completion_message = content[:500]
+                print(f"  ✅ TASK COMPLETE verified (from tool-call thinking text)")
+                return
+
+        # Auto-complete: if validator passed 3+ consecutive times, the LLM is stuck
+        if self.consecutive_validator_passes >= 3:
+            cheat_check = self._check_bundle_not_example_copy()
+            if not cheat_check:
+                self.is_complete = True
+                self.completion_message = (
+                    f"Auto-completed: validator passed {self.consecutive_validator_passes} "
+                    f"consecutive times with 0 errors."
+                )
+                print(f"  ✅ AUTO-COMPLETE: Validator passed {self.consecutive_validator_passes}x consecutively")
+                return
+        elif self.consecutive_validator_passes >= 2:
+            self.context_manager.add_user_message(
+                "The FHIR validator has passed with 0 errors. The bundle is valid. "
+                "Stop running more tools. Respond with ONLY this text: "
+                "\"TASK COMPLETE: Bundle generated with zero validation errors.\""
+            )
 
     def _handle_text_response(self, response: dict):
         """Handle text-only response. Let LLM think freely — don't force tools."""
@@ -328,24 +387,88 @@ class ReActAgent:
         self._log_trace(f"  AGENT: {content[:500]}\n")
 
         self.context_manager.add_assistant_message(content=content)
+        self.consecutive_text_only += 1
 
         # Check for GENUINE completion signals
-        # IMPORTANT: Only fire on the EXACT required phrase to avoid false positives.
-        # The validator output itself contains "0 errors" which would trigger early exit.
         content_lower = content.lower()
-        # Only match the exact phrase the system prompt instructs the agent to say
         if "task complete: bundle generated with zero validation errors" in content_lower:
-            self.is_complete = True
-            self.completion_message = content[:500]
-            print(f"  ✅ TASK COMPLETE detected!")
+            # CRITICAL: Verify the last validator run actually passed
+            if self.last_validator_passed and self.validator_run_count > 0:
+                # Anti-cheat: verify the bundle isn't just a copy of an example
+                cheat_check = self._check_bundle_not_example_copy()
+                if cheat_check:
+                    print(f"  ⚠️  CHEAT DETECTED: {cheat_check}")
+                    self.context_manager.add_user_message(cheat_check)
+                    self.last_validator_passed = False
+                    return
 
-        # Let the LLM continue naturally — only nudge if it seems stuck
-        # (i.e., it gave a very short response that isn't a plan or analysis)
-        if len(content.strip()) < 50 and not any(w in content_lower for w in
+                self.is_complete = True
+                self.completion_message = content[:500]
+                print(f"  ✅ TASK COMPLETE verified (validator passed with 0 errors)")
+                return
+            else:
+                # LLM is hallucinating completion — reject and force re-validation
+                if self.validator_run_count == 0:
+                    rejection = (
+                        "STOP. You claimed TASK COMPLETE but you have NEVER run the FHIR validator. "
+                        "You MUST run run_fhir_validator on the bundle before declaring completion. "
+                        "Do it now."
+                    )
+                else:
+                    rejection = (
+                        f"STOP. You claimed TASK COMPLETE but the last validator run showed "
+                        f"{self.last_validator_result_summary}. You CANNOT declare completion "
+                        f"with errors remaining. Run run_fhir_validator again to check the "
+                        f"current state, then fix ALL errors before declaring completion."
+                    )
+                print(f"  ⚠️  FALSE COMPLETION rejected — {self.last_validator_result_summary}")
+                self.context_manager.add_user_message(rejection)
+                return
+
+        # Nudge if the agent is stuck in a text-only loop
+        if self.consecutive_text_only >= self.MAX_TEXT_ONLY_BEFORE_NUDGE:
+            self.context_manager.add_user_message(
+                f"You have given {self.consecutive_text_only} text responses in a row without using any tools. "
+                "Stop planning and ACT. Use a tool right now to make concrete progress. "
+                "For example: list_directory, read_file, write_file, run_terminal, or run_fhir_validator."
+            )
+            self.consecutive_text_only = 0
+        elif len(content.strip()) < 50 and not any(w in content_lower for w in
                 ["let me", "i will", "next", "now", "plan", "step", "thinking", "analyzing"]):
             self.context_manager.add_user_message("Continue. Use tools to make progress.")
         # Otherwise, let the LLM's next turn happen naturally — it will
         # decide on its own whether to call a tool or continue reasoning.
+
+    def _check_bundle_not_example_copy(self) -> str:
+        """Check that the generated bundle isn't just a copy of an example. Returns error message or None."""
+        import hashlib
+        generated_path = os.path.join(self.project_root, "workspace", "generated", "InsurancePlanBundle.json")
+        examples_dir = os.path.join(self.project_root, "workspace", "examples")
+
+        if not os.path.exists(generated_path):
+            return "STOP. The generated bundle file does not exist at workspace/generated/InsurancePlanBundle.json."
+
+        try:
+            with open(generated_path, "rb") as f:
+                gen_hash = hashlib.md5(f.read()).hexdigest()
+
+            for fname in os.listdir(examples_dir):
+                if fname.endswith(".json"):
+                    example_path = os.path.join(examples_dir, fname)
+                    with open(example_path, "rb") as f:
+                        ex_hash = hashlib.md5(f.read()).hexdigest()
+                    if gen_hash == ex_hash:
+                        return (
+                            f"STOP. The generated bundle is an EXACT COPY of the example file '{fname}'. "
+                            f"You CANNOT pass off an example bundle as your generated output. "
+                            f"You MUST generate the bundle from the actual PDF policy data. "
+                            f"Go back to your generate_bundle.py script, fix the validation errors, "
+                            f"and regenerate. Do NOT copy example files."
+                        )
+        except Exception as e:
+            logger.warning(f"Bundle copy check failed: {e}")
+
+        return None
 
     def _auto_checkpoint(self):
         """Save automatic checkpoint. Never crashes."""

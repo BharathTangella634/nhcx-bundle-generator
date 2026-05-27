@@ -1,0 +1,130 @@
+=== Extraction Notes for Aditya Birla Health Insurance – Group Protect ===
+
+1. Insurer Details
+   - Name: **Aditya Birla Health Insurance Co. Limited** (subsidiary of Aditya Birla Capital Ltd.)
+   - Address (as appears in the document): *Address : Aditya Birla Health insurance Co. Limited* (full postal address not provided in the markdown).
+   - CIN / License Number: **Not found in the markdown**.
+   - Product UIN (Universal Identification Number): **ADIHLGP22023V032122** (appears multiple times throughout the policy).
+   - ROHINI Identifier: **Not found**.
+   - IRDAI Registration Number: **Not found**.
+
+2. Policy Overview
+   - Policy Name / Title: **Group Protect**
+   - Plan Type: **Group** (the policy is a group health insurance plan covering a minimum of 7 employees/members).
+   - Status (as per example bundle): active.
+   - Policy Period: Not explicitly stated in the markdown (example bundle uses 2023‑01‑01 to 2025‑12‑31).
+
+3. Plan Variants / Options
+   - **Cancer Secure Cover** – two options:
+        *Option 1* – 100% liability for Major Stage Cancer & Advanced Stage Cancer (single claim per insured). No claim for Early Stage Cancer once Major/Advanced claim is admitted.
+        *Option 2* – 150% liability for Major Stage Cancer, 100% for Early Stage, 150% for Advanced Stage. Specific claim limits and survival periods apply.
+   - **Heart Secure Cover** – options A to H (as per the benefit table). Each option lists which illnesses/surgeries are "Available" or "Not Available". The table includes 12 rows (e.g., First Heart Attack, Open Chest CABG, etc.) with availability per option.
+   - **Other Covers** (no explicit variants, but they are separate benefit sections):
+        *OPD Expenses* (Section II.1)
+        *Income Protect* (Section II.3)
+        *Preferred Provider Network* (Section II.4)
+        *Credit Protect* (Section II.9)
+        *Heart Assure Cover* (Section II.10)
+        *Cancer Assure Cover* (Section II.6)
+        *Hospital Cash Benefit* (Section II.7)
+        *Major Illnesses Cover – Domestic Hospitalization* (Section II.8)
+        *Heart Assure Cover* (Section II.10) – duplicate naming, but distinct from Heart Secure Cover.
+
+4. Sum Insured / Premiums (as stated in the markdown)
+   - The document frequently refers to "Sum Insured" or percentages of it, but **no absolute monetary values** are provided in the markdown for any cover (e.g., OPD limit, Hospitalisation limit, etc.).
+   - Premium amounts are **not mentioned** in the markdown.
+   - Where percentages are given, they are recorded (e.g., Cancer Secure Cover Option 1 – 100% of Sum Insured for Major/Advanced Stage Cancer).
+
+5. Coverage Sections (benefits) – extracted details
+   - **OPD Expenses (Section II.1)**
+        *Covered*: Doctor consultation (including e‑consult & tele‑consult) for listed specialties, diagnostic tests, pharmacy expenses – all on an outpatient basis up to limits specified in the schedule (limits not present in markdown).
+        *Not Covered*: Any outpatient consultation/diagnostic/pharmacy expense exceeding the schedule limits; inpatient treatment & day‑care procedures; Naturopathy treatments; CT & MRI.
+   - **Cancer Secure Cover (Section II.2)**
+        *Covered*: Percentage of Sum Insured payable for Early, Major, Advanced Stage Cancer as per selected option; claim terminates on death, claim admission, or policy expiry.
+        *Conditions*: Waiting period (initial), survival period, claim limits (one claim per stage), grid of payouts.
+        *Exclusions*: Illnesses not listed as covered, narcotics unless prescribed.
+   - **Second Opinion (Section 2.1)** – one e‑opinion per covered cancer stage per policy period.
+   - **Post‑Cancer OPD / Medication (Section 2.2)** – limit per insured per policy year for OPD consultations & medication after cancer claim.
+   - **Counselling Sessions (Section 2.3)** – limit per policy year; only after certain cancer claims.
+   - **Reconstructive Surgery (Section 2.4)** – limit per policy year.
+   - **Palliative Care (Section 2.5)** – daily limit for a maximum period (numeric not provided).
+   - **Genetic Testing (Section 2.6)** – limit per policy year.
+   - **Income Protect (Section II.3)**
+        *Covered*: Monthly income benefit for continuous disability >7 days, subject to eligibility (salaried, employment proof, deductible days, etc.).
+        *Exclusions*: Various unemployment types, voluntary resignation, etc.
+   - **Preferred Provider Network (Section II.4)** – cashless facility only at network providers; no coverage outside network.
+   - **Heart Secure Cover (Section II.5)** – 100% liability for listed cardiac illnesses/surgeries; one claim per insured; waiting period & survival period apply.
+   - **Heart Assure Cover (Section II.10)** – similar to Heart Secure but with detailed inpatient benefit list (room rent, ICU, OT, fees, medicines, investigations, etc.) – 100% liability.
+   - **Cancer Assure Cover (Section II.6)** – covers conventional (chemo, radiotherapy, surgery, transplantation) and advanced treatments (immunotherapy, targeted therapy, hormonal, stem‑cell); percentages not specified.
+   - **Hospital Cash Benefit (Section II.7)** – daily cash benefit per continuous 24‑hour hospitalization, subject to maximum days and deductible.
+   - **Major Illnesses Cover – Domestic Hospitalization (Section II.8)** – covers a long list of major illnesses (cancer, coronary bypass, valve replacement, organ transplant, etc.) with 100% liability; includes pre‑, post‑hospitalization, ambulance, waiting & survival periods.
+   - **Credit Protect (Section II.9)** – pays outstanding loan balance on accidental death or permanent total disablement, subject to limits.
+
+6. Exclusions (comprehensive list extracted from the markdown)
+   - **Section‑specific exclusions** (e.g., Section II.1, II.2, II.3, II.5, II.6, II.7, II.8, II.9) – each lists items not covered (e.g., inpatient treatment for OPD, certain procedures, etc.).
+   - **Permanent Exclusions (Section IV)** – war, breach of law (Excl10), hazardous/adventure sports (Excl09), alcoholism/drug abuse (Excl12), obesity/weight control (Excl06), refractive error (Excl15), cosmetic/plastic surgery (Excl08), change‑of‑gender (Excl07), non‑allopathic (Excl16), experimental/unproven (Excl10/Excl16), investigation & evaluation (Excl04), rest cure/rehab (Excl05), maternity (Excl18), sterility/infertility (Excl17), etc.
+   - **Standard NHCX Exclusion Codes Mapping** (as per requirement):
+        Excl01 – Pre‑Existing Diseases (mentioned in Section III Waiver 1)
+        Excl02 – Certain specified diseases/procedures require Waiting Period (Section III Waiver 2)
+        Excl03 – 30 Day Waiting Period (Section III Waiver 3)
+        Excl04 – Investigation & Evaluation (Section IV point 17)
+        Excl05 – Rest Cure, Rehabilitation & Respite Care (Section IV point 18)
+        Excl06 – Obesity and Weight Management (Section IV point 7)
+        Excl07 – Change of Gender Treatment (Section IV point 12)
+        Excl08 – Cosmetic or Plastic Surgery (Section IV point 10)
+        Excl09 – Hazardous or Adventure Sports (Section IV point 4)
+        Excl10 – Breach of law with criminal intent (Section IV point 2)
+        Excl11 – Excluded Providers (Section IV point 47)
+        Excl12 – Treatment for Alcoholism, drug/substance abuse (Section IV point 5)
+        Excl13 – Self inflicted injuries or suicide attempt (Section IV point 48 – “Treatments received in health hydros…”) – interpreted as self‑inflicted.
+        Excl14 – Injury/disease directly from War or nuclear contamination (Section IV point 1)
+        Excl15 – Refractive Error (Section IV point 8)
+        Excl16 – Unproven/Experimental Treatment (Section IV point 16)
+        Excl17 – Sterility and Infertility (Section IV point 30)
+        Excl18 – Maternity Expenses (Section IV point 29)
+        Excl19 – Naturopathy Treatments (Section II.1 exclusion list includes Naturopathy) – map to Excl16 (unproven) or create custom if needed.
+        Excl20 – External Congenital Defect (Section IV point 27) – map to Excl14.
+        Excl21 – Service in Armed Forces (not explicitly mentioned) – not present.
+        Excl22 – Naturopathy Treatments (already covered).
+   - **Additional exclusions** captured verbatim from the markdown (e.g., “Any treatment other than for the covered Illness”, “Narcotics unless prescribed”, “Any Illness other than those specified”, etc.).
+
+7. Waiting Periods
+   - **Initial Waiting Periods** (applicable to multiple sections, exact days not always specified):
+        *Section II.1 (OPD)* – not explicitly stated.
+        *Section II.2 (Cancer Secure Cover)* – "initial waiting period (number of days as specified in the Policy Schedule)".
+        *Section II.3 (Income Protect)* – "initial waiting period (number of days as specified in the Policy Schedule)".
+        *Section II.5 (Heart Secure Cover)* – "initial waiting period (number of days as specified in the Policy Schedule)".
+        *Section II.6 (Cancer Assure Cover)* – same as above.
+        *Section II.7 (Hospital Cash Benefit)* – same as above.
+        *Section II.8 (Major Illnesses Cover)* – **90 days** (explicitly mentioned).
+        *Section II.9 (Credit Protect)* – no waiting period.
+   - **Specific Waiting Period Waivers** (Section III):
+        *Pre‑Existing Disease Waiting Period* – code Excl01 – duration not numeric (depends on prior coverage).
+        *Specified disease / procedure waiting period* – code Excl02 – **24 months**.
+        *First 30 Days Waiting Period* – code Excl03 – **30 days**.
+   - **Survival Periods** – mentioned for several sections (e.g., Cancer Secure Cover, Income Protect, Heart Secure Cover) – duration not numeric; captured as "as specified in the Policy Schedule".
+
+8. Room Rent Limits
+   - The policy states coverage up to **Single Private A/C Room** category for inpatient benefits (e.g., Cancer Assure, Heart Assure, Major Illnesses). No explicit limit for shared rooms; if a higher category is chosen, the insured bears a proportionate amount.
+   - ICU charges are covered fully; proportionate deductions do **not** apply to ICU.
+
+9. Co‑Payment / Deductible
+   - The markdown does **not** specify any co‑payment percentages. It mentions a deductible in Income Protect (number of days) and in some sections “Deductible of number of days” – captured as a condition but no numeric value.
+
+10. Supporting Documents Required for Claims (compiled from Sections V and claim document tables)
+   - **General required for all claims**: Claim Form (original), Photo ID & Age proof of Insured/Nominee, copy of claim intimation, original bills & receipts, prescription, clinical notes, investigation reports (CT/MRI/USG/Histo/Biopsy), doctor’s prescription, cancelled cheque for NEFT.
+   - **Specific to OPD (Section II.1)**: Prescription from Medical Practitioner.
+   - **Cancer Secure Cover (Section II.2)**: Medical certificate confirming diagnosis, certificate confirming no pre‑existing disease, discharge certificate, investigation reports, first consultation letter, specific documents per covered illness.
+   - **Income Protect (Section II.3)**: Claim form, appointment letter, salary structure, last 3 months salary slips, 3‑year IT returns, medical/OPD papers, HR contact details, PAN, residence proof, photos, cancelled cheque.
+   - **Heart Diseases Cover (Section II.5)**: Similar to Cancer – medical certificate, discharge certificate, investigation reports, etc.
+   - **Credit Protect (Section II.9)**: Claim form, photo ID, claim intimation, medico‑legal certificate/FIR/Panchanama, consultation letters, radiology reports, loan statements, repayment schedule, legal heir certificate, cancelled cheque.
+   - **Hospital Cash Benefit & Major Illnesses (Section II.7 & II.8)**: Claim form, ID, claim intimation, final hospital bill, discharge summary, OT notes, investigation reports, doctor’s prescription, cancelled cheque.
+   - **Emergency Road Ambulance**: Claim form, ID, ambulance registration proof, claim intimation, medical practitioner certification.
+   - **Other supporting info**: As per Claim‑SupportingInfoRequirement extension – captured in the bundle.
+
+11. Additional Identifiers / Numbers
+   - **ROHINI ID**: Not present.
+   - **IRDAI registration number**: Not present.
+   - **UIN** captured above.
+
+--- End of Extraction Notes ---

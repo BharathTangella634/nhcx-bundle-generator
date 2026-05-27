@@ -1,0 +1,800 @@
+{
+  "resourceType": "Bundle",
+  "id": "00c6c375-98d0-4353-82d5-e4af619a6cb2",
+  "meta": {
+    "versionId": "1",
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"
+    ],
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+        "code": "V",
+        "display": "very restricted"
+      }
+    ]
+  },
+  "type": "collection",
+  "timestamp": "2026-05-26T12:00:00+00:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:0d72e3e9-117a-4a28-be16-cbc5d561534d",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "0d72e3e9-117a-4a28-be16-cbc5d561534d",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "name": "Aditya Birla Health Insurance Co. Limited",
+        "address": [
+          {
+            "text": "Address : Aditya Birla Health insurance Co. Limited"
+          }
+        ],
+        "identifier": [
+          {
+            "system": "https://rohini.iib.gov.in/",
+            "value": "ORG-0d72e3e9",
+            "type": {
+              "coding": [
+                {
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "code": "ORG",
+                  "display": "Organization"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:fa6b4a38-b117-410b-a951-6518fb271542",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "fa6b4a38-b117-410b-a951-6518fb271542",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Group Protect</b> - Aditya Birla Health Insurance Co. Limited</p><p>Product UIN: ADIHLGP22023V032122</p><p>Status: active</p><p>Type: Hospitalisation Indemnity Policy</p><p>Period: 2023-01-01 to 2025-12-31</p></div>"
+        },
+        "identifier": [
+          {
+            "system": "https://irdai.gov.in",
+            "value": "ADIHLGP22023V032122"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-insuranceplan-type",
+                "code": "01",
+                "display": "Hospitalisation Indemnity Policy"
+              }
+            ]
+          }
+        ],
+        "period": {
+          "start": "2023-01-01",
+          "end": "2025-12-31"
+        },
+        "ownedBy": {
+          "reference": "urn:uuid:0d72e3e9-117a-4a28-be16-cbc5d561534d"
+        },
+        "administeredBy": {
+          "reference": "urn:uuid:0d72e3e9-117a-4a28-be16-cbc5d561534d"
+        },
+        "name": "Group Protect",
+        "extension": [
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                      "code": "POI",
+                      "display": "Proof of identity"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "code",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                      "code": "ADN",
+                      "display": "Adhaar number"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                      "code": "POA",
+                      "display": "Proof of address"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "code",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                      "code": "PPN",
+                      "display": "Passport number"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl01",
+                      "display": "Pre-Existing Diseases"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Pre-Existing Diseases are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl02",
+                      "display": "Specified disease/procedure waiting period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Specified disease/procedure waiting period are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl03",
+                      "display": "30-day waiting period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "30-day waiting period are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl04",
+                      "display": "Investigation Evaluation"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Investigation Evaluation are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl05",
+                      "display": "Rest Cure,Rehabilitation and Respite Care"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Rest Cure, Rehabilitation and Respite Care are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl06",
+                      "display": "Obesity/Weight Control"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Obesity/Weight Control are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl07",
+                      "display": "Change-of-Gender treatments"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Change-of-Gender treatments are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl08",
+                      "display": "Cosmetic or Plastic Surgery"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Cosmetic or Plastic Surgery are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl09",
+                      "display": "Hazardous or Adventure Sports"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Hazardous or Adventure Sports are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl10",
+                      "display": "Breach of law"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Breach of law are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl11",
+                      "display": "Excluded Providers"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Excluded Providers are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl12",
+                      "display": "Rehabilitation"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Rehabilitation are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl13",
+                      "display": "Hydrotherapy"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Hydrotherapy are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl14",
+                      "display": "Non-prescription"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Non-prescription are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl15",
+                      "display": "Refractive Error"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Refractive Error are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl16",
+                      "display": "Unproven Treatments"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Unproven Treatments are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl17",
+                      "display": "Sterility and Infertility"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Sterility and Infertility are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl18",
+                      "display": "Maternity Expenses"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Maternity Expenses are excluded as per policy."
+              }
+            ]
+          },
+          {
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion",
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                      "code": "Excl19",
+                      "display": "Naturopathy Treatments"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Naturopathy Treatments are excluded as per policy."
+              }
+            ]
+          }
+        ],
+        "coverage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "737492002",
+                  "display": "Outpatient care management (procedure)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "363406005",
+                  "display": "Malignant tumour of colon"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386661006",
+                  "display": "Fever (finding)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "71388002",
+                  "display": "Procedure"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "413839001",
+                  "display": "Chronic lung disease"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "363406005",
+                  "display": "Malignant tumour of colon"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "410942007",
+                  "display": "Drug or medicament"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "64572001",
+                  "display": "Disease (disorder)"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "442083009",
+                  "display": "Anatomical or acquired body structure"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "413839001",
+                  "display": "Chronic lung disease"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "224663004",
+                      "display": "Single room (environment)"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

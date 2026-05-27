@@ -1,0 +1,158 @@
+=== Extraction Notes for Aditya Birla Group Protect Policy ===
+
+--- Insurer Details ---
+Name: Aditya Birla Health Insurance Co. Limited (subsidiary of Aditya Birla Capital Ltd.)
+Address: 9th Floor, Tower 1, One Indiabulls Centre, Jupiter Mills Compound, 841, Senapati Bapat Marg, Elphinstone Road, Mumbai 400013, India
+ROHINI Identifier (if any): Not explicitly listed in the PDF. Use placeholder "ROHINI-XXXX" if required.
+IRDAI Registration: "https://irdai.gov.in" (implicit as insurer is IRDAI regulated)
+CIN / License Number: Not explicitly listed in the markdown. (Could be obtained from external sources; placeholder used.)
+UIN (Product Unique Identification Number): ADIHLGP22023V032122 (appears multiple times throughout the document)
+
+--- Policy / Plan Overview ---
+Policy Name: Group Protect
+Plan Type: Group (Group Protect) – covers group of employees (minimum 7 members)
+Plan Variants / Options:
+1. OPD Expenses (Section II.1) – basic outpatient coverage.
+2. Cancer Secure Cover (Section II.2) – with Options 1 & 2 (different sum insured percentages). Additional Benefits (II.2.1 – II.2.6) can be opted only with Option 2.
+3. Heart Secure Cover (Section II.5) – multiple illness options (A‑H) with 100% sum insured (some options not available for certain illnesses).
+4. Cancer Assure Cover (Section II.6) – inpatient, day‑care, OPD, pre‑/post‑hospitalisation, ambulance, follow‑up, etc.
+5. Income Protect (Section II.3) – monthly income benefit for >7 consecutive inpatient days.
+6. Preferred Provider Network (Section II.4) – cashless network coverage.
+7. Hospital Cash Benefit (Section II.7) – daily cash per hospitalization day.
+8. Major Illness Cover – Domestic Hospitalisation (Section II.8) – includes a long list of major illnesses (cancer, heart surgery, organ transplant, etc.).
+9. Credit Protect (Section II.9) – loan repayment benefit on accidental death / total disablement.
+10. Heart Assure Cover (Section II.10) – similar to Heart Secure but with different benefit structure.
+
+--- Sum Insured / Premiums (as per PDF) ---
+Exact monetary values are not listed in the markdown excerpt; the document repeatedly references "as specified in the Policy Schedule / Certificate of Insurance / Product Benefit Table". Therefore, for bundle generation, placeholders will be used (e.g., "<SumInsured_OPD>", "<SumInsured_CancerSecure>", etc.). Premium amounts are also not explicitly stated – placeholders will be used.
+
+--- Coverage Details (benefits) ---
+1. OPD Expenses (Section II.1)
+   • Doctor Consultation – covered up to policy‑specified limit.
+   • Diagnostic Tests – covered up to limit.
+   • Pharmacy Expenses – covered up to limit.
+   • Exclusions: costs exceeding limits, inpatient & day‑care, Naturopathy, CT & MRI.
+2. Cancer Secure Cover (Section II.2)
+   • Sum Insured per cancer stage (Early, Major, Advanced) – % of SI as per Option.
+   • Option 1: 100% liability, single claim per major/advanced stage.
+   • Option 2: 150% liability, multiple claim rules, % payouts for early stage (50% or Rs.10Lacs whichever lower).
+   • Additional Benefits (II.2.1‑II.2.6) – Second Opinion, Post‑cancer OPD, Counselling, Reconstructive Surgery, Palliative Care, Genetic Testing – each with specific limits.
+   • Waiting Period: Initial waiting period (days defined in schedule) and Survival Period (days after diagnosis).
+   • Exclusions: Illnesses not listed, narcotics unless prescribed, etc.
+3. Heart Secure Cover (Section II.5)
+   • List of 12 illnesses/procedures with 100% SI (some not available for certain options).
+   • Waiting Period: Initial waiting period (days defined in schedule) and Survival Period.
+   • Exclusions: Naturopathy, CT & MRI, etc.
+4. Cancer Assure Cover (Section II.6)
+   • In‑patient Hospitalisation – room rent (single private A/C), ICU, OT, doctor fees, nurses, medicines, investigations, anaesthesia, prosthetics, etc.
+   • Day‑Care Treatment – covered up to schedule limits.
+   • OPD Treatment – consultations, diagnostics, pharmacy (subject to limits).
+   • Pre‑hospitalisation, Post‑hospitalisation, Emergency Road Ambulance, Follow‑up care – each with limits and conditions.
+   • Waiting Periods: Initial (days) and Survival Period (days).
+   • Exclusions: Non‑cancer treatments, non‑allopathic, hospice, external appliances, etc.
+5. Income Protect (Section II.3)
+   • Monthly limit per policy year for continuous >7 inpatient days.
+   • Eligibility: salaried individuals with ITR proof.
+   • Deductible: number of days as per schedule.
+   • Waiting Period: Initial waiting period (days) as per schedule.
+6. Preferred Provider Network (Section II.4)
+   • Cashless facility only with network providers.
+   • No coverage for out‑of‑network expenses.
+7. Hospital Cash Benefit (Section II.7)
+   • Daily cash per continuous 24‑hour hospitalization, up to schedule limit.
+   • Deductible applies as per schedule.
+8. Major Illness Cover – Domestic Hospitalisation (Section II.8)
+   • Covers a wide range of major illnesses (cancer, coronary bypass, valve replacement, organ transplant, neurosurgery, aorta graft, etc.) with detailed definitions.
+   • Room rent, ICU, OT, doctor fees, nurses, medicines, investigations, anaesthesia, prosthetics, medication – all covered up to limits.
+   • Pre‑hospitalisation, Post‑hospitalisation, Emergency Ambulance – similar to Cancer Assure.
+   • Waiting Period: Initial (90 days) and Survival Period as per schedule.
+9. Credit Protect (Section II.9)
+   • Pays outstanding loan balance on accidental death or permanent total disablement.
+   • Conditions: loan documents, claim verification, etc.
+10. Heart Assure Cover (Section II.10)
+    • Similar benefit structure to Heart Secure but with different claim limits and conditions.
+
+--- Exclusions (comprehensive list) ---
+Permanent Exclusions (Section IV):
+1. War, nuclear, chemical/biological weapons, etc. (Excl14)
+2. Breach of law with criminal intent (Excl07)
+3. Hazardous or adventure sports (Excl09)
+4. Treatment for alcoholism, drug/substance abuse (Excl12)
+5. Cosmetic or plastic surgery (Excl08)
+6. Change of gender treatment (Excl18)
+7. Naturopathy treatments (Excl16)
+8. Obesity/weight management (Excl17)
+9. External congenital defect (Excl08?) – see codes.
+10. Excluded providers (Excl11)
+11. Investigation & Evaluation (Excl04)
+12. Rest cure, rehabilitation, respite care (Excl05)
+13. Maternity expenses (Excl18) – explicitly excluded.
+14. Pre‑Existing Disease (Excl01) – waiting period applies.
+15. Specified disease/procedure waiting period (Excl02) – 24‑month waiting.
+16. First 30‑day waiting period (Excl03).
+17. Others as listed in Section IV (total 48 items).
+
+--- Waiting Periods ---
+* Pre‑Existing Disease Waiting Period – as per schedule (code Excl01).
+* Specified disease/procedure waiting period – 24 months (code Excl02).
+* First 30‑day waiting period – code Excl03.
+* Initial Waiting Periods for each benefit (e.g., Cancer Secure, Heart Secure, Income Protect, Major Illness) – days defined in schedule (refer to "Initial Waiting Period" sections).
+* Survival Periods – days after diagnosis before claim payable (per benefit).
+
+--- Room Rent Limits ---
+* Single Private A/C Room – maximum entitlement for inpatient benefits (multiple sections).
+* Shared Room – mentioned in definitions (Section VII – Shared Room definition).
+* ICU – separate charge, no proportional deduction.
+
+--- Co‑Payment / Deductible ---
+* Co‑Payment clauses mentioned in OPD (not explicit amount) – use placeholder.
+* Deductible for Income Protect – number of days as per schedule.
+* Deductible for Hospital Cash Benefit – days as per schedule.
+
+--- Supporting Documents Required for Claims ---
+General (Section V – Claims Process) – required for all benefits:
+1. Claim Form (original, signed).
+2. Photo ID and age proof of Insured/Nominee.
+3. Copy of claim intimation (if any).
+4. Original bills, receipts, prescription, clinical notes.
+5. Investigation reports (CT, MRI, USG, histopathology, etc.).
+6. Doctor’s prescription.
+7. Cancelled cheque for NEFT.
+8. Any additional documents as requested by insurer/TPA.
+Specific per‑benefit documents (e.g., medical certificate confirming diagnosis, survival period certificates, discharge summary, etc.) are listed under each benefit section.
+
+--- ROHINI ID / IRDAI Registration ---
+* IRDAI system URL provided – use as identifier system for insurer.
+* ROHINI identifier not explicitly present – placeholder may be used.
+
+--- Additional Administrative Info ---
+* Policyholder minimum group size: 7 members.
+* Grace period for premium: 15 days for instalments, 30 days for renewal.
+* Free Look Period: 15 days (30 days for 3‑year contracts) – not a benefit.
+* Portability, Migration, Renewal terms – operational, not modeled as coverage.
+* Contact details for grievance – listed but not modeled as benefit.
+
+--- Summary for Bundle Generation ---
+1. Create Organization resource for "Aditya Birla Health Insurance Co. Limited" with identifier system "https://rohini.iib.gov.in/" (placeholder value) and IRDAI identifier.
+2. InsurancePlan resource:
+   • identifier system "https://irdai.gov.in" value = ADIHLGP22023V032122.
+   • status = "active"; period.start = policy start date (not given – placeholder).
+   • ownedBy / administeredBy reference Organization.
+   • plan entries for each variant (OPD, Cancer Secure Option1, Cancer Secure Option2, Heart Secure, Cancer Assure, Income Protect, Preferred Provider Network, Hospital Cash, Major Illness, Credit Protect, Heart Assure).
+   • coverage array with benefit entries for each coverage type (use SNOMED codes where appropriate, e.g., 737492002 for OPD, 737481003 for Inpatient, 387713003 for Surgical, etc.).
+   • claim‑exclusion extension on InsurancePlan with codes Excl01‑Excl18 as applicable (list all permanent exclusions).
+   • supportingInfoRequirement extension on InsurancePlan with required documents list.
+   • claim‑condition extensions on each benefit for waiting periods, survival periods, co‑pay, deductible where applicable.
+3. Ensure no duplication of exclusions or supporting info.
+4. Include narrative text (resource.text) summarizing each benefit.
+5. Bundle type = "collection" with profile "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle".
+
+--- Notes for Script Development ---
+* Extraction notes file will be parsed by generate_bundle.py to populate JSON structures.
+* Use placeholders (e.g., "<SumInsured_OPD>") where exact monetary values are not present; they can be replaced later if schedule is available.
+* All codes for exclusions must use the NHCX Claim‑Exclusion code system values (Excl01‑Excl18) as listed.
+* Use SNOMED CT codes only when certain; otherwise use NDHM local code system.
+* Ensure extensions are placed at correct levels per Phase 4 instructions.
+* After generation, run json_validate, deduplicate_bundle, and run_fhir_validator.
+
+=== End of Extraction Notes ===

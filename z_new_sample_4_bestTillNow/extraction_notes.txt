@@ -1,0 +1,255 @@
+# Extraction Notes: Aditya Birla Health Insurance Policy
+
+## Insurer Information
+- **Insurer Name**: Aditya Birla Health Insurance Co. Limited
+- **License Number**: Not explicitly mentioned in the document
+- **CIN**: Not explicitly mentioned in the document
+- **UIN**: ADIHLGP22023V032122
+- **Address**: 9th Floor, Tower 1, One Indiabulls Centre, Jupiter Mills Compound, 841, Senapati Bapat Marg, Elphinstone Road, Mumbai 400013
+- **Website**: https://www.adityabirlacapital.com/healthinsurance
+
+## Policy Information
+- **Policy Name**: Group Protect
+- **Policy Type**: Group Health Insurance Policy
+- **Plan Type**: Individual/Group/Family Floater (not explicitly stated, but group policy)
+
+## Plan Variants/Options
+1. **Option 1** - Cancer Secure Cover
+2. **Option 2** - Cancer Secure Cover
+3. **Option 1** - Heart Secure Cover
+4. **Option 2** - Heart Secure Cover
+5. **Option 3** - Heart Secure Cover
+6. **Option 4** - Heart Secure Cover
+7. **Option 5** - Heart Secure Cover
+8. **Option 6** - Heart Secure Cover
+9. **Option 7** - Heart Secure Cover
+10. **Option 8** - Heart Secure Cover
+
+## Coverages and Benefits
+
+### 1. OPD Expenses (Section II.1)
+- **What is covered**:
+  - Doctor Consultation (MBBS qualified practitioners)
+  - Diagnostic Tests (listed in Policy Schedule)
+  - Pharmacy Expenses (out-patient basis)
+- **What is not covered**:
+  - Out-patient consultations exceeding limits
+  - Out-patient diagnostic tests exceeding limits
+  - Out-patient pharmacy expenses exceeding limits
+- **Exclusions**:
+  - In-patient treatment and day care procedures
+  - Naturopathy treatment(s)
+  - CT & MRI
+
+### 2. Cancer Secure Cover (Section II.2)
+- **Option 1**:
+  - Maximum liability: 100% of Sum Insured
+  - Maximum number of claims: Only one claim for either Major Stage Cancer or Advanced Stage Cancer
+  - Termination: After claim for Major Stage Cancer or Advanced Stage Cancer, or death, or end of policy period
+- **Option 2**:
+  - Maximum liability: 150% of Sum Insured
+  - Maximum number of claims: One claim for Early Stage Cancer, one for Major Stage Cancer or Advanced Stage Cancer
+  - Termination: After claim for Major Stage Cancer or Advanced Stage Cancer, or death, or end of policy period
+- **Additional Benefits**:
+  - Second Opinion (Section II.2.1)
+  - Post Cancer OPD Consultations/Medication (Section II.2.2)
+  - Counselling Sessions (Section II.2.3)
+  - Reconstructive Surgery (Section II.2.4)
+  - Palliative Care (Section II.2.5)
+  - Genetic Testing (Section II.2.6)
+- **Waiting Period**: Initial Waiting Period (applicable for both Options 1 and 2)
+- **Survival Period**: Applicable for both Options 1 and 2
+
+### 3. Income Protect (Section II.3)
+- **What is covered**: Monthly limit for each continuous and completed month of hospitalization exceeding 7 consecutive days
+- **Eligibility**: Salaried individuals with ITR evidence
+- **Conditions**:
+  - Deductible days specified in Policy Schedule
+  - Maximum duration specified in Policy Schedule
+  - Certification by treating Medical Practitioner
+- **Exclusions**:
+  - Pre-existing diseases within waiting period
+  - Involuntary unemployment due to dishonesty, misconduct, fraud, poor performance
+  - Voluntary unemployment, self-resignation, or voluntary retirement
+  - Unemployment from casual, temporary, seasonal or contractual jobs
+  - Involuntary unemployment due to probation period
+  - Suspension due to pending enquiry
+  - Unemployment due to maternity/paternity leave
+  - Unemployment due to strike or labor disturbance
+  - Unemployment due to withdrawal of employment offer
+
+### 4. Preferred Provider Network (Section II.4)
+- **What is covered**: Medical Expenses only at Network Providers
+- **Conditions**:
+  - Only Cashless facilities available
+  - Not covered beyond Network Providers
+  - Applicable only along with Section II.1 'OPD Expenses'
+
+### 5. Heart Secure Cover (Section II.5)
+- **Covered Illnesses**:
+  1. First Heart Attack of specified severity
+  2. Open Chest CABG
+  3. Open Heart Replacement Or Repair Of Heart Valves
+  4. Stroke Resulting In Permanent Symptoms
+  5. Implantable Cardioverter Defibrillator
+  6. Insertion of Pacemaker
+  7. Angioplasty
+  8. Minimally Invasive surgery of Aorta
+  9. Major Surgery of Aorta
+  10. Balloon Valvotomy or Valvuloplasty
+  11. Heart Transplant
+  12. Primary (Idiopathic) Pulmonary Hypertension
+- **Conditions**:
+  - Maximum liability: 100% of Sum Insured
+  - Maximum number of claims: Only one claim for any covered illness
+  - If more than one covered illness diagnosed within 48 hours, only one claim with highest benefit payout admissible
+- **Waiting Period**: Initial Waiting Period (applicable for all 3 Options)
+- **Survival Period**: Applicable for all 3 Options
+
+### 6. Cancer Assure Cover (Section II.6)
+- **Covered Treatments**:
+  - Conventional treatments: Chemotherapy, Radiotherapy, Organ transplantation, Surgeries for excision of cancerous tissue
+  - Advanced treatments: Immunotherapy, Personalised & Targeted therapy, Hormonal Therapy, Stem cell transplantation
+- **In-patient Hospitalization**:
+  - Room Rent (Single Private A/C Room category)
+  - ICU Charges
+  - Operation theatre expenses
+  - Medical Practitioner's fees
+  - Qualified Nurses charges
+  - Medicines, drugs and other allowable consumables
+  - Investigative tests or diagnostic procedures
+  - Anaesthesia, blood, oxygen and blood transfusion charges
+  - Surgical appliances and allowable prosthetic devices
+  - Medication applied as per medical prescription
+- **Day Care Treatment**:
+  - Covered for Day Care Treatment related to covered illness
+- **OPD Treatment**:
+  - Covered for consultations, diagnostic tests, pharmacy expenses
+- **Pre-hospitalization Medical Expenses**:
+  - Covered for specified number of days before hospitalization
+- **Post-hospitalization Medical Expenses**:
+  - Covered for specified number of days after hospitalization
+- **Emergency Road Ambulance Cover**:
+  - Covered for transportation to nearest hospital
+- **Follow Up Care Post Treatment**:
+  - Covered for twice in a Policy Year
+- **Exclusions**:
+  - Non Allopathic treatment
+  - Hospice care and palliative care
+  - External appliances and devices used for diagnosis or treatment (except intra-operatively)
+  - Prosthetic and other devices which are self-detachable/removable without surgery involving anaesthesia
+  - Primary Hospitalization for treatment of Adjuvant Chemo / Supportive chemo & Oral Chemo
+
+### 7. Hospital Cash Benefit (Section II.7)
+- **What is covered**: Daily cash benefit for each continuous and completed 24 hours of Hospitalization
+- **Conditions**:
+  - Maximum number of days specified in Policy Schedule
+  - Deductible as specified in Policy Schedule
+- **Exclusions**:
+  - Hospitalization as donor for another person's organ transplantation
+
+### 8. Major Illnesses Cover - Domestic Hospitalization (Section II.8)
+- **Covered Illnesses**:
+  1. Cancer Treatment
+  2. Coronary Artery By-Pass surgery
+  3. Heart Valve Replacement
+  4. Major Organ Transplantation
+  5. Bone Marrow Transplant
+  6. Neurosurgery
+  7. Pulmonary artery graft surgery
+  8. Aorta Graft Surgery
+  9. Coronary Artery By-Pass surgery post occurrence of Myocardial Infraction
+  10. Surgical treatment for Stroke
+  11. Surgical treatment for benign Brain tumour
+  12. Lung Transplant Surgery in case of End Stage Lung Disease
+  13. Kidney Transplant Surgery in case of End Stage Renal Failure
+  14. Skin grafting surgery for Major Burns
+  15. Surgical treatment of Coma
+  16. Surgery for Pheochromocytoma
+- **In-patient Hospitalization**:
+  - Room Rent (Single Private A/C Room category)
+  1. ICU Charges
+  2. Operation theatre expenses
+  3. Medical Practitioner's fees
+  4. Qualified Nurses charges
+  5. Medicines, drugs and other allowable consumables
+  6. Investigative tests or diagnostic procedures
+  7. Anaesthesia, blood, oxygen and blood transfusion charges
+  8. Surgical appliances and allowable prosthetic devices
+  9. Medication applied as per medical prescription
+- **Pre-hospitalization Medical Expenses**:
+  - Covered for specified number of days before hospitalization
+- **Post-hospitalization Medical Expenses**:
+  - Covered for specified number of days after hospitalization
+- **Emergency Road Ambulance Cover**:
+  - Covered for transportation to nearest hospital
+- **Waiting Period**: Initial Waiting Period (applicable for all covered illnesses)
+
+### 9. Credit Protect (Section II.9)
+- **What is covered**:
+  - Accidental Death (AD): Amount commensurate with balance outstanding loan amount
+  - Permanent Total Disablement (PTD): Amount commensurate with balance outstanding loan amount
+- **Definitions**:
+  - Accidental Death: Death within 365 days from date of accident
+  - Permanent Total Disablement: Permanent total disablement with specific conditions
+- **Exclusions**:
+  - Consequential losses
+  - Losses from motor racing or trial runs
+  - Curative treatments performed against medical advice
+
+## Exclusions
+1. **Pre-existing Diseases** (Excl01)
+2. **Certain specified diseases/procedures require Waiting Period** (Excl02)
+3. **30 Day Waiting Period** (Excl03)
+4. **Investigation & Treatment for Infertility/Subfertility** (Excl04)
+5. **Maternity Expenses** (Excl05)
+6. **External Congenital Defect** (Excl06)
+7. **Breach of law with criminal intent** (Excl07)
+8. **Excluded Providers** (Excl08)
+9. **Treatment for Alcoholism, drug/substance abuse** (Excl09)
+10. **Unproven/Experimental Treatment** (Excl10)
+11. **Cosmetic or Plastic Surgery** (Excl11)
+12. **Hazardous or Adventure Sports** (Excl12)
+13. **Self inflicted injuries or suicide attempt** (Excl13)
+14. **Injury/disease directly from War or nuclear contamination** (Excl14)
+15. **Service in Armed Forces** (Excl15)
+16. **Naturopathy Treatments** (Excl16)
+17. **Obesity and Weight Management** (Excl17)
+18. **Change of Gender Treatment** (Excl18)
+
+## Waiting Periods
+1. **Initial Waiting Period** (for Cancer Secure Cover, Heart Secure Cover, Cancer Assure Cover, Major Illnesses Cover)
+2. **Pre-existing Disease Waiting Period** (3 months of continuous coverage)
+3. **Specified disease/procedure waiting period** (24 months)
+4. **First 30 Days Waiting Period** (30 days from first policy commencement date)
+
+## Room Rent Limits
+- Single Private A/C Room category (as specified in Policy Schedule)
+- ICU Charges (not subject to proportionate deductions)
+- Shared Room (as specified in Policy Schedule)
+
+## Co-payment Clauses
+- Not explicitly mentioned in the document
+
+## Supporting Documents Required for Claims
+1. Claim Form (in original) duly completed and signed
+2. Photo ID and Age proof of Insured Person / Nominee
+3. Copy of the claim intimation, if any
+4. Original bills, receipts and copy of prescription, clinical notes from the Medical Practitioner / medical facility
+5. Original bills from pharmacy supported by proper prescription
+6. Investigation reports (Including CT scan/ MRI /USG / Histopathology or Biopsy report) and original bills, payment receipts
+7. Doctor's prescriptions (as applicable)
+8. Cancelled cheque for NEFT
+9. Any other document as required by Us or the TPA to investigate the claim or Our obligation to make any payment for it
+
+## Additional Information
+- **Policy Type**: Group Health Insurance
+- **Product UIN**: ADIHLGP22023V032122
+- **Policy Period**: Not explicitly mentioned in the document
+- **Start Date**: Not explicitly mentioned in the document
+- **Expiry Date**: Not explicitly mentioned in the document
+- **Premium Payment**: Single mode or instalment options (monthly/quarterly/half yearly)
+- **Grace Period**: 30 days from expiry of policy
+- **Portability**: Available as per IRDAI guidelines
+- **Migration**: Available as per IRDAI guidelines
+- **Free Look Period**: Not applicable for group policies

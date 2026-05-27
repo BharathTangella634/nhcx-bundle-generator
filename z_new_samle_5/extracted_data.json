@@ -1,0 +1,168 @@
+{
+  "insurer": {
+    "name": "Universal Sompo General Insurance Co. Ltd",
+    "irdai_registration": "NOT FOUND IN PDF",
+    "address": "NOT FOUND IN PDF",
+    "contact": {
+      "website": "www.universalsompo.com",
+      "toll_free": "1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or on chargeable numbers at +91-22-27639800/+91-22-39133700",
+      "email": "contactus@universalsompo.com",
+      "fax": "(022) 39171419",
+      "courier_address": "Universal Sompo General Insurance Co. Ltd, Unit No- 601 & 602 A Wing, 6th Floor, Reliable Tech Park, Cloud City Campus; Thane- Belapur Road, Airoli- 400708"
+    }
+  },
+  "policy": {
+    "name": "Group Mashak Rakshak",
+    "type": "Individual/ Floater",
+    "period": "Standard Product shall be offered with a policy tenure of one year (12 Months)",
+    "sum_insured": "Rs 10,000/- (Ten Thousand) to 2,00,000/- (Two Lakh) (in the multiples of ten thousand)",
+    "coverage_type": "Vector Borne Diseases",
+    "uin": "NOT FOUND IN PDF"
+  },
+  "plan_variants": {
+    "individual": "SI shall apply to each individual family member",
+    "floater": "SI shall apply to the entire family",
+    "sum_insured_range": "Rs 10,000 to Rs 200,000 (in multiples of ten thousand)"
+  },
+  "coverages": {
+    "hospitalization_benefit": {
+      "description": "Lump sum benefit up to 100% of the Sum Insured (excluding the amount paid under diagnosis cover)",
+      "diseases": [
+        "Dengue fever",
+        "Malaria",
+        "Filaria (Lymphatic Filariasis)",
+        "Kala-azar",
+        "Chikungunya",
+        "Japanese Encephalitis",
+        "Zika Virus"
+      ]
+    },
+    "diagnosis_cover": {
+      "description": "2% of the sum insured shall be payable on positive diagnosis",
+      "notes": "Only once per disease per policy year. Total amount payable in respect of Covers 4.1 and 4.2 shall not exceed 100% of the Sum Insured during a policy period"
+    }
+  },
+  "waiting_periods": {
+    "first_fifteen_days": "Company shall not be liable to make any payment under the policy if the covered vector borne disease is diagnosed or hospitalization takes place during first fifteen days (15 days) from the commencement date of this Policy",
+    "cooling_off": "If the Policy is renewed within 30 days from the date of discharge of the previously paid claim for the named insured a 30 days cooling off period shall apply for the same ailment in the renewed Policy. However, there would be no waiting period for other listed vector borne diseases"
+  },
+  "exclusions": {
+    "general": [
+      "Claim for any illness/disease other than for vector borne diseases covered under the policy",
+      "Diagnosis / Treatment outside the geographical limits of India",
+      "Any laboratory test not recognized/ approved in India for diagnosis of the covered vector borne diseases is not covered",
+      "Unproven Treatments: Expenses related to any unproven treatment, services and supplies for or in connection with any treatment"
+    ],
+    "section_4_1_specific": [
+      "Domiciliary Hospitalization, Day care OPD treatment",
+      "Investigation & Evaluation: Expenses related to any admission primarily for diagnostics and evaluation purposes",
+      "Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment",
+      "Rest Cure, rehabilitation and respite care: Expenses related to any admission primarily for enforced bed rest and not for receiving treatment",
+      "Custodial care either at home or in a nursing facility for personal care",
+      "Any services for people who are terminally ill to address physical, social, emotional and spiritual needs",
+      "Excluded Providers: Expenses incurred towards treatment in any hospital or by any Medical Practitioner or any other provider specifically excluded by the Insurer",
+      "In case of life threatening situations expenses up to the stage of stabilization are payable but not the complete claim",
+      "Treatments received in health hydros, nature cure clinics, spas or similar establishments or private beds registered as a nursing home attached to such establishments or where admission is arranged wholly or partly for domestic reasons",
+      "Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure",
+      "Hospitalization for treatment other than allopathy",
+      "Hospitalization for less than a minimum period of seventy-two (72) consecutive hours"
+    ]
+  },
+  "claim_procedure": {
+    "notification": {
+      "emergency_hospitalization": "Within 24 hours from the date of emergency hospitalization",
+      "planned_hospitalization": "At least 48 hours prior to admission in Hospital in case of a planned Hospitalization"
+    },
+    "reimbursement": {
+      "hospitalization_benefit": "Within thirty days (30 days) from date of discharge from hospital following positive diagnosis of covered vector borne disease",
+      "diagnosis_cover": "Within Fifteen days (15 days) of Diagnosis of the covered vector borne disease"
+    },
+    "documents_required": {
+      "hospitalization_benefit": [
+        "Duly filled and signed Claim Form",
+        "Photo Identity proof of the patient",
+        "Medical practitioner's prescription advising admission",
+        "Discharge summary including complete medical history of the patient along with other details",
+        "Laboratory report(s) confirming the diagnosis",
+        "OT notes or Surgeon's certificate giving details of the operation performed, wherever applicable",
+        "NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque",
+        "KYC (Identity proof with Address) of the proposer, where claim liability is above Rs one (1) Lakh or as per extant AML Guidelines",
+        "Legal heir/succession certificate, wherever applicable",
+        "Any other relevant document required by Company/TPA for assessment of the claim"
+      ],
+      "diagnosis_cover": [
+        "Duly filled and signed Claim Form",
+        "Photo Identity proof of the patient",
+        "Laboratory report(s) confirming the diagnosis",
+        "Payment receipt(s)",
+        "NEFT Details (to enable direct credit of claim amount in bank account) and cancelled cheque",
+        "Legal heir/succession certificate, wherever applicable",
+        "Any other relevant document required by Company/TPA for assessment of the claim"
+      ]
+    }
+  },
+  "general_terms_conditions": {
+    "disclosure_of_information": "Policy shall be void and all premium paid thereon shall be forfeited to the Company in the event of misrepresentation, mis description or non-disclosure of any material fact by the policyholder",
+    "material_change": "Insured shall notify the Company in writing of any material change in the risk",
+    "records_to_be_maintained": "Insured Person shall keep an accurate record containing all relevant medical records",
+    "complete_discharge": "Any payment to the policyholder shall be a valid discharge towards payment of claim by the Company",
+    "notice_communication": "Any notice, direction, instruction or any other communication related to the Policy should be made in writing",
+    "territorial_limit": "All medical treatment for the purpose of this insurance will have to be taken in India only",
+    "fraud": "If any claim made by the insured person is fraudulent, all benefits under this policy and the premium paid shall be forfeited",
+    "cancellation": {
+      "policyholder_cancellation": "Policyholder may cancel this policy by giving 15days' written notice",
+      "no_refunds": "No refunds of premium shall be made in respect of Cancellation where, any claim has been admitted or has been lodged or any benefit has been availed by the insured person"
+    },
+    "renewal": {
+      "renewal_policy": "Policy shall ordinarily be renewable except on grounds of fraud, misrepresentation by the insured person",
+      "no_denial": "Renewal shall not be denied on the ground that the insured person had made a claim or claims in the preceding policy years",
+      "renewal_request": "Request for renewal along with requisite premium shall be received by the Company before the end of the policy period",
+      "grace_period": "At the end of the policy period, the policy shall terminate and can be renewed within the Grace Period of 30 days to maintain continuity of benefits without break in policy"
+    },
+    "withdrawal": {
+      "withdrawal_policy": "In the likelihood of this product being withdrawn in future, the Company will intimate the insured person about the same 90 days prior to expiry of the policy",
+      "migration_option": "Insured Person will have the option to migrate to similar health insurance product available with the Company at the time of renewal with all the accrued continuity benefits"
+    },
+    "automatic_change": {
+      "death": "In case of Insured Person's demise, the cover shall continue for the remaining Insured Person(s) till the end of Policy Period",
+      "sum_insured_exhausted": "Upon exhaustion of sum insured for the policy year, the policy is subject to renewal on the due date as per the applicable terms and conditions"
+    },
+    "territorial_jurisdiction": "All disputes or differences under or in relation to the interpretation of the terms, conditions, validity, construct, limitations and/or exclusions contained in the Policy shall be determined by the Indian court and according to Indian law",
+    "arbitration": "If any dispute or difference shall arise as to the quantum to be paid by the Policy, such difference shall independently of all other questions, be referred to the decision of a sole arbitrator to be appointed in writing by the parties here to or if they cannot agree upon a single arbitrator within thirty days of any party invoking arbitration, the same shall be referred to a panel of three arbitrators",
+    "revision_of_terms": "The Company, with prior approval of IRDAI, may revise or modify the terms of the policy including the premium rates",
+    "free_look_period": "The Free Look Period shall be applicable on new individual health insurance policies and not on renewals or at the time of porting/migrating the policy",
+    "endorsements": "This policy constitutes the complete contract of insurance. Any change made by the company shall be evidenced by a written endorsement signed and stamped",
+    "change_of_sum_insured": "Sum insured can be changed (increased/ decreased) only at the time of renewal or at any time, subject to underwriting by the Company",
+    "terms_conditions": "The terms and conditions contained herein and in the Policy Schedule shall be deemed to form part of the Policy and shall be read together as one document",
+    "nomination": "The policyholder is required at the inception of the policy to make a nomination for the purpose of payment of claims under the policy in the event of death of the policyholder"
+  },
+  "grievance_redressal": {
+    "website": "www.universalsompo.com",
+    "toll_free": "1-800-224030 (MTNL/BSNL Users) or 1-800-2004030 or on chargeable numbers at +91-22-27639800/+91-22-39133700",
+    "email": "contactus@universalsompo.com",
+    "fax": "(022) 39171419",
+    "courier_address": "Universal Sompo General Insurance Co. Ltd, Unit No- 601 & 602 A Wing, 6th Floor, Reliable Tech Park, Cloud City Campus; Thane- Belapur Road, Airoli- 400708",
+    "insurance_ombudsman": "Contact details provided in Annexure-A"
+  },
+  "sub_limits": {
+    "diagnosis_cover": "2% of sum insured"
+  },
+  "eligibility": {
+    "age": {
+      "minimum": "Minimum entry age shall be 18 years for principal insured",
+      "maximum": "Maximum age at entry shall not be less than 65 years for all the insured members including principal insured"
+    },
+    "family_members": [
+      "Legally wedded spouse",
+      "Parents and Parents-in-law",
+      "Dependent Children (i.e. natural or legally adopted) between the day 1 of age to 25 years. If the child above 18 years of age is financially independent, he or she shall be ineligible"
+    ]
+  },
+  "additional_notes": {
+    "filariasis": "Once the Sum Insured is paid under the policy for any Insured Beneficiary for Filaria (Lymphatic Filariasis), notwithstanding the terms and conditions, no other claim for this particular condition shall be paid to the Named Insured Beneficiary in his/her entire lifetime.",
+    "total_amount": "The total amount payable in respect of Covers 4.1 and 4.2 shall not exceed 100% of the Sum Insured during a policy period.",
+    "laboratory_tests": "Any laboratory test not recognized/ approved in India for diagnosis of the covered vector borne diseases is not covered.",
+    "sum_insured_payment": "On payment of 100% of sum insured, the policy shall be terminated for the policy year.",
+    "family_policy": "In case where a policy is issued to a family with individual sum insured for each member, policy will continue for the rest of the insured members."
+  }
+}

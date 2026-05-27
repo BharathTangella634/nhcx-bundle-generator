@@ -158,9 +158,15 @@ class LocalLLMClient:
 
             except Exception as e:
                 last_error = e
+                err_str = str(e)
+                is_loading = "503" in err_str or "Loading model" in err_str or "unavailable" in err_str.lower()
                 logger.warning(f"LLM call failed (attempt {attempt + 1}/{retry_count}): {e}")
                 if attempt < retry_count - 1:
-                    time.sleep(retry_delay * (attempt + 1))  # Exponential backoff
+                    # Use longer delay for model-loading errors
+                    delay = (retry_delay * (attempt + 1) * 5) if is_loading else (retry_delay * (attempt + 1))
+                    if is_loading:
+                        logger.info(f"Model loading — waiting {delay:.0f}s before retry")
+                    time.sleep(delay)
 
         # All retries failed
         logger.error(f"LLM call failed after {retry_count} attempts: {last_error}")
@@ -195,15 +201,33 @@ class LocalLLMClient:
             "total_tokens": self.total_prompt_tokens + self.total_completion_tokens,
         }
 
-    def test_connection(self) -> bool:
-        """Test if the LLM server is reachable and responding."""
-        try:
-            result = self.simple_complete("Say 'OK' if you can hear me.")
-            logger.info(f"LLM connection test: OK (response: {result[:50]})")
-            return True
-        except Exception as e:
-            logger.error(f"LLM connection test FAILED: {e}")
-            return False
+    def test_connection(self, max_wait: int = 120) -> bool:
+        """Test if the LLM server is reachable. Waits up to max_wait seconds for model loading."""
+        import time as _time
+        start = _time.time()
+        attempt = 0
+        while _time.time() - start < max_wait:
+            attempt += 1
+            try:
+                result = self.simple_complete("Say 'OK' if you can hear me.")
+                logger.info(f"LLM connection test: OK on attempt {attempt} (response: {result[:50]})")
+                return True
+            except Exception as e:
+                err_str = str(e)
+                if "503" in err_str or "Loading model" in err_str or "unavailable" in err_str.lower():
+                    elapsed = _time.time() - start
+                    remaining = max_wait - elapsed
+                    if remaining > 0:
+                        wait = min(10, remaining)
+                        logger.info(f"Model still loading (attempt {attempt}, {elapsed:.0f}s elapsed). "
+                                    f"Retrying in {wait:.0f}s...")
+                        print(f"  Model loading... retrying in {wait:.0f}s ({elapsed:.0f}s/{max_wait}s)")
+                        _time.sleep(wait)
+                        continue
+                logger.error(f"LLM connection test FAILED: {e}")
+                return False
+        logger.error(f"LLM connection test timed out after {max_wait}s")
+        return False
 
     def _sanitize_content(self, content: str) -> str:
         """

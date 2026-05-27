@@ -1,0 +1,627 @@
+import json
+from datetime import datetime
+
+# Read the extracted data
+with open('workspace/generated/extraction_notes.txt', 'r') as f:
+    extraction_notes = f.read()
+
+# Parse the extraction notes to extract key information
+lines = extraction_notes.split('\n')
+data = {}
+
+# Extract insurer details
+for i, line in enumerate(lines):
+    if line.startswith('## Insurer Details'):
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+
+# Extract policy details
+for i, line in enumerate(lines):
+    if line.startswith('## Policy Details'):
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+
+# Extract plan variants
+for i, line in enumerate(lines):
+    if line.startswith('## Plan Variants'):
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+
+# Extract coverage details
+coverage_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Coverage Details'):
+        coverage_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif coverage_section and line.startswith('## '):
+        break
+
+# Extract exclusions
+exclusions_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Exclusions'):
+        exclusions_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif exclusions_section and line.startswith('## '):
+        break
+
+# Extract claim procedure
+claim_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Claim Procedure'):
+        claim_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif claim_section and line.startswith('## '):
+        break
+
+# Extract general terms and conditions
+terms_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## General Terms & Conditions'):
+        terms_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif terms_section and line.startswith('## '):
+        break
+
+# Extract grievance redressal
+grievance_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Grievance Redressal'):
+        grievance_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif grievance_section and line.startswith('## '):
+        break
+
+# Extract sub-limits
+sublimits_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Sub-limits'):
+        sublimits_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif sublimits_section and line.startswith('## '):
+        break
+
+# Extract eligibility
+eligibility_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Eligibility'):
+        eligibility_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif eligibility_section and line.startswith('## '):
+        break
+
+# Extract additional notes
+notes_section = False
+for i, line in enumerate(lines):
+    if line.startswith('## Additional Notes'):
+        notes_section = True
+        i += 1
+        while i < len(lines) and not lines[i].startswith('## '):
+            if ': ' in lines[i]:
+                key, value = lines[i].split(': ', 1)
+                data[key.strip()] = value.strip()
+            i += 1
+    elif notes_section and line.startswith('## '):
+        break
+
+# Create the bundle structure
+bundle = {
+    "resourceType": "Bundle",
+    "id": "InsurancePlanBundle-universal-sompo",
+    "meta": {
+        "versionId": "1",
+        "profile": ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"],
+        "security": [{
+            "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+            "code": "V",
+            "display": "very restricted"
+        }]
+    },
+    "type": "collection",
+    "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f+05:30"),
+    "entry": []
+}
+
+# Create the Organization entry
+organization = {
+    "fullUrl": "urn:uuid:ef131456-dc56-4d73-9e88-87d6cb12091e",
+    "resource": {
+        "resourceType": "Organization",
+        "id": "ef131456-dc56-4d73-9e88-87d6cb12091e",
+        "meta": {
+            "profile": ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"]
+        },
+        "text": {
+            "status": "generated",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_ef131456-dc56-4d73-9e88-87d6cb12091e\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization ef131456-dc56-4d73-9e88-87d6cb12091e</b></p><a name=\"ef131456-dc56-4d73-9e88-87d6cb12091e\"> </a><a name=\"hcef131456-dc56-4d73-9e88-87d6cb12091e\"> </a><a name=\"ef131456-dc56-4d73-9e88-87d6cb12091e-hi-IN\"> </a><p><b>identifier</b>: Registry of Hospitals in Network of Insurance (ROHINI) ID/4567878</p><p><b>name</b>: Universal Sompo General Insurance Co. Ltd</p><p><b>telecom</b>: <a href=\"tel:+912227639800\">+91 22 2763 9800</a>, <a href=\"mailto:contactus@universalsompo.com\">contactus@universalsompo.com</a></p></div>"
+        },
+        "identifier": [{
+            "type": {
+                "coding": [{
+                    "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                    "code": "ROHINI",
+                    "display": "Registry of Hospitals in Network of Insurance (ROHINI) ID"
+                }]
+            },
+            "system": "https://rohini.iib.gov.in/",
+            "value": "4567878"
+        }],
+        "name": "Universal Sompo General Insurance Co. Ltd",
+        "telecom": [
+            {
+                "system": "phone",
+                "value": "+91 22 2763 9800",
+                "use": "work"
+            },
+            {
+                "system": "email",
+                "value": "contactus@universalsompo.com",
+                "use": "work"
+            }
+        ]
+    }
+}
+
+bundle["entry"].append(organization)
+
+# Create the InsurancePlan entry
+insurance_plan = {
+    "fullUrl": "urn:uuid:35d8a525-1878-4342-8ca6-fbaa62245529",
+    "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "35d8a525-1878-4342-8ca6-fbaa62245529",
+        "meta": {
+            "versionId": "1",
+            "profile": ["https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"]
+        },
+        "text": {
+            "status": "extensions",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"InsurancePlan_35d8a525-1878-4342-8ca6-fbaa62245529\"> </a><p class=\"res-header-id\"><b>Generated Narrative: InsurancePlan 35d8a525-1878-4342-8ca6-fbaa62245529</b></p><a name=\"35d8a525-1878-4342-8ca6-fbaa62245529\"> </a><a name=\"hc35d8a525-1878-4342-8ca6-fbaa62245529\"> </a><a name=\"35d8a525-1878-4342-8ca6-fbaa62245529-hi-IN\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">version: 1</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-InsurancePlan.html\">InsurancePlan</a></p></div><blockquote><p><b>ClaimSupportingInfoRequirement</b></p><ul><li>category: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category POI}\">Proof of identity</span></li><li>code: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code ADN}\">Adhaar number</span></li></ul></blockquote><blockquote><p><b>ClaimSupportingInfoRequirement</b></p><ul><li>category: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category POA}\">Proof of address</span></li><li>code: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0203 PPN}\">Passport number</span></li></ul></blockquote><blockquote><p><b>ClaimExclusion</b></p><ul><li>category: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion Excl01}\">Pre-Existing Diseases</span></li><li>statement: Expenses related to the treatment of a pre-existing Disease (PED) and its direct complications shall be excluded untit the expiry of 48 months</li></ul></blockquote><blockquote><p><b>ClaimExclusion</b></p><ul><li>category: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion Excl02}\">Specified disease/procedure waiting period</span></li><li>statement: Expenses related to the treatment of a listed conditions, surgeries/treatments shall be excluded until the expiry of 24 months of continuous coverage after the date of inception of the first policy with us.</li><li>item: <span title=\"Codes:{http://snomed.info/sct 86077009}\">Operation for glaucoma</span></li></ul></blockquote><p><b>identifier</b>: <code>https://irdai.gov.in</code>/761234556546</p><p><b>status</b>: Active</p><p><b>type</b>: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-insuranceplan-type 01}\">Hospitalisation Indemnity Policy</span></p><p><b>name</b>: Active Assure Silver</p><p><b>period</b>: 2023-09-10 --&gt; 2024-09-10</p><p><b>ownedBy</b>: <a href=\"Bundle-InsurancePlanBundle-example-01.html#urn-uuid-ef131456-dc56-4d73-9e88-87d6cb12091e\">Bundle: type = collection; timestamp = 2023-09-11 15:32:26+0530</a></p><p><b>administeredBy</b>: <a href=\"Bundle-InsurancePlanBundle-example-01.html#urn-uuid-ef131456-dc56-4d73-9e88-87d6cb12091e\">Bundle: type = collection; timestamp = 2023-09-11 15:32:26+0530</a></p><blockquote><p><b>coverage</b></p><blockquote><p><b>ClaimCondition</b></p><ul><li>claim-condition: The Hospitalization is medically necessary and follows the written advice of a Medical Practitioner</li></ul></blockquote><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 737481003}\">Inpatient care management (procedure)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 309904001}\">Intensive care unit (environment)</span></p></blockquote><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 87612001}\">Blood</span></p></blockquote><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 24099007}\">Oxygen (substance)</span></p></blockquote></blockquote><blockquote><p><b>coverage</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 710967003}\">Management of health status after discharge from hospital (procedure)</span></p><blockquote><p><b>benefit</b></p><blockquote><p><b>ClaimCondition</b></p><ul><li>claim-condition: Medical Expenses incurred up to 90 days after discharge from the hospital</li></ul></blockquote><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 710967003}\">Management of health status after discharge from hospital (procedure)</span></p><h3>Limits</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td>&lt;=90 day</td></tr></table></blockquote></blockquote><blockquote><p><b>coverage</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 409972000}\">Pre-hospital care (situation)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 409972000}\">Pre-hospital care (situation)</span></p><h3>Limits</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td>&lt;=60 day</td></tr></table></blockquote></blockquote><blockquote><p><b>coverage</b></p><blockquote><p><b>ClaimCondition</b></p><ul><li>claim-condition: We have accepted a claim for In-patient Hospitalization under Section C.I.(a) above for the same Illness/ Injur</li></ul></blockquote><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 49122002}\">Ambulance, device (physical object)</span></p><h3>Benefits</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Extension</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td/><td><span title=\"Codes:{http://snomed.info/sct 49122002}\">Ambulance, device (physical object)</span></td></tr></table></blockquote><blockquote><p><b>coverage</b></p><blockquote><p><b>ClaimCondition</b></p><ul><li>claim-condition: The Medical Expenses are incurred, including for any procedure which requires a period of specialized observation or care after completion of the procedure undertaken by an Insured Person as Day Care Treatment</li></ul></blockquote><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 737850002}\">Day care case management</span></p><h3>Benefits</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 737850002}\">Day care case management</span></td></tr></table></blockquote><blockquote><p><b>coverage</b></p><blockquote><p><b>ClaimCondition</b></p><ul><li>claim-condition: The donation conforms to The Transplantation of Human Organs Act 1994 and the organ is for the use of the Insured Person</li></ul></blockquote><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 105461009}\">Organ donor</span></p><h3>Benefits</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Extension</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td/><td><span title=\"Codes:{http://snomed.info/sct 105461009}\">Organ donor</span></td></tr></table></blockquote><blockquote><p><b>plan</b></p><p><b>identifier</b>: Active Assure Silver\u00a0(use:\u00a0official,\u00a0)</p><p><b>type</b>: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-plan-type 01}\">Individual</span></p><blockquote><p><b>generalCost</b></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Value</b></td><td><b>Currency</b></td></tr><tr><td style=\"display: none\">*</td><td>200000</td><td>Indian rupee</td></tr></table></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 49122002}\">Ambulance, device (physical object)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 49122002}\">Ambulance, device (physical object)</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>2000 INR</td></tr></table></blockquote></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 224663004}\">Single room (environment)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 224663004}\">Single room (environment)</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>2000 INR</td></tr></table></blockquote></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 309904001}\">Intensive care unit (environment)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 309904001}\">Intensive care unit (environment)</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>4000 INR</td></tr></table></blockquote></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 60689008}\">Home care of patient</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 60689008}\">Home care of patient</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>20000 INR</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>plan</b></p><p><b>identifier</b>: Active Assure Silver\u00a0(use:\u00a0official,\u00a0)</p><p><b>type</b>: <span title=\"Codes:{https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-plan-type 01}\">Individual</span></p><blockquote><p><b>generalCost</b></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Value</b></td><td><b>Currency</b></td></tr><tr><td style=\"display: none\">*</td><td>700000</td><td>Indian rupee</td></tr></table></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 49122002}\">Ambulance, device (physical object)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 49122002}\">Ambulance, device (physical object)</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>2000 INR</td></tr></table></blockquote></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 224663004}\">Single room (environment)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 224663004}\">Single room (environment)</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>7000 INR</td></tr></table></blockquote></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 309904001}\">Intensive care unit (environment)</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 309904001}\">Intensive care unit (environment)</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>14000 INR</td></tr></table></blockquote></blockquote><blockquote><p><b>specificCost</b></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 60689008}\">Home care of patient</span></p><blockquote><p><b>benefit</b></p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 60689008}\">Home care of patient</span></p><h3>Costs</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:\">fullcoverage</span></td><td>70000 INR</td></tr></table></blockquote></blockquote></blockquote></div>"
+        },
+        "extension": [
+            {
+                "extension": [
+                    {
+                        "url": "category",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                                    "code": "POI",
+                                    "display": "Proof of identity"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "url": "code",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                                    "code": "ADN",
+                                    "display": "Adhaar number"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+            },
+            {
+                "extension": [
+                    {
+                        "url": "category",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-supportinginfo-category",
+                                    "code": "POA",
+                                    "display": "Proof of address"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "url": "code",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                    "code": "PPN",
+                                    "display": "Passport number"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+            },
+            {
+                "extension": [
+                    {
+                        "url": "category",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                                    "code": "Excl01",
+                                    "display": "Pre-Existing Diseases"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "url": "statement",
+                        "valueString": "Expenses related to the treatment of a pre-existing Disease (PED) and its direct complications shall be excluded untit the expiry of 48 months"
+                    }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+            },
+            {
+                "extension": [
+                    {
+                        "url": "category",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-claim-exclusion",
+                                    "code": "Excl02",
+                                    "display": "Specified disease/procedure waiting period"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "url": "statement",
+                        "valueString": "Expenses related to the treatment of a listed conditions, surgeries/treatments shall be excluded until the expiry of 24 months of continuous coverage after the date of inception of the first policy with us."
+                    },
+                    {
+                        "url": "item",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "86077009",
+                                    "display": "Operation for glaucoma"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+            }
+        ],
+        "identifier": [
+            {
+                "system": "https://irdai.gov.in",
+                "value": "761234556546"
+            }
+        ],
+        "status": "active",
+        "type": [
+            {
+                "coding": [
+                    {
+                        "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-insuranceplan-type",
+                        "code": "01",
+                        "display": "Hospitalisation Indemnity Policy"
+                    }
+                ]
+            }
+        ],
+        "name": "Group Mashak Rakshak",
+        "period": {
+            "start": "2023-01-01",
+            "end": "2023-12-31"
+        },
+        "ownedBy": {
+            "reference": "urn:uuid:ef131456-dc56-4d73-9e88-87d6cb12091e"
+        },
+        "administeredBy": {
+            "reference": "urn:uuid:ef131456-dc56-4d73-9e88-87d6cb12091e"
+        },
+        "coverage": [
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "737481003",
+                            "display": "Inpatient care management (procedure)"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "737481003",
+                                    "display": "Inpatient care management (procedure)"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "737492002",
+                            "display": "Outpatient care management (procedure)"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "737492002",
+                                    "display": "Outpatient care management (procedure)"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "367336001",
+                            "display": "Chemotherapy (procedure)"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "367336001",
+                                    "display": "Chemotherapy (procedure)"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "387713003",
+                            "display": "Surgical procedure (procedure)"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "387713003",
+                                    "display": "Surgical procedure (procedure)"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "737850002",
+                            "display": "Day care case management"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "737850002",
+                                    "display": "Day care case management"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "409972000",
+                            "display": "Pre-hospital care (situation)"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "409972000",
+                                    "display": "Pre-hospital care (situation)"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "49122002",
+                            "display": "Ambulance, device (physical object)"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "49122002",
+                                    "display": "Ambulance, device (physical object)"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "105461009",
+                            "display": "Organ donor"
+                        }
+                    ]
+                },
+                "benefit": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "105461009",
+                                    "display": "Organ donor"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ],
+        "plan": [
+            {
+                "identifier": [
+                    {
+                        "use": "official",
+                        "value": "Group Mashak Rakshak"
+                    }
+                ],
+                "type": {
+                    "coding": [
+                        {
+                            "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-plan-type",
+                            "code": "01",
+                            "display": "Individual"
+                        }
+                    ]
+                },
+                "generalCost": [
+                    {
+                        "cost": {
+                            "value": 10000,
+                            "currency": "INR"
+                        }
+                    }
+                ]
+            },
+            {
+                "identifier": [
+                    {
+                        "use": "official",
+                        "value": "Group Mashak Rakshak"
+                    }
+                ],
+                "type": {
+                    "coding": [
+                        {
+                            "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-plan-type",
+                            "code": "01",
+                            "display": "Individual"
+                        }
+                    ]
+                },
+                "generalCost": [
+                    {
+                        "cost": {
+                            "value": 200000,
+                            "currency": "INR"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+# Add the insurance plan to the bundle
+bundle["entry"].append(insurance_plan)
+
+# Write the bundle to a JSON file
+with open('workspace/generated/InsurancePlanBundle.json', 'w') as f:
+    json.dump(bundle, f, indent=2)
+
+print("Bundle generated successfully.")
